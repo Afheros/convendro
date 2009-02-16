@@ -113,7 +113,7 @@ namespace convendro
         /// 
         /// </summary>
         private void updateStatusBar1() {
-            lblStat.Text = String.Format("Files: {0}", 
+            lblFilesBarMain.Text = String.Format("Files: {0}", 
                 listViewFiles.Items.Count);
         }
 
@@ -490,6 +490,12 @@ namespace convendro
 
             conversionStopToolStripButton.Enabled = !threadfinished;
             conversionStopToolStripMenuItem.Enabled = !threadfinished;
+
+            progressBarMain.Value = 0;
+            if (threadfinished) {
+                lblStatusBarMain.Text = "";
+            }
+
         }
 
         /// <summary>
