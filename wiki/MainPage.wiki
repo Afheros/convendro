@@ -19,5 +19,5 @@ At this stage:
 
 The following changes are being considered before the first alpha gets out:
   # Add commandline parameters for PSP conversion.
-  # Changes to threading model. PresetsList -> Thread is not threadsafe.
+  # Changes to threading model. PresetsFile -> Thread is not threadsafe.
   # Changes to object model to support other possible commandline encoders.
