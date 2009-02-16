@@ -6,6 +6,18 @@ Convendro is a .Net GUI for FFMPEG
 
 
 == Details ==
+
   * Easy to use: Drag and drop your media files.
   * Easy preset management: either add FFMPEG settings or copy your favourite FFMPEG commandline right into the Presets Editor
   * No intruding advertisements or clumsy interface.
+
+== Status ==
+
+At this stage:
+  # Conversion was tested with dummy and test presets (see document folder for 2 error-free datafiles).
+  # Average ~ 20 minutes (400MB) for 700 KB/s, P7350 2.0 GHz (2 active threads).
+
+The following changes are being considered before the first alpha gets out:
+  # Add commandline parameters for PSP conversion.
+  # Changes to threading model. PresetsList -> Thread is not threadsafe.
+  # Changes to object model to support other possible commandline encoders.
