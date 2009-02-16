@@ -87,23 +87,23 @@
             this.fileMoveDownToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.fileSelectPresetListToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.toolsToolStrip = new System.Windows.Forms.ToolStrip();
-            this.toolsEditPresetsToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.conversionToolStrip = new System.Windows.Forms.ToolStrip();
             this.conversionPlaytoolStripButton = new System.Windows.Forms.ToolStripButton();
             this.conversionStopToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolsToolStrip = new System.Windows.Forms.ToolStrip();
+            this.toolsEditPresetsToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.mainStatusStrip = new System.Windows.Forms.StatusStrip();
-            this.lblStat = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblFilesBarMain = new System.Windows.Forms.ToolStripStatusLabel();
             this.progressBarMain = new System.Windows.Forms.ToolStripProgressBar();
-            this.lblStat3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblStatusBarMain = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
             this.ctxListView.SuspendLayout();
             this.mainMenuStrip.SuspendLayout();
             this.fileToolStrip.SuspendLayout();
-            this.toolsToolStrip.SuspendLayout();
             this.conversionToolStrip.SuspendLayout();
+            this.toolsToolStrip.SuspendLayout();
             this.mainStatusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -149,7 +149,7 @@
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.listViewFiles);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(690, 369);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(690, 323);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer1.Name = "toolStripContainer1";
@@ -180,7 +180,7 @@
             this.listViewFiles.HideSelection = false;
             this.listViewFiles.Location = new System.Drawing.Point(0, 0);
             this.listViewFiles.Name = "listViewFiles";
-            this.listViewFiles.Size = new System.Drawing.Size(690, 369);
+            this.listViewFiles.Size = new System.Drawing.Size(690, 323);
             this.listViewFiles.TabIndex = 0;
             this.listViewFiles.UseCompatibleStateImageBehavior = false;
             this.listViewFiles.View = System.Windows.Forms.View.Details;
@@ -508,7 +508,7 @@
             this.toolStripSeparator3,
             this.fileSelectPresetListToolStripButton});
             this.fileToolStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
-            this.fileToolStrip.Location = new System.Drawing.Point(5, 24);
+            this.fileToolStrip.Location = new System.Drawing.Point(3, 24);
             this.fileToolStrip.Name = "fileToolStrip";
             this.fileToolStrip.Size = new System.Drawing.Size(180, 23);
             this.fileToolStrip.TabIndex = 1;
@@ -597,26 +597,6 @@
             this.fileSelectPresetListToolStripButton.Size = new System.Drawing.Size(23, 20);
             this.fileSelectPresetListToolStripButton.Text = "Select Preset";
             // 
-            // toolsToolStrip
-            // 
-            this.toolsToolStrip.Dock = System.Windows.Forms.DockStyle.None;
-            this.toolsToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolsEditPresetsToolStripButton});
-            this.toolsToolStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
-            this.toolsToolStrip.Location = new System.Drawing.Point(234, 24);
-            this.toolsToolStrip.Name = "toolsToolStrip";
-            this.toolsToolStrip.Size = new System.Drawing.Size(24, 23);
-            this.toolsToolStrip.TabIndex = 3;
-            // 
-            // toolsEditPresetsToolStripButton
-            // 
-            this.toolsEditPresetsToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolsEditPresetsToolStripButton.Image = global::convendro.Properties.Resources.application_form_edit;
-            this.toolsEditPresetsToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolsEditPresetsToolStripButton.Name = "toolsEditPresetsToolStripButton";
-            this.toolsEditPresetsToolStripButton.Size = new System.Drawing.Size(23, 20);
-            this.toolsEditPresetsToolStripButton.Text = "Edit Presets...";
-            // 
             // conversionToolStrip
             // 
             this.conversionToolStrip.Dock = System.Windows.Forms.DockStyle.None;
@@ -624,7 +604,7 @@
             this.conversionPlaytoolStripButton,
             this.conversionStopToolStripButton});
             this.conversionToolStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
-            this.conversionToolStrip.Location = new System.Drawing.Point(185, 24);
+            this.conversionToolStrip.Location = new System.Drawing.Point(103, 47);
             this.conversionToolStrip.Name = "conversionToolStrip";
             this.conversionToolStrip.Size = new System.Drawing.Size(47, 23);
             this.conversionToolStrip.TabIndex = 2;
@@ -649,28 +629,48 @@
             this.conversionStopToolStripButton.Text = "Stop Conversion";
             this.conversionStopToolStripButton.Click += new System.EventHandler(this.stopConversionToolStripMenuItem_Click);
             // 
+            // toolsToolStrip
+            // 
+            this.toolsToolStrip.Dock = System.Windows.Forms.DockStyle.None;
+            this.toolsToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolsEditPresetsToolStripButton});
+            this.toolsToolStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
+            this.toolsToolStrip.Location = new System.Drawing.Point(126, 70);
+            this.toolsToolStrip.Name = "toolsToolStrip";
+            this.toolsToolStrip.Size = new System.Drawing.Size(24, 23);
+            this.toolsToolStrip.TabIndex = 3;
+            // 
+            // toolsEditPresetsToolStripButton
+            // 
+            this.toolsEditPresetsToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolsEditPresetsToolStripButton.Image = global::convendro.Properties.Resources.application_form_edit;
+            this.toolsEditPresetsToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolsEditPresetsToolStripButton.Name = "toolsEditPresetsToolStripButton";
+            this.toolsEditPresetsToolStripButton.Size = new System.Drawing.Size(23, 20);
+            this.toolsEditPresetsToolStripButton.Text = "Edit Presets...";
+            // 
             // mainStatusStrip
             // 
             this.mainStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lblStat,
+            this.lblFilesBarMain,
             this.progressBarMain,
-            this.lblStat3});
+            this.lblStatusBarMain});
             this.mainStatusStrip.Location = new System.Drawing.Point(0, 394);
             this.mainStatusStrip.Name = "mainStatusStrip";
             this.mainStatusStrip.Size = new System.Drawing.Size(690, 22);
             this.mainStatusStrip.TabIndex = 5;
             this.mainStatusStrip.Text = "statusStrip1";
             // 
-            // lblStat
+            // lblFilesBarMain
             // 
-            this.lblStat.AutoSize = false;
-            this.lblStat.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top)
+            this.lblFilesBarMain.AutoSize = false;
+            this.lblFilesBarMain.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top)
                         | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)
                         | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
-            this.lblStat.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
-            this.lblStat.Name = "lblStat";
-            this.lblStat.Size = new System.Drawing.Size(109, 17);
-            this.lblStat.Text = "0 files";
+            this.lblFilesBarMain.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
+            this.lblFilesBarMain.Name = "lblFilesBarMain";
+            this.lblFilesBarMain.Size = new System.Drawing.Size(109, 17);
+            this.lblFilesBarMain.Text = "0 files";
             // 
             // progressBarMain
             // 
@@ -679,11 +679,11 @@
             this.progressBarMain.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.progressBarMain.ToolTipText = "Progress of current file";
             // 
-            // lblStat3
+            // lblStatusBarMain
             // 
-            this.lblStat3.Name = "lblStat3";
-            this.lblStat3.Size = new System.Drawing.Size(444, 17);
-            this.lblStat3.Spring = true;
+            this.lblStatusBarMain.Name = "lblStatusBarMain";
+            this.lblStatusBarMain.Size = new System.Drawing.Size(413, 17);
+            this.lblStatusBarMain.Spring = true;
             // 
             // frmMain
             // 
@@ -713,10 +713,10 @@
             this.mainMenuStrip.PerformLayout();
             this.fileToolStrip.ResumeLayout(false);
             this.fileToolStrip.PerformLayout();
-            this.toolsToolStrip.ResumeLayout(false);
-            this.toolsToolStrip.PerformLayout();
             this.conversionToolStrip.ResumeLayout(false);
             this.conversionToolStrip.PerformLayout();
+            this.toolsToolStrip.ResumeLayout(false);
+            this.toolsToolStrip.PerformLayout();
             this.mainStatusStrip.ResumeLayout(false);
             this.mainStatusStrip.PerformLayout();
             this.ResumeLayout(false);
@@ -736,7 +736,7 @@
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fileExitToolStripMenuItem;
         private System.Windows.Forms.ToolStrip fileToolStrip;
-        private System.Windows.Forms.ToolStripStatusLabel lblStat;
+        private System.Windows.Forms.ToolStripStatusLabel lblFilesBarMain;
         private System.Windows.Forms.ToolStripProgressBar progressBarMain;
         private System.Windows.Forms.ListView listViewFiles;
         private System.Windows.Forms.ColumnHeader colFileName;
@@ -770,7 +770,7 @@
         private System.Windows.Forms.ToolStripMenuItem conversionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem conversionStartToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem conversionStopToolStripMenuItem;
-        private System.Windows.Forms.ToolStripStatusLabel lblStat3;
+        private System.Windows.Forms.ToolStripStatusLabel lblStatusBarMain;
         private System.Windows.Forms.ToolStripMenuItem fileClearListToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fileAddListToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fileDeleteListToolStripMenuItem;
