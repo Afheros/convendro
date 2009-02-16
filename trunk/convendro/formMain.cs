@@ -226,7 +226,7 @@ namespace convendro
         /// <param name="e"></param>
         private void frmMain_Load(object sender, EventArgs e) {
 
-            Config.LoadFormSettings(this);
+            Config.LoadSettings(this);
 
             this.presetdata = Functions.DeserializePresetsData(Application.StartupPath + "\\" +
                 Functions.FILENAME_PRESETSDATA);
@@ -505,7 +505,7 @@ namespace convendro
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e) {
             stopThread();
             // Save settings...
-            Config.SaveFormSettings(this);
+            Config.SaveSettings(this);
 
             Config.Settings.Save();
             e.Cancel = false;
