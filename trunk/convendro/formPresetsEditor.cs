@@ -78,7 +78,8 @@ namespace convendro {
         }
 
         /// <summary>
-        /// 
+        /// Need to be refactored (see the secondary
+        /// overload...)
         /// </summary>
         /// <param name="anindex"></param>
         private void showPreset(int anindex) {
@@ -89,7 +90,13 @@ namespace convendro {
                     cboPresetname.Text = p.Name;
                     cboPresetCategory.Text = p.Category;
                     txtDescription.Text = p.Description;
-                    txtDirectory.Text = p.OutputFolder;
+
+                    if (Directory.Exists(p.OutputFolder)) {                        
+                        txtDirectory.Text = p.OutputFolder;
+                    } else {
+                        txtDirectory.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                    }
+
                     cboFileExtension.Text = p.Extension;
                     
                     foreach (CommandOption co in p.CommandLineOptions.Items) {
@@ -118,7 +125,13 @@ namespace convendro {
                 cboPresetCategory.Text = p.Category;
                 cboPresetname.Text = p.Name;
                 txtDescription.Text = p.Description;
-                txtDirectory.Text = p.OutputFolder;
+
+                if (Directory.Exists(p.OutputFolder)) {
+                    txtDirectory.Text = p.OutputFolder;
+                } else {
+                    txtDirectory.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                }
+
                 cboFileExtension.Text = p.Extension;
 
 
