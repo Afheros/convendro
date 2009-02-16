@@ -1,0 +1,11 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+Convendro is a .Net GUI for FFMPEG
+
+
+== Details ==
+  * Easy to use: Drag and drop your media files.
+  * Easy preset management: either add FFMPEG settings or copy your favourite FFMPEG commandline right into the Presets Editor
+  * No intruding advertisements or clumsy interface.
