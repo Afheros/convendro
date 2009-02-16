@@ -1,8 +1,8 @@
-#summary A user-interface for FFMPEG.
+#summary A user-interface for [FFMPEG].
 
 = Introduction =
 
-Convendro is a .Net GUI for FFMPEG
+Convendro is a .Net GUI for [FFMPEG]
 
 
 == Details ==
