@@ -59,6 +59,7 @@ namespace convendro.Classes
     }
   
     public static class Functions {
+        public const string EXECUTABLE_FFMPEG = "ffmpeg.exe";
         public const string FILENAME_PRESETSDATA = "presetsdata.xml";
         public const string FILENAME_COMMANDLINEDESCRIPTION = "cmddesc.xml";
         public const string MEDIAFILES_FILTER_AVI = "avi files (*.avi)|*.avi";
