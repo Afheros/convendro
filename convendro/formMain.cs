@@ -19,7 +19,6 @@ namespace convendro
         private PresetsFile presetdata = null;
         private MediaFileList mediafilelist = new MediaFileList();
         private FFMPEGConverter ffmpegconverter = null;
-        private bool closingmainscreen = false;
         private ManualResetEvent stopThreadEvent = new ManualResetEvent(false);
         private ManualResetEvent threadHasStoppedEvent = new ManualResetEvent(false);
 
