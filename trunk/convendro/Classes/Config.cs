@@ -64,7 +64,13 @@ namespace convendro.Classes {
                 if (!File.Exists(Settings.FFMPEGFilePath)) {
                     if (!String.IsNullOrEmpty(localfile)) {
                         Settings.FFMPEGFilePath = localfile;
-                    } 
+                    }
+                }
+            } else {
+                // We should probably check if the file stored in the settings 
+                // is actually valid
+                if (!File.Exists(Settings.FFMPEGFilePath)) {
+                    Settings.FFMPEGFilePath = "";
                 }
             }
         }
