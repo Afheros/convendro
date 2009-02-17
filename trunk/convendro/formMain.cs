@@ -27,6 +27,8 @@ namespace convendro
         public const int SUBCOL_SIZE = 2;
         public const int SUBCOL_PRESETNAME = 3;
         public const int SUBCOL_DURATION = 4;
+        public const int SUBCOL_STARTED = 5;
+        public const int SUBCOL_FINISHED = 6;
 
         public frmMain()
         {
@@ -101,6 +103,8 @@ namespace convendro
                 ftotal = n.Length;
                 string s = Functions.ConvertFileSizeToString(n.Length);
                 nitem.SubItems.Add(s);
+                nitem.SubItems.Add("");
+                nitem.SubItems.Add("");
                 nitem.SubItems.Add("");
                 nitem.SubItems.Add("");
                 listViewFiles.Items.Add(nitem);
