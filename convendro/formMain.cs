@@ -239,6 +239,8 @@ namespace convendro
             refreshPresetMenu();
             setUpToolbars();
             SetControlsThreading(true);
+
+            // If FFMEPG doesn't exist, we should probably show a dialog...                                  
         }
 
         /// <summary>
@@ -483,9 +485,9 @@ namespace convendro
         /// 
         /// </summary>
         /// <param name="threadfinished"></param>
-        public void SetControlsThreading(bool threadfinished) {
-            conversionPlaytoolStripButton.Enabled = threadfinished;
-            conversionStartToolStripMenuItem.Enabled = threadfinished;
+        public void SetControlsThreading(bool threadfinished) {            
+            conversionPlaytoolStripButton.Enabled = threadfinished && !String.IsNullOrEmpty(Config.Settings.FFMPEGFilePath);
+            conversionStartToolStripMenuItem.Enabled = threadfinished && !String.IsNullOrEmpty(Config.Settings.FFMPEGFilePath);
 
             conversionStopToolStripButton.Enabled = !threadfinished;
             conversionStopToolStripMenuItem.Enabled = !threadfinished;
