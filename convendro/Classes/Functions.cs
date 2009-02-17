@@ -238,6 +238,56 @@ namespace convendro.Classes
         }
 
         /// <summary>
+        /// Fold these in generic...
+        /// Note: Complete presets are stored in the MediaFileList, in case these need to be
+        /// restored on a third party-computer. "Take your Queue to where-ever you want"
+        /// </summary>
+        /// <param name="afilename"></param>
+        /// <param name="filelist"></param>
+        /// <returns></returns>
+        public static bool SerializeMediaFileList(string afilename, MediaFileList filelist) {
+            bool res = false;
+
+            XmlSerializer nser = new XmlSerializer(typeof(MediaFileList));
+            TextWriter ntext = new StreamWriter(afilename);
+            try {
+                nser.Serialize(ntext, filelist);
+                ntext.Flush();
+                res = true;
+            } catch {
+                res = false;
+            } finally {
+                ntext.Dispose();
+            }
+
+            return res;
+        }
+
+        /// <summary>
+        /// Fold these in a generic.
+        /// </summary>
+        /// <param name="filename"></param>
+        /// <returns></returns>
+        public static MediaFileList DeserializeMediaFileList(string filename) {
+            MediaFileList desc = null;
+
+            if (File.Exists(filename)) {
+                XmlSerializer nser = new XmlSerializer(typeof(MediaFileList));
+                TextReader ntext = new StreamReader(filename);
+                try {
+                    desc = (MediaFileList)nser.Deserialize(ntext);
+                } finally {
+                    ntext.Close();
+                    ntext.Dispose();
+                }
+            }
+
+            return desc;
+        }
+
+
+
+        /// <summary>
         /// Fold these in a generic...
         /// </summary>
         /// <param name="filename"></param>

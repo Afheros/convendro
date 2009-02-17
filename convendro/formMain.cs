@@ -508,13 +508,49 @@ namespace convendro
         }
 
         /// <summary>
+        /// Loads a pre-existing mediafile/queue into the mediafile object.
+        /// </summary>
+        /// <param name="afilename"></param>
+        public void LoadMediaFileList(string afilename) {
+            if (File.Exists(afilename)) {
+                try {
+                    this.mediafilelist = Functions.DeserializeMediaFileList(afilename);
+
+                    // Add new presets, where necessary...
+                    if (mediafilelist != null) {
+                        foreach (MediaFile f in mediafilelist.Items) {
+                            Preset internalpreset = f.Preset;
+
+                            if (this.presetdata.FindPresetIndex(internalpreset) == -1) {
+                                this.presetdata.AddPreset(internalpreset);
+                            }
+                        }
+                    }
+                } catch (Exception ex) {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Saves the current mediafile to file.
+        /// </summary>
+        /// <param name="afilename"></param>
+        public void SaveMediaFileList(string afilename) {
+            try {
+                Functions.SerializeMediaFileList(afilename, this.mediafilelist);
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void frmMain_FormClosing(object sender, FormClosingEventArgs e) {
-            stopThread();
-            // Save settings...
+        private void frmMain_FormClosing(object sender, FormClosingEventArgs e) {            
+            stopThread();            
             Config.SaveSettings(this);
 
             Config.Settings.Save();
