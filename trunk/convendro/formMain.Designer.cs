@@ -168,6 +168,7 @@
             // 
             // listViewFiles
             // 
+            this.listViewFiles.AllowColumnReorder = true;
             this.listViewFiles.AllowDrop = true;
             this.listViewFiles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.colFileName,
