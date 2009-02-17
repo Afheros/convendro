@@ -23,5 +23,8 @@
     <Setting Name="mainFormSize" Type="System.Drawing.Size" Scope="User">
       <Value Profile="(Default)">700, 400</Value>
     </Setting>
+    <Setting Name="fileListViewColumns" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

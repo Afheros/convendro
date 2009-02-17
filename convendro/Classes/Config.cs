@@ -25,6 +25,16 @@ namespace convendro.Classes {
             aform.Location = Settings.mainFormLocation;
             aform.Size = Settings.mainFormSize;
             aform.WindowState = Settings.mainFormState;
+
+            string[] s = Settings.fileListViewColumns.Split(new char[] { '|' });
+
+            if (s.Length >= aform.FileListView.Columns.Count) {
+                for (int i = 0; i < aform.FileListView.Columns.Count; i++ ) {
+                    int disp = Convert.ToInt32(s[i]);
+                    // TODO...
+                    aform.FileListView.Columns[i].DisplayIndex = disp;
+                }
+            }
         }
 
         /// <summary>
@@ -35,6 +45,15 @@ namespace convendro.Classes {
             Settings.mainFormLocation = aform.Location;
             Settings.mainFormSize = aform.Size;
             Settings.mainFormState = aform.WindowState;
+
+            string s = "";
+            foreach (ColumnHeader h in aform.FileListView.Columns) {
+                s += h.DisplayIndex.ToString() + "|";
+            }
+
+            // Remove trailing "|"
+            s = s.Trim(new char[] { '|' });
+            Settings.fileListViewColumns = s;
         }
 
         /// <summary>

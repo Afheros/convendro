@@ -106,5 +106,17 @@ namespace convendro.Properties {
                 this["mainFormSize"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string fileListViewColumns {
+            get {
+                return ((string)(this["fileListViewColumns"]));
+            }
+            set {
+                this["fileListViewColumns"] = value;
+            }
+        }
     }
 }
