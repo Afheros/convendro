@@ -16,7 +16,7 @@ namespace convendro.Classes
     public delegate void BooleanInvoker(bool aboolean);
     public delegate void StringInvoker(string text);    
     public delegate void FloatInvoker(float floating);
-    public delegate void MediaFileInvoker(MediaFile amediafile, TimeSpan atimespan);
+    public delegate void MediaFileInvoker(MediaFile amediafile);
 
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
     public struct SHELLEXECUTEINFO {
@@ -75,6 +75,7 @@ namespace convendro.Classes
             MEDIAFILES_FILTER_WMV + "|" + MEDIAFILES_FILTER_MPG + "|" +
             MEDIAFILES_FILTER_MPG2 + "|" + MEDIAFILES_FILTER_MEDIA + "|"
             + MEDIAFILES_FILTER_ALL;
+        public const string TIMEFORMAT_HHMMSS = "{0:D2}:{1:D2}:{2:D2}";
 
         // Shell32 constants...
         private const int SW_SHOW = 5;

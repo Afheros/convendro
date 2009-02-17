@@ -96,6 +96,8 @@
             this.lblFilesBarMain = new System.Windows.Forms.ToolStripStatusLabel();
             this.progressBarMain = new System.Windows.Forms.ToolStripProgressBar();
             this.lblStatusBarMain = new System.Windows.Forms.ToolStripStatusLabel();
+            this.colStarted = new System.Windows.Forms.ColumnHeader();
+            this.colFinished = new System.Windows.Forms.ColumnHeader();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -172,7 +174,9 @@
             this.colPath,
             this.colSize,
             this.colPresetName,
-            this.colDuration});
+            this.colDuration,
+            this.colStarted,
+            this.colFinished});
             this.listViewFiles.ContextMenuStrip = this.ctxListView;
             this.listViewFiles.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listViewFiles.FullRowSelect = true;
@@ -200,12 +204,12 @@
             // colSize
             // 
             this.colSize.Text = "Size";
-            this.colSize.Width = 131;
+            this.colSize.Width = 80;
             // 
             // colPresetName
             // 
             this.colPresetName.Text = "Preset";
-            this.colPresetName.Width = 127;
+            this.colPresetName.Width = 85;
             // 
             // colDuration
             // 
@@ -637,7 +641,7 @@
             this.toolsToolStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
             this.toolsToolStrip.Location = new System.Drawing.Point(126, 70);
             this.toolsToolStrip.Name = "toolsToolStrip";
-            this.toolsToolStrip.Size = new System.Drawing.Size(55, 23);
+            this.toolsToolStrip.Size = new System.Drawing.Size(24, 23);
             this.toolsToolStrip.TabIndex = 3;
             // 
             // toolsEditPresetsToolStripButton
@@ -685,6 +689,14 @@
             this.lblStatusBarMain.Name = "lblStatusBarMain";
             this.lblStatusBarMain.Size = new System.Drawing.Size(444, 17);
             this.lblStatusBarMain.Spring = true;
+            // 
+            // colStarted
+            // 
+            this.colStarted.Text = "StartTime";
+            // 
+            // colFinished
+            // 
+            this.colFinished.Text = "Finished";
             // 
             // frmMain
             // 
@@ -793,6 +805,8 @@
         private System.Windows.Forms.ToolStripMenuItem editSelectAllToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
         private System.Windows.Forms.ToolStripMenuItem editInvertSelectionToolStripItem;
+        private System.Windows.Forms.ColumnHeader colStarted;
+        private System.Windows.Forms.ColumnHeader colFinished;
     }
 }
 

@@ -15,7 +15,7 @@ namespace convendro.Classes.Threading {
         private string executable;
         private Thread nthread;
         private frmMain nform;
-        private MediaFileList mediafilelist;
+        private volatile MediaFileList mediafilelist;
         private bool showdoswindow;
         private float fileduration = 0.00F;
         private DateTime currentdate;
@@ -105,6 +105,9 @@ namespace convendro.Classes.Threading {
                     float current = 0.00F;
                     this.fileduration = 0.00F;
                     currentdate = DateTime.Now;
+
+                    m.DateStarted = currentdate;
+
                     nprocess.StartInfo.FileName = this.executable;
                     nprocess.StartInfo.Arguments = m.BuildCommandLine();
 
@@ -142,7 +145,8 @@ namespace convendro.Classes.Threading {
                     nprocess.Close();
                 }
 
-                this.synchListViewItem(m, DateTime.Now.Subtract(currentdate));
+                m.DateFinished = DateTime.Now;
+                this.synchListViewItem(m);
             } // End Foreach
 
             /// update controls
@@ -166,14 +170,22 @@ namespace convendro.Classes.Threading {
         /// </summary>
         /// <param name="amediafile"></param>
         /// <param name="atimespan"></param>
-        private void synchListViewItem(MediaFile amediafile, TimeSpan atimespan) {
+        private void synchListViewItem(MediaFile amediafile) {
             if (nform.FileListView.InvokeRequired) {
-                nform.FileListView.Invoke(new MediaFileInvoker(synchListViewItem), new object[] { amediafile, atimespan });
+                nform.FileListView.Invoke(new MediaFileInvoker(synchListViewItem), new object[] { amediafile });
             } else {
-                if (amediafile != null) {
+                if (amediafile != null) {                   
+                    TimeSpan atimespan = amediafile.DateFinished.Subtract(amediafile.DateStarted);
                     nform.FileListView.Items[amediafile.Order].SubItems[frmMain.SUBCOL_DURATION].Text =
-                        String.Format("{0:D2}:{1:D2}:{2:D2}",
+                        String.Format(Functions.TIMEFORMAT_HHMMSS,
                         atimespan.Hours, atimespan.Minutes, atimespan.Seconds);
+                    nform.FileListView.Items[amediafile.Order].SubItems[frmMain.SUBCOL_STARTED].Text =
+                        String.Format(Functions.TIMEFORMAT_HHMMSS,
+                        amediafile.DateStarted.Hour, amediafile.DateStarted.Minute, amediafile.DateStarted.Second);
+                    nform.FileListView.Items[amediafile.Order].SubItems[frmMain.SUBCOL_FINISHED].Text =
+                        String.Format(Functions.TIMEFORMAT_HHMMSS,
+                        amediafile.DateFinished.Hour, amediafile.DateFinished.Minute, amediafile.DateFinished.Second);
+                        
                 }
             }
         }
