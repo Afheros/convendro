@@ -469,7 +469,7 @@
             this.toolsPresetsEditorToolStripMenuItem.Name = "toolsPresetsEditorToolStripMenuItem";
             this.toolsPresetsEditorToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.toolsPresetsEditorToolStripMenuItem.Text = "Presets Editor...";
-            this.toolsPresetsEditorToolStripMenuItem.Click += new System.EventHandler(this.presetsEditorToolStripMenuItem_Click);
+            this.toolsPresetsEditorToolStripMenuItem.Click += new System.EventHandler(this.toolsPresetsEditorToolStripMenuItem_Click);
             // 
             // toolsSettingsToolStripMenuItem
             // 
@@ -637,7 +637,7 @@
             this.toolsToolStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
             this.toolsToolStrip.Location = new System.Drawing.Point(126, 70);
             this.toolsToolStrip.Name = "toolsToolStrip";
-            this.toolsToolStrip.Size = new System.Drawing.Size(24, 23);
+            this.toolsToolStrip.Size = new System.Drawing.Size(55, 23);
             this.toolsToolStrip.TabIndex = 3;
             // 
             // toolsEditPresetsToolStripButton
@@ -648,6 +648,7 @@
             this.toolsEditPresetsToolStripButton.Name = "toolsEditPresetsToolStripButton";
             this.toolsEditPresetsToolStripButton.Size = new System.Drawing.Size(23, 20);
             this.toolsEditPresetsToolStripButton.Text = "Edit Presets...";
+            this.toolsEditPresetsToolStripButton.Click += new System.EventHandler(this.toolsPresetsEditorToolStripMenuItem_Click);
             // 
             // mainStatusStrip
             // 
@@ -682,7 +683,7 @@
             // lblStatusBarMain
             // 
             this.lblStatusBarMain.Name = "lblStatusBarMain";
-            this.lblStatusBarMain.Size = new System.Drawing.Size(413, 17);
+            this.lblStatusBarMain.Size = new System.Drawing.Size(444, 17);
             this.lblStatusBarMain.Spring = true;
             // 
             // frmMain
