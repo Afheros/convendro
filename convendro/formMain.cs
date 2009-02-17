@@ -240,7 +240,11 @@ namespace convendro
             setUpToolbars();
             SetControlsThreading(true);
 
-            // If FFMEPG doesn't exist, we should probably show a dialog...                                  
+            // If FFMEPG doesn't exist, we should probably show a dialog...
+            if (String.IsNullOrEmpty(Config.Settings.FFMPEGFilePath)) {
+                MessageBox.Show("FFMPeg was not found. You may wish to set this in the settings", Application.ProductName,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         /// <summary>
@@ -248,7 +252,7 @@ namespace convendro
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void presetsEditorToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void toolsPresetsEditorToolStripMenuItem_Click(object sender, EventArgs e) {
             frmPresetsEditor nform = new frmPresetsEditor(this.presetdata);
 
             nform.StartPosition = FormStartPosition.CenterParent;
