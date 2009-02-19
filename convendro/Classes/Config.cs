@@ -22,6 +22,8 @@ namespace convendro.Classes {
         public static void LoadSettings(frmMain aform) {
             // Generate FFMPEG filepath
             GenerateFFMpegFilename();
+            GenerateDefaultOutputFolder();
+
             aform.Location = Settings.mainFormLocation;
             aform.Size = Settings.mainFormSize;
             aform.WindowState = Settings.mainFormState;
@@ -91,6 +93,13 @@ namespace convendro.Classes {
                 if (!File.Exists(Settings.FFMPEGFilePath)) {
                     Settings.FFMPEGFilePath = "";
                 }
+            }
+        }
+
+        public static void GenerateDefaultOutputFolder() {
+            if (String.IsNullOrEmpty(Settings.LastUsedOutputFolder)) {
+                Settings.LastUsedOutputFolder = 
+                    Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             }
         }
     }

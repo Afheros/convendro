@@ -11,6 +11,7 @@ using convendro.Classes;
 using convendro.Classes.Threading;
 using convendro.Classes.Persistence;
 using convendro.Classes.Comparers;
+using convendro.Classes.Import;
 
 namespace convendro
 {

@@ -24,7 +24,7 @@ namespace convendro.Classes.Persistence {
             extension = null;
             timesused = 0;
             dateused = DateTime.MinValue;
-            foldername = Application.StartupPath + "\\";
+            foldername = Config.Settings.LastUsedOutputFolder;
             commandlineoptions = new CommandLineOptions();
         }
 
