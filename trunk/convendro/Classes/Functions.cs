@@ -76,6 +76,10 @@ namespace convendro.Classes
             MEDIAFILES_FILTER_MPG2 + "|" + MEDIAFILES_FILTER_MEDIA + "|"
             + MEDIAFILES_FILTER_ALL;
         public const string TIMEFORMAT_HHMMSS = "{0:D2}:{1:D2}:{2:D2}";
+        public const string WINFF_NODE_LABEL = "label";
+        public const string WINFF_NODE_PARAMS = "params";
+        public const string WINFF_NODE_EXTENSION = "extension";
+        public const string WINFF_NODE_CATEGORY = "category";
 
         // Shell32 constants...
         private const int SW_SHOW = 5;
