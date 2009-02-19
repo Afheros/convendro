@@ -14,7 +14,7 @@ Convendro is a .Net GUI for [ffmpeg]
 
 == Status ==
 
-At this stage:
+===At this stage===
   # Conversion was tested with dummy and test presets (see document folder for 2 error-free datafiles).
   # Average ~ 20 minutes (400MB) for 700 KB/s, P7350 2.0 GHz (2 active threads).
 
@@ -24,6 +24,6 @@ No release has been planned at this stage. If you really need to get this, retri
   # Changes to object model to support other possible commandline encoders.
 
 
-Supported:
+===Supported===
   # FFmpeg version SVN-r16596-Sherpya
   # Basic WinFF presets import.
