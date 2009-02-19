@@ -569,5 +569,34 @@ namespace convendro
                 Application.DoEvents();
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void fileImportWinFFToolStripMenuItem_Click(object sender, EventArgs e) {
+            OpenFileDialog nfile = new OpenFileDialog();
+            nfile.Filter = String.Format("{0}|{1}",
+                Functions.MEDIAFILES_FILTER_XML, Functions.MEDIAFILES_FILTER_ALL);
+            try {
+                if (nfile.ShowDialog() == DialogResult.OK) {
+                    // rudimentary, but yeah, it works...
+                    WinFFFile newff = new WinFFFile();
+                    newff.LoadFile(nfile.FileName);
+
+                    if (newff.Presets.Count > 0) {
+                        int oldcount = this.presetdata.Presets.Count;
+                        this.presetdata.AddPresets(newff.Presets);
+                        if (this.presetdata.Presets.Count > oldcount) {
+                            MessageBox.Show(String.Format("{0} files were imported...",
+                                (this.presetdata.Presets.Count - oldcount)));
+                        }
+                    }
+                }
+            } finally {
+                nfile.Dispose();
+            }
+        }
     }
 }

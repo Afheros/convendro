@@ -41,6 +41,8 @@
             this.colSize = new System.Windows.Forms.ColumnHeader();
             this.colPresetName = new System.Windows.Forms.ColumnHeader();
             this.colDuration = new System.Windows.Forms.ColumnHeader();
+            this.colStarted = new System.Windows.Forms.ColumnHeader();
+            this.colFinished = new System.Windows.Forms.ColumnHeader();
             this.ctxListView = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -96,8 +98,10 @@
             this.lblFilesBarMain = new System.Windows.Forms.ToolStripStatusLabel();
             this.progressBarMain = new System.Windows.Forms.ToolStripProgressBar();
             this.lblStatusBarMain = new System.Windows.Forms.ToolStripStatusLabel();
-            this.colStarted = new System.Windows.Forms.ColumnHeader();
-            this.colFinished = new System.Windows.Forms.ColumnHeader();
+            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
+            this.fileImportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fileImportWinFFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fileImportVideoraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -216,6 +220,14 @@
             // 
             this.colDuration.Text = "Duration";
             // 
+            // colStarted
+            // 
+            this.colStarted.Text = "StartTime";
+            // 
+            // colFinished
+            // 
+            this.colFinished.Text = "Finished";
+            // 
             // ctxListView
             // 
             this.ctxListView.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -299,6 +311,8 @@
             this.fileAddListToolStripMenuItem,
             this.fileDeleteListToolStripMenuItem,
             this.toolStripSeparator6,
+            this.fileImportToolStripMenuItem,
+            this.toolStripSeparator9,
             this.fileMoveToolStripMenuItem,
             this.toolStripSeparator7,
             this.filePresetsToolStripMenuItem,
@@ -312,7 +326,7 @@
             // 
             this.fileClearListToolStripMenuItem.Image = global::convendro.Properties.Resources.page_white;
             this.fileClearListToolStripMenuItem.Name = "fileClearListToolStripMenuItem";
-            this.fileClearListToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
+            this.fileClearListToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.fileClearListToolStripMenuItem.Text = "Clear";
             this.fileClearListToolStripMenuItem.Click += new System.EventHandler(this.fileClearListToolStripMenuItem_Click);
             // 
@@ -320,7 +334,7 @@
             // 
             this.fileAddListToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("fileAddListToolStripMenuItem.Image")));
             this.fileAddListToolStripMenuItem.Name = "fileAddListToolStripMenuItem";
-            this.fileAddListToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
+            this.fileAddListToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.fileAddListToolStripMenuItem.Text = "Add...";
             this.fileAddListToolStripMenuItem.Click += new System.EventHandler(this.fileAddListToolStripMenuItem_Click);
             // 
@@ -328,14 +342,14 @@
             // 
             this.fileDeleteListToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("fileDeleteListToolStripMenuItem.Image")));
             this.fileDeleteListToolStripMenuItem.Name = "fileDeleteListToolStripMenuItem";
-            this.fileDeleteListToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
+            this.fileDeleteListToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.fileDeleteListToolStripMenuItem.Text = "Delete";
             this.fileDeleteListToolStripMenuItem.Click += new System.EventHandler(this.fileDeleteListToolStripMenuItem_Click);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(108, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(149, 6);
             // 
             // fileMoveToolStripMenuItem
             // 
@@ -343,14 +357,14 @@
             this.fileMoveUpToolStripMenuIte,
             this.fileMoveDownToolStripMenuItem});
             this.fileMoveToolStripMenuItem.Name = "fileMoveToolStripMenuItem";
-            this.fileMoveToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
+            this.fileMoveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.fileMoveToolStripMenuItem.Text = "Move";
             // 
             // fileMoveUpToolStripMenuIte
             // 
             this.fileMoveUpToolStripMenuIte.Image = global::convendro.Properties.Resources.arrow_up;
             this.fileMoveUpToolStripMenuIte.Name = "fileMoveUpToolStripMenuIte";
-            this.fileMoveUpToolStripMenuIte.Size = new System.Drawing.Size(105, 22);
+            this.fileMoveUpToolStripMenuIte.Size = new System.Drawing.Size(152, 22);
             this.fileMoveUpToolStripMenuIte.Text = "Up";
             this.fileMoveUpToolStripMenuIte.Click += new System.EventHandler(this.fileMoveUpToolStripMenuIte_Click);
             // 
@@ -358,21 +372,21 @@
             // 
             this.fileMoveDownToolStripMenuItem.Image = global::convendro.Properties.Resources.arrow_down;
             this.fileMoveDownToolStripMenuItem.Name = "fileMoveDownToolStripMenuItem";
-            this.fileMoveDownToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
+            this.fileMoveDownToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.fileMoveDownToolStripMenuItem.Text = "Down";
             this.fileMoveDownToolStripMenuItem.Click += new System.EventHandler(this.fileMoveDownToolStripMenuItem_Click);
             // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(108, 6);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(149, 6);
             // 
             // filePresetsToolStripMenuItem
             // 
             this.filePresetsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileSelectPresetListToolStripMenuItem});
             this.filePresetsToolStripMenuItem.Name = "filePresetsToolStripMenuItem";
-            this.filePresetsToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
+            this.filePresetsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.filePresetsToolStripMenuItem.Text = "Presets";
             // 
             // fileSelectPresetListToolStripMenuItem
@@ -386,13 +400,13 @@
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(108, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(149, 6);
             // 
             // fileExitToolStripMenuItem
             // 
             this.fileExitToolStripMenuItem.Image = global::convendro.Properties.Resources.cancel;
             this.fileExitToolStripMenuItem.Name = "fileExitToolStripMenuItem";
-            this.fileExitToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
+            this.fileExitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.fileExitToolStripMenuItem.Text = "Exit";
             this.fileExitToolStripMenuItem.Click += new System.EventHandler(this.fileExitToolStripMenuItem_Click);
             // 
@@ -691,13 +705,32 @@
             this.lblStatusBarMain.Size = new System.Drawing.Size(444, 17);
             this.lblStatusBarMain.Spring = true;
             // 
-            // colStarted
+            // toolStripSeparator9
             // 
-            this.colStarted.Text = "StartTime";
+            this.toolStripSeparator9.Name = "toolStripSeparator9";
+            this.toolStripSeparator9.Size = new System.Drawing.Size(149, 6);
             // 
-            // colFinished
+            // fileImportToolStripMenuItem
             // 
-            this.colFinished.Text = "Finished";
+            this.fileImportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileImportWinFFToolStripMenuItem,
+            this.fileImportVideoraToolStripMenuItem});
+            this.fileImportToolStripMenuItem.Name = "fileImportToolStripMenuItem";
+            this.fileImportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.fileImportToolStripMenuItem.Text = "Import";
+            // 
+            // fileImportWinFFToolStripMenuItem
+            // 
+            this.fileImportWinFFToolStripMenuItem.Name = "fileImportWinFFToolStripMenuItem";
+            this.fileImportWinFFToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.fileImportWinFFToolStripMenuItem.Text = "WinFF...";
+            this.fileImportWinFFToolStripMenuItem.Click += new System.EventHandler(this.fileImportWinFFToolStripMenuItem_Click);
+            // 
+            // fileImportVideoraToolStripMenuItem
+            // 
+            this.fileImportVideoraToolStripMenuItem.Name = "fileImportVideoraToolStripMenuItem";
+            this.fileImportVideoraToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.fileImportVideoraToolStripMenuItem.Text = "Videora...";
             // 
             // frmMain
             // 
@@ -808,6 +841,10 @@
         private System.Windows.Forms.ToolStripMenuItem editInvertSelectionToolStripItem;
         private System.Windows.Forms.ColumnHeader colStarted;
         private System.Windows.Forms.ColumnHeader colFinished;
+        private System.Windows.Forms.ToolStripMenuItem fileImportToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fileImportWinFFToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fileImportVideoraToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
     }
 }
 
