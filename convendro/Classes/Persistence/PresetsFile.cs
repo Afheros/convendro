@@ -13,11 +13,19 @@ namespace convendro.Classes.Persistence {
 
         public PresetsFile() { }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public List<Preset> Presets {
             get { return this.presetslist; }
             set { this.presetslist = value; }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="apreset"></param>
+        /// <returns></returns>
         public int AddPreset(Preset apreset) {
             int res = -1;
             try {
@@ -28,19 +36,50 @@ namespace convendro.Classes.Persistence {
             return res;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="presets"></param>
+        public void AddPresets(List<Preset> presets) {
+            foreach(Preset p in presets) {
+                Preset currpreset = FindPreset(p.Name);
+                if (currpreset == null) {
+                    // add it...
+                    presetslist.Add(p);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="anindex"></param>
         public void RemovePreset(int anindex) {
             this.presetslist.RemoveAt(anindex);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="apreset"></param>
         public void RemovePreset(Preset apreset) {
             this.presetslist.Remove(apreset);
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public Preset FindPreset(string name) {
             return this.presetslist.Find(delegate(Preset p) { return p.Name == name; });
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="apreset"></param>
+        /// <returns></returns>
         public int FindPresetIndex(Preset apreset) {
             int res = -1;
 
@@ -53,6 +92,11 @@ namespace convendro.Classes.Persistence {
             return res;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="aname"></param>
+        /// <returns></returns>
         public int FindPresetIndex(string aname) {
             int res = -1;
 
