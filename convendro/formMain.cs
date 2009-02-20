@@ -312,7 +312,7 @@ namespace convendro
             }
         }
 
-        private void startConversionToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void mediafilesStartConversionToolStripMenuItem_Click(object sender, EventArgs e) {
             buildMediaFileList();
             threadHasStoppedEvent.Reset();
             stopThreadEvent.Reset();
@@ -329,7 +329,12 @@ namespace convendro
             }
         }
 
-        private void stopConversionToolStripMenuItem_Click(object sender, EventArgs e) {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void mediafilesStopConversionToolStripMenuItem_Click(object sender, EventArgs e) {
             stopThread();
         }
 
