@@ -38,7 +38,7 @@
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 44.50262F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55.49738F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 87F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 88F));
             this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label1, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.textBox1, 0, 2);
@@ -59,7 +59,7 @@
             this.pictureBox1.Image = global::convendro.Properties.Resources.convendro;
             this.pictureBox1.Location = new System.Drawing.Point(6, 6);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(79, 68);
+            this.pictureBox1.Size = new System.Drawing.Size(78, 68);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -69,9 +69,9 @@
             this.tableLayoutPanel1.SetColumnSpan(this.label1, 2);
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Font = new System.Drawing.Font("Arial", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(91, 3);
+            this.label1.Location = new System.Drawing.Point(90, 3);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(187, 74);
+            this.label1.Size = new System.Drawing.Size(188, 74);
             this.label1.TabIndex = 1;
             this.label1.Text = "Convendro";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -88,7 +88,8 @@
             this.textBox1.TabIndex = 3;
             this.textBox1.TabStop = false;
             this.textBox1.Text = "It does stupid tricks like catch and fetch, run and run and oh, yeah, I forget so" +
-                "me other fun stuff.\r\n\r\n© 2008, 2009 - Arthur Hoogervorst";
+                "me other fun stuff.\r\n\r\nIcons: http://www.famfamfam.com/lab/icons/silk/\r\n\r\n© 2008" +
+                ", 2009 - Arthur Hoogervorst";
             // 
             // btnOK
             // 
