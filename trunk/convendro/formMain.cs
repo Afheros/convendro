@@ -126,8 +126,8 @@ namespace convendro
         /// </summary>
         private void refreshPresetMenu() {
             // reset the menus...
-            int con = filePresetsToolStripMenuItem.DropDownItems.IndexOf(
-                fileSelectPresetListToolStripMenuItem);
+            int con = mediafilesPresetsToolStripMenuItem.DropDownItems.IndexOf(
+                mediafileSelectPresetListToolStripMenuItem);
 
             // context menu...
             int con1 = presetToolStripMenuItem.DropDownItems.IndexOf(
@@ -135,11 +135,11 @@ namespace convendro
 
             if (con != 0) {
                 // delete everything
-                int count = fileSelectPresetListToolStripMenuItem.DropDownItems.Count;
+                int count = mediafileSelectPresetListToolStripMenuItem.DropDownItems.Count;
 
                 while (count > 1) {
-                    filePresetsToolStripMenuItem.DropDownItems.RemoveAt(0);
-                    count = filePresetsToolStripMenuItem.DropDownItems.Count;
+                    mediafilesPresetsToolStripMenuItem.DropDownItems.RemoveAt(0);
+                    count = mediafilesPresetsToolStripMenuItem.DropDownItems.Count;
                 }
             }
 
@@ -154,7 +154,7 @@ namespace convendro
 
             //
             if (presetdata.Presets.Count > 0) {
-                filePresetsToolStripMenuItem.DropDownItems.Insert(0, new ToolStripSeparator());
+                mediafilesPresetsToolStripMenuItem.DropDownItems.Insert(0, new ToolStripSeparator());
                 presetToolStripMenuItem.DropDownItems.Insert(0, new ToolStripSeparator());
                 // sort the data...
                 PresetsUsedCountSorter p = new PresetsUsedCountSorter();
@@ -172,7 +172,7 @@ namespace convendro
                         menuitem.Click += new EventHandler(dynamicPresetMenuItem_Click);                        
                         menuitem.ShortcutKeys = (Keys.Control | Keys.Alt | 
                             ((Keys) Enum.Parse(typeof(Keys), "D" + x.ToString())));
-                        filePresetsToolStripMenuItem.DropDownItems.Insert(0, menuitem);
+                        mediafilesPresetsToolStripMenuItem.DropDownItems.Insert(0, menuitem);
 
                         // contextmenu
                         ToolStripMenuItem contextmenuitem = new ToolStripMenuItem();
@@ -333,7 +333,7 @@ namespace convendro
             stopThread();
         }
 
-        private void fileClearListToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void mediafilesClearListToolStripMenuItem_Click(object sender, EventArgs e) {
             // ToDo check threading...
             listViewFiles.Items.Clear();
         }
@@ -343,7 +343,7 @@ namespace convendro
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void fileAddListToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void mediafilesAddListToolStripMenuItem_Click(object sender, EventArgs e) {
             // ToDo check threading...
             
             string filedir = (String.IsNullOrEmpty(
@@ -384,7 +384,7 @@ namespace convendro
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void fileDeleteListToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void mediafilesDeleteListToolStripMenuItem_Click(object sender, EventArgs e) {
             foreach (ListViewItem n in listViewFiles.SelectedItems) {
                 n.Remove();
             }
@@ -395,7 +395,7 @@ namespace convendro
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void fileSelectPresetListToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void mediafilesSelectPresetListToolStripMenuItem_Click(object sender, EventArgs e) {
             if (listViewFiles.SelectedItems.Count > 0) {
                 frmPresetsEditor nform = new frmPresetsEditor(this.presetdata);
 
@@ -443,7 +443,7 @@ namespace convendro
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void fileMoveUpToolStripMenuIte_Click(object sender, EventArgs e) {
+        private void mediafilesMoveUpToolStripMenuItem_Click(object sender, EventArgs e) {
             if (listViewFiles.SelectedItems.Count == 1) {
                 if (listViewFiles.SelectedItems[0].Index > 0) {                   
                     ListViewItem i1 = listViewFiles.SelectedItems[0];
@@ -459,7 +459,7 @@ namespace convendro
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void fileMoveDownToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void mediafilesMoveDownToolStripMenuItem_Click(object sender, EventArgs e) {
             if (listViewFiles.SelectedItems.Count == 1) {
                 if (listViewFiles.SelectedItems[0].Index < listViewFiles.Items.Count - 1) {
                     ListViewItem i1 = listViewFiles.SelectedItems[0];
@@ -501,23 +501,24 @@ namespace convendro
             conversionStopToolStripButton.Enabled = !threadfinished;
             conversionStopToolStripMenuItem.Enabled = !threadfinished;
 
-            fileClearListToolStripMenuItem.Enabled = threadfinished;
+            mediafilesClearListToolStripMenuItem.Enabled = threadfinished;
             fileClearListToolStripButton.Enabled = threadfinished;
 
-            fileAddListToolStripMenuItem.Enabled = threadfinished;
+            mediafilesAddListToolStripMenuItem.Enabled = threadfinished;
             fileAddListToolStripButton.Enabled = threadfinished;
 
-            fileDeleteListToolStripMenuItem.Enabled = threadfinished;
+            mediafilesDeleteListToolStripMenuItem.Enabled = threadfinished;
             fileDeleteListToolStripButton.Enabled = threadfinished;
 
             fileMoveDownToolStripButton.Enabled = threadfinished;
-            fileMoveDownToolStripMenuItem.Enabled = threadfinished;
+            mediafilesMoveDownToolStripMenuItem.Enabled = threadfinished;
 
             fileMoveUpToolStripButton.Enabled = threadfinished;
-            fileMoveUpToolStripMenuIte.Enabled = threadfinished;
+            mediafilesMoveUpToolStripMenuIte.Enabled = threadfinished;
 
 
             progressBarMain.Value = 0;
+
             if (threadfinished) {
                 lblStatusBarMain.Text = "";
             }
