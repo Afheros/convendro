@@ -500,25 +500,25 @@ namespace convendro
         /// </summary>
         /// <param name="threadfinished"></param>
         public void SetControlsThreading(bool threadfinished) {            
-            conversionPlaytoolStripButton.Enabled = threadfinished && !String.IsNullOrEmpty(Config.Settings.FFMPEGFilePath);
+            mediafilesPlaytoolStripButton.Enabled = threadfinished && !String.IsNullOrEmpty(Config.Settings.FFMPEGFilePath);
             conversionStartToolStripMenuItem.Enabled = threadfinished && !String.IsNullOrEmpty(Config.Settings.FFMPEGFilePath);
 
-            conversionStopToolStripButton.Enabled = !threadfinished;
+            mediafilesStopToolStripButton.Enabled = !threadfinished;
             conversionStopToolStripMenuItem.Enabled = !threadfinished;
 
             mediafilesClearListToolStripMenuItem.Enabled = threadfinished;
-            fileClearListToolStripButton.Enabled = threadfinished;
+            mediafilesClearListToolStripButton.Enabled = threadfinished;
 
             mediafilesAddListToolStripMenuItem.Enabled = threadfinished;
-            fileAddListToolStripButton.Enabled = threadfinished;
+            mediafilesAddListToolStripButton.Enabled = threadfinished;
 
             mediafilesDeleteListToolStripMenuItem.Enabled = threadfinished;
-            fileDeleteListToolStripButton.Enabled = threadfinished;
+            mediafilesDeleteListToolStripButton.Enabled = threadfinished;
 
-            fileMoveDownToolStripButton.Enabled = threadfinished;
+            mediafilesMoveDownToolStripButton.Enabled = threadfinished;
             mediafilesMoveDownToolStripMenuItem.Enabled = threadfinished;
 
-            fileMoveUpToolStripButton.Enabled = threadfinished;
+            mediafilesMoveUpToolStripButton.Enabled = threadfinished;
             mediafilesMoveUpToolStripMenuIte.Enabled = threadfinished;
 
 
