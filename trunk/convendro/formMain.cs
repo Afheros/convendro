@@ -159,7 +159,7 @@ namespace convendro
                 // sort the data...
                 PresetsUsedCountSorter p = new PresetsUsedCountSorter();
                 try {
-                    p.Reverse = false;
+                    p.Reverse = true;
                     this.presetdata.Sort(p);
                     int x = 0;
 
