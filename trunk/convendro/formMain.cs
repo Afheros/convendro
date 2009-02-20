@@ -501,6 +501,22 @@ namespace convendro
             conversionStopToolStripButton.Enabled = !threadfinished;
             conversionStopToolStripMenuItem.Enabled = !threadfinished;
 
+            fileClearListToolStripMenuItem.Enabled = threadfinished;
+            fileClearListToolStripButton.Enabled = threadfinished;
+
+            fileAddListToolStripMenuItem.Enabled = threadfinished;
+            fileAddListToolStripButton.Enabled = threadfinished;
+
+            fileDeleteListToolStripMenuItem.Enabled = threadfinished;
+            fileDeleteListToolStripButton.Enabled = threadfinished;
+
+            fileMoveDownToolStripButton.Enabled = threadfinished;
+            fileMoveDownToolStripMenuItem.Enabled = threadfinished;
+
+            fileMoveUpToolStripButton.Enabled = threadfinished;
+            fileMoveUpToolStripMenuIte.Enabled = threadfinished;
+
+
             progressBarMain.Value = 0;
             if (threadfinished) {
                 lblStatusBarMain.Text = "";
