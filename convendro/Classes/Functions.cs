@@ -62,12 +62,15 @@ namespace convendro.Classes
         public const string EXECUTABLE_FFMPEG = "ffmpeg.exe";
         public const string FILENAME_PRESETSDATA = "presetsdata.xml";
         public const string FILENAME_COMMANDLINEDESCRIPTION = "cmddesc.xml";
+        public const string MEDIAFILES_FILTER_TXT = "txt files (*.txt)|*.txt";
+
         public const string MEDIAFILES_FILTER_AVI = "avi files (*.avi)|*.avi";
         public const string MEDIAFILES_FILTER_MP4 = "mp4 files (*.mp4)|*.mp4";
         public const string MEDIAFILES_FILTER_M4V = "m4v files (*.m4v)|*.m4v";
         public const string MEDIAFILES_FILTER_WMV = "wmv files (*.wmv)|*.wmv";
         public const string MEDIAFILES_FILTER_MPG = "mpeg files (*.mpg)|*.mpg";
         public const string MEDIAFILES_FILTER_MPG2 = "mpeg2 files (*.mpeg)|*.mpeg";
+
         public const string MEDIAFILES_FILTER_MEDIA = "Media files|*.avi;*.mp4;*.m4v;*.wmv;*.mpg;*mpeg";
         public const string MEDIAFILES_FILTER_ALL = "All files (*.*)|*.*";
         public const string MEDIAFILES_FILTER = MEDIAFILES_FILTER_AVI + "|" +

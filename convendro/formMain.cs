@@ -643,6 +643,7 @@ namespace convendro
             frmTerminal nterm = new frmTerminal(newlist,
                 Config.Settings.FFMPEGFilePath);
             nterm.Show();
+            nterm.StartProcessing();
         }
     }
 }

@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using convendro.Classes.Threading;
 using System.Threading;
 using convendro.Classes.Persistence;
+using convendro.Classes;
 
 namespace convendro {
     public partial class frmTerminal : Form {
@@ -30,21 +31,24 @@ namespace convendro {
 
         private void formTerminal_Load(object sender, EventArgs e) {
             this.edTerminalLog.Text = "";
-            this.convertthread = new TestConverter(stopthreadevent, threadhasstoppedevent);
-            this.convertthread.Executable = this.executable;
-            this.convertthread.MediaFileItems = this.mediafilelist;
-            this.convertthread.Form = this;
-            this.convertthread.Execute();
         }
        
         public RichTextBox Terminal {
             get { return edTerminalLog; }
             set { edTerminalLog = value; }
-        }
+        }        
 
         public void StartProcessing() {
+            this.edTerminalLog.Clear();
             stopthreadevent.Reset();
             threadhasstoppedevent.Reset();
+
+            this.convertthread = new TestConverter(stopthreadevent, threadhasstoppedevent);
+            this.convertthread.Executable = this.executable;
+            this.convertthread.MediaFileItems = this.mediafilelist;
+            this.convertthread.Form = this;
+            this.convertthread.Execute();
+            this.SetThreadingControls(true);
         }
 
         public void StopProcessing() {
@@ -60,6 +64,7 @@ namespace convendro {
                     }
                 }
             }
+            SetThreadingControls(false);
         }
 
         private void closeToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -73,6 +78,40 @@ namespace convendro {
 
         private void frmTerminal_FormClosed(object sender, FormClosedEventArgs e) {
             this.Dispose();
+        }
+
+        public void SetThreadingControls(bool isworking) {
+            startToolStripMenuItem.Enabled = !isworking;
+            stopToolStripMenuItem.Enabled = isworking;
+        }
+
+        private void stopToolStripMenuItem_Click(object sender, EventArgs e) {
+            StopProcessing();
+        }
+
+        private void startToolStripMenuItem_Click(object sender, EventArgs e) {
+            StartProcessing();
+        }
+
+        private void selectAllToolStripMenuItem_Click(object sender, EventArgs e) {
+            this.edTerminalLog.SelectAll();
+        }
+
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e) {
+            this.edTerminalLog.Copy();
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e) {
+            SaveFileDialog nsaver = new SaveFileDialog();
+            try {
+                nsaver.Filter = String.Format("{0}|{1}", Functions.MEDIAFILES_FILTER_TXT,
+                    Functions.MEDIAFILES_FILTER_ALL);
+                if (nsaver.ShowDialog() == DialogResult.OK) {
+                    edTerminalLog.SaveFile(nsaver.FileName);
+                }
+            } finally {
+                nsaver.Dispose();
+            }
         }
     }
 }

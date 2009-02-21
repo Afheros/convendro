@@ -16,7 +16,10 @@ namespace convendro.Classes.Threading {
     }
 
     /// <summary>
-    /// Test converter class to test stuff and that.
+    /// Test converter class to test stuff and that. 
+    /// Need to move this to a base/abstract class so that
+    /// I can actually reuse/rewrite the other converter threads.
+    /// This will do for now...
     /// </summary>
     public class TestConverter {
         private Form nform;
@@ -94,12 +97,21 @@ namespace convendro.Classes.Threading {
                     nprocess.Close();
                 }
             }
+            SynchControls();
         }
 
         public void Execute() {
             if (executable != "") {
                 nthread = new Thread(execthread);
                 nthread.Start();
+            }
+        }
+
+        protected virtual void SynchControls() {
+            if ((nform as frmTerminal).InvokeRequired) {
+                nform.Invoke(new MethodInvoker(SynchControls));
+            } else {
+                (nform as frmTerminal).SetThreadingControls(false);
             }
         }
 
