@@ -620,5 +620,29 @@ namespace convendro
                 nfile.Dispose();
             }
         }
+
+        private void ctxListView_Opening(object sender, CancelEventArgs e) {
+            testRunToolStripMenuItem.Enabled =
+                (listViewFiles.Items.Count > 0) &&
+                (listViewFiles.SelectedItems.Count == 1) &&
+                (listViewFiles.SelectedItems[0].SubItems[SUBCOL_PRESETNAME].Text != "");
+        }
+
+        private void testRunToolStripMenuItem_Click(object sender, EventArgs e) {
+            MediaFileList newlist = new MediaFileList();
+
+            foreach (ListViewItem n in listViewFiles.SelectedItems) {
+                string filename = Path.Combine(n.SubItems[SUBCOL_PATH].Text, n.SubItems[SUBCOL_FILENAME].Text);
+                Preset preset = presetdata.FindPreset(n.SubItems[SUBCOL_PRESETNAME].Text);
+
+                if (preset != null) {
+                    newlist.AddMediaFile(filename, preset, n.Index);
+                }
+            }
+
+            frmTerminal nterm = new frmTerminal(newlist,
+                Config.Settings.FFMPEGFilePath);
+            nterm.Show();
+        }
     }
 }
