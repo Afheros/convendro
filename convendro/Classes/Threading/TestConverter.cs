@@ -61,6 +61,8 @@ namespace convendro.Classes.Threading {
                     return;
                 }
 
+                SynchTitle(i.Preset.Name);
+
                 Process nprocess = new Process();
                 try {
                     nprocess.StartInfo.FileName = this.executable;
@@ -104,6 +106,14 @@ namespace convendro.Classes.Threading {
             if (executable != "") {
                 nthread = new Thread(execthread);
                 nthread.Start();
+            }
+        }
+
+        protected virtual void SynchTitle(string s) {
+            if (nform.InvokeRequired) {
+                nform.Invoke(new StringInvoker(SynchTitle), new object[] { s });
+            } else {
+                nform.Text = string.Format("{0} - [{1}]", Functions.FORM_TERMINAL_TITLE, s);
             }
         }
 
