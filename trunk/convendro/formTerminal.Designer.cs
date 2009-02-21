@@ -157,7 +157,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmTerminal";
             this.ShowInTaskbar = false;
-            this.Text = "Output";
+            this.Text = "Test Terminal";
             this.Load += new System.EventHandler(this.formTerminal_Load);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmTerminal_FormClosed);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.formTerminal_FormClosing);
