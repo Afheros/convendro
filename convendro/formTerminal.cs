@@ -106,8 +106,8 @@ namespace convendro {
             try {
                 nsaver.Filter = String.Format("{0}|{1}", Functions.MEDIAFILES_FILTER_TXT,
                     Functions.MEDIAFILES_FILTER_ALL);
-                if (nsaver.ShowDialog() == DialogResult.OK) {
-                    edTerminalLog.SaveFile(nsaver.FileName);
+                if (nsaver.ShowDialog() == DialogResult.OK) {                    
+                    edTerminalLog.SaveFile(nsaver.FileName, RichTextBoxStreamType.PlainText);
                 }
             } finally {
                 nsaver.Dispose();
