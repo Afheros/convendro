@@ -12,7 +12,7 @@ Convendro is a .Net GUI for [ffmpeg]
   * WinFF presets import.
   * Videora presets import.
   * No intruding advertisements or clumsy interface.
-  * Comes with "Push-Button-Spreadsheet-Power" and "Crash Protection" style of slogans...
+  * Comes with "Push-Button-Spreadsheet-Power" and "Crash Protection" style slogans...
 
 For recent screenshots, please see SVN trunk/Web.
 
