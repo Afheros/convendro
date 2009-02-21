@@ -24,7 +24,7 @@
         /// </summary>
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTerminal));
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.terminalMainStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -37,19 +37,19 @@
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.edTerminalLog = new System.Windows.Forms.RichTextBox();
-            this.menuStrip1.SuspendLayout();
+            this.terminalMainStrip.SuspendLayout();
             this.SuspendLayout();
             // 
-            // menuStrip1
+            // terminalMainStrip
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.terminalMainStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.editToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(572, 24);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
+            this.terminalMainStrip.Location = new System.Drawing.Point(0, 0);
+            this.terminalMainStrip.Name = "terminalMainStrip";
+            this.terminalMainStrip.Size = new System.Drawing.Size(572, 24);
+            this.terminalMainStrip.TabIndex = 0;
+            this.terminalMainStrip.Text = "menuStrip1";
             // 
             // fileToolStripMenuItem
             // 
@@ -67,6 +67,7 @@
             // startToolStripMenuItem
             // 
             this.startToolStripMenuItem.Name = "startToolStripMenuItem";
+            this.startToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F5)));
             this.startToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.startToolStripMenuItem.Text = "Start";
             this.startToolStripMenuItem.Click += new System.EventHandler(this.startToolStripMenuItem_Click);
@@ -74,6 +75,7 @@
             // stopToolStripMenuItem
             // 
             this.stopToolStripMenuItem.Name = "stopToolStripMenuItem";
+            this.stopToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F10)));
             this.stopToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.stopToolStripMenuItem.Text = "Stop";
             this.stopToolStripMenuItem.Click += new System.EventHandler(this.stopToolStripMenuItem_Click);
@@ -152,17 +154,17 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(572, 309);
             this.Controls.Add(this.edTerminalLog);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.terminalMainStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuStrip1;
+            this.MainMenuStrip = this.terminalMainStrip;
             this.Name = "frmTerminal";
             this.ShowInTaskbar = false;
             this.Text = "Test Terminal";
             this.Load += new System.EventHandler(this.formTerminal_Load);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmTerminal_FormClosed);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.formTerminal_FormClosing);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.terminalMainStrip.ResumeLayout(false);
+            this.terminalMainStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -170,7 +172,7 @@
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip terminalMainStrip;
         private System.Windows.Forms.RichTextBox edTerminalLog;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
