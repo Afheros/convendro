@@ -435,7 +435,7 @@ namespace convendro
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void propertiesToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void mediafilesPropertiesToolStripMenuItem_Click(object sender, EventArgs e) {
             if (listViewFiles.SelectedItems.Count > 0) {
                 Functions.ShowPropertiesWindow(
                     Path.Combine(listViewFiles.SelectedItems[0].SubItems[SUBCOL_PATH].Text,
@@ -628,7 +628,7 @@ namespace convendro
                 (listViewFiles.SelectedItems[0].SubItems[SUBCOL_PRESETNAME].Text != "");
         }
 
-        private void testRunToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void mediafilesTestRunToolStripMenuItem_Click(object sender, EventArgs e) {
             MediaFileList newlist = new MediaFileList();
 
             foreach (ListViewItem n in listViewFiles.SelectedItems) {
@@ -644,6 +644,19 @@ namespace convendro
                 Config.Settings.FFMPEGFilePath);
             nterm.Show();
             nterm.StartProcessing();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void exploreFolderToolStripMenuItem_Click(object sender, EventArgs e) {
+            if (listViewFiles.SelectedItems.Count > 0) {
+                foreach(ListViewItem i in listViewFiles.SelectedItems) {
+                    Functions.ShowFolderExplorer(i.SubItems[SUBCOL_PATH].Text);
+                }
+            }
         }
     }
 }

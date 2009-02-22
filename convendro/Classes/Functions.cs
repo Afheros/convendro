@@ -104,6 +104,16 @@ namespace convendro.Classes
             return ShellExecuteEx(ref info);
         }
 
+        public static bool ShowFolderExplorer(string foldername) {
+            SHELLEXECUTEINFO info = new SHELLEXECUTEINFO();
+            info.cbSize = System.Runtime.InteropServices.Marshal.SizeOf(info);
+            info.lpVerb = "open";
+            info.lpFile = foldername;
+            info.nShow = SW_SHOW;
+            info.fMask = SEE_MASK_INVOKEIDLIST;
+            return ShellExecuteEx(ref info);
+        }
+
         public static string ConvertFileSizeToString(long size) {
             string res = "";
             string formatstr = "{0:0.00} {1}";
