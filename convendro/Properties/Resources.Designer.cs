@@ -137,6 +137,13 @@ namespace convendro.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap control_repeat_blue {
+            get {
+                object obj = ResourceManager.GetObject("control_repeat_blue", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap control_stop_blue {
             get {
                 object obj = ResourceManager.GetObject("control_stop_blue", resourceCulture);

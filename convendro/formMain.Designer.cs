@@ -65,9 +65,7 @@
             this.mediafilesMoveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mediafilesPresetsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
-            this.mediafilesTestRunToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
-            this.mediafilesPropertiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolsStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -82,6 +80,8 @@
             this.lblFilesBarMain = new System.Windows.Forms.ToolStripStatusLabel();
             this.progressBarMain = new System.Windows.Forms.ToolStripProgressBar();
             this.lblStatusBarMain = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
+            this.exploreFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.selectPresetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -96,6 +96,8 @@
             this.mediafilesMoveUpToolStripMenuIte = new System.Windows.Forms.ToolStripMenuItem();
             this.mediafilesMoveDownToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mediafileSelectPresetListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mediafilesTestRunToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mediafilesPropertiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsPresetsEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fileExitToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -107,10 +109,10 @@
             this.mediafilesMoveUpToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.mediafilesMoveDownToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.mediafilesSelectPresetListToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.toolsEditPresetsToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.mediafilesPropertiesToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.exploreFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolsEditPresetsToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.mediafilesTestRunToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -250,38 +252,40 @@
             this.exploreFolderToolStripMenuItem,
             this.propertiesToolStripMenuItem});
             this.ctxListView.Name = "ctxListView";
-            this.ctxListView.Size = new System.Drawing.Size(153, 176);
+            this.ctxListView.Size = new System.Drawing.Size(167, 154);
             this.ctxListView.Opening += new System.ComponentModel.CancelEventHandler(this.ctxListView_Opening);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(163, 6);
             // 
             // presetToolStripMenuItem
             // 
             this.presetToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.selectPresetToolStripMenuItem});
             this.presetToolStripMenuItem.Name = "presetToolStripMenuItem";
-            this.presetToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.presetToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.presetToolStripMenuItem.Text = "Preset";
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(163, 6);
             // 
             // testRunToolStripMenuItem
             // 
+            this.testRunToolStripMenuItem.Image = global::convendro.Properties.Resources.cog_go;
             this.testRunToolStripMenuItem.Name = "testRunToolStripMenuItem";
-            this.testRunToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.testRunToolStripMenuItem.Text = "Test Run...";
+            this.testRunToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F5)));
+            this.testRunToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.testRunToolStripMenuItem.Text = "Test Run";
             this.testRunToolStripMenuItem.Click += new System.EventHandler(this.mediafilesTestRunToolStripMenuItem_Click);
             // 
             // toolStripSeparator9
             // 
             this.toolStripSeparator9.Name = "toolStripSeparator9";
-            this.toolStripSeparator9.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator9.Size = new System.Drawing.Size(163, 6);
             // 
             // mainMenuStrip
             // 
@@ -370,6 +374,8 @@
             this.mediaFilesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.conversionStartToolStripMenuItem,
             this.conversionStopToolStripMenuItem,
+            this.toolStripMenuItem3,
+            this.mediafilesTestRunToolStripMenuItem,
             this.toolStripMenuItem2,
             this.mediafilesClearListToolStripMenuItem,
             this.mediafilesAddListToolStripMenuItem,
@@ -377,8 +383,6 @@
             this.toolStripSeparator7,
             this.mediafilesMoveToolStripMenuItem,
             this.mediafilesPresetsToolStripMenuItem,
-            this.toolStripMenuItem3,
-            this.mediafilesTestRunToolStripMenuItem,
             this.toolStripMenuItem4,
             this.mediafilesPropertiesToolStripMenuItem});
             this.mediaFilesToolStripMenuItem.Name = "mediaFilesToolStripMenuItem";
@@ -417,26 +421,10 @@
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
             this.toolStripMenuItem3.Size = new System.Drawing.Size(149, 6);
             // 
-            // mediafilesTestRunToolStripMenuItem
-            // 
-            this.mediafilesTestRunToolStripMenuItem.Name = "mediafilesTestRunToolStripMenuItem";
-            this.mediafilesTestRunToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.mediafilesTestRunToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.mediafilesTestRunToolStripMenuItem.Text = "Test Run...";
-            this.mediafilesTestRunToolStripMenuItem.Click += new System.EventHandler(this.mediafilesTestRunToolStripMenuItem_Click);
-            // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
             this.toolStripMenuItem4.Size = new System.Drawing.Size(149, 6);
-            // 
-            // mediafilesPropertiesToolStripMenuItem
-            // 
-            this.mediafilesPropertiesToolStripMenuItem.Image = global::convendro.Properties.Resources.application_view_detail;
-            this.mediafilesPropertiesToolStripMenuItem.Name = "mediafilesPropertiesToolStripMenuItem";
-            this.mediafilesPropertiesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.mediafilesPropertiesToolStripMenuItem.Text = "Properties";
-            this.mediafilesPropertiesToolStripMenuItem.Click += new System.EventHandler(this.mediafilesPropertiesToolStripMenuItem_Click);
             // 
             // toolsToolsStripMenuItem
             // 
@@ -479,6 +467,8 @@
             this.conversionToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mediafilesPlaytoolStripButton,
             this.mediafilesStopToolStripButton,
+            this.toolStripSeparator11,
+            this.mediafilesTestRunToolStripButton,
             this.toolStripSeparator6,
             this.mediafilesClearListToolStripButton,
             this.toolStripSeparator2,
@@ -494,7 +484,7 @@
             this.conversionToolStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
             this.conversionToolStrip.Location = new System.Drawing.Point(3, 47);
             this.conversionToolStrip.Name = "conversionToolStrip";
-            this.conversionToolStrip.Size = new System.Drawing.Size(238, 23);
+            this.conversionToolStrip.Size = new System.Drawing.Size(298, 23);
             this.conversionToolStrip.TabIndex = 2;
             // 
             // toolStripSeparator6
@@ -564,11 +554,23 @@
             this.lblStatusBarMain.Size = new System.Drawing.Size(444, 17);
             this.lblStatusBarMain.Spring = true;
             // 
+            // toolStripSeparator10
+            // 
+            this.toolStripSeparator10.Name = "toolStripSeparator10";
+            this.toolStripSeparator10.Size = new System.Drawing.Size(6, 23);
+            // 
+            // exploreFolderToolStripMenuItem
+            // 
+            this.exploreFolderToolStripMenuItem.Name = "exploreFolderToolStripMenuItem";
+            this.exploreFolderToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.exploreFolderToolStripMenuItem.Text = "Explore Folder";
+            this.exploreFolderToolStripMenuItem.Click += new System.EventHandler(this.exploreFolderToolStripMenuItem_Click);
+            // 
             // addFileToolStripMenuItem
             // 
             this.addFileToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("addFileToolStripMenuItem.Image")));
             this.addFileToolStripMenuItem.Name = "addFileToolStripMenuItem";
-            this.addFileToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addFileToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.addFileToolStripMenuItem.Text = "Add File...";
             this.addFileToolStripMenuItem.Click += new System.EventHandler(this.mediafilesAddListToolStripMenuItem_Click);
             // 
@@ -576,7 +578,7 @@
             // 
             this.deleteFileToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("deleteFileToolStripMenuItem.Image")));
             this.deleteFileToolStripMenuItem.Name = "deleteFileToolStripMenuItem";
-            this.deleteFileToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.deleteFileToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.deleteFileToolStripMenuItem.Text = "Delete";
             this.deleteFileToolStripMenuItem.Click += new System.EventHandler(this.mediafilesDeleteListToolStripMenuItem_Click);
             // 
@@ -592,7 +594,7 @@
             // 
             this.propertiesToolStripMenuItem.Image = global::convendro.Properties.Resources.application_view_detail;
             this.propertiesToolStripMenuItem.Name = "propertiesToolStripMenuItem";
-            this.propertiesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.propertiesToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.propertiesToolStripMenuItem.Text = "Properties";
             this.propertiesToolStripMenuItem.Click += new System.EventHandler(this.mediafilesPropertiesToolStripMenuItem_Click);
             // 
@@ -616,7 +618,8 @@
             // 
             this.conversionStartToolStripMenuItem.Image = global::convendro.Properties.Resources.control_play_blue;
             this.conversionStartToolStripMenuItem.Name = "conversionStartToolStripMenuItem";
-            this.conversionStartToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.conversionStartToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
+            this.conversionStartToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.conversionStartToolStripMenuItem.Text = "Start";
             this.conversionStartToolStripMenuItem.Click += new System.EventHandler(this.mediafilesStartConversionToolStripMenuItem_Click);
             // 
@@ -624,7 +627,8 @@
             // 
             this.conversionStopToolStripMenuItem.Image = global::convendro.Properties.Resources.control_stop_blue;
             this.conversionStopToolStripMenuItem.Name = "conversionStopToolStripMenuItem";
-            this.conversionStopToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.conversionStopToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Shift | System.Windows.Forms.Keys.F5)));
+            this.conversionStopToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.conversionStopToolStripMenuItem.Text = "Stop";
             this.conversionStopToolStripMenuItem.Click += new System.EventHandler(this.mediafilesStopConversionToolStripMenuItem_Click);
             // 
@@ -675,6 +679,23 @@
             this.mediafileSelectPresetListToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.mediafileSelectPresetListToolStripMenuItem.Text = "Select...";
             this.mediafileSelectPresetListToolStripMenuItem.Click += new System.EventHandler(this.mediafilesSelectPresetListToolStripMenuItem_Click);
+            // 
+            // mediafilesTestRunToolStripMenuItem
+            // 
+            this.mediafilesTestRunToolStripMenuItem.Image = global::convendro.Properties.Resources.cog_go;
+            this.mediafilesTestRunToolStripMenuItem.Name = "mediafilesTestRunToolStripMenuItem";
+            this.mediafilesTestRunToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F5)));
+            this.mediafilesTestRunToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.mediafilesTestRunToolStripMenuItem.Text = "Test Run";
+            this.mediafilesTestRunToolStripMenuItem.Click += new System.EventHandler(this.mediafilesTestRunToolStripMenuItem_Click);
+            // 
+            // mediafilesPropertiesToolStripMenuItem
+            // 
+            this.mediafilesPropertiesToolStripMenuItem.Image = global::convendro.Properties.Resources.application_view_detail;
+            this.mediafilesPropertiesToolStripMenuItem.Name = "mediafilesPropertiesToolStripMenuItem";
+            this.mediafilesPropertiesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.mediafilesPropertiesToolStripMenuItem.Text = "Properties";
+            this.mediafilesPropertiesToolStripMenuItem.Click += new System.EventHandler(this.mediafilesPropertiesToolStripMenuItem_Click);
             // 
             // toolsPresetsEditorToolStripMenuItem
             // 
@@ -781,6 +802,16 @@
             this.mediafilesSelectPresetListToolStripButton.Text = "Select Preset";
             this.mediafilesSelectPresetListToolStripButton.Click += new System.EventHandler(this.mediafilesSelectPresetListToolStripMenuItem_Click);
             // 
+            // mediafilesPropertiesToolStripButton
+            // 
+            this.mediafilesPropertiesToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.mediafilesPropertiesToolStripButton.Image = global::convendro.Properties.Resources.application_view_detail;
+            this.mediafilesPropertiesToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.mediafilesPropertiesToolStripButton.Name = "mediafilesPropertiesToolStripButton";
+            this.mediafilesPropertiesToolStripButton.Size = new System.Drawing.Size(23, 20);
+            this.mediafilesPropertiesToolStripButton.Text = "Properties";
+            this.mediafilesPropertiesToolStripButton.Click += new System.EventHandler(this.mediafilesPropertiesToolStripMenuItem_Click);
+            // 
             // toolsEditPresetsToolStripButton
             // 
             this.toolsEditPresetsToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -791,26 +822,19 @@
             this.toolsEditPresetsToolStripButton.Text = "Edit Presets...";
             this.toolsEditPresetsToolStripButton.Click += new System.EventHandler(this.toolsPresetsEditorToolStripMenuItem_Click);
             // 
-            // toolStripSeparator10
+            // mediafilesTestRunToolStripButton
             // 
-            this.toolStripSeparator10.Name = "toolStripSeparator10";
-            this.toolStripSeparator10.Size = new System.Drawing.Size(6, 23);
+            this.mediafilesTestRunToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.mediafilesTestRunToolStripButton.Image = global::convendro.Properties.Resources.cog_go;
+            this.mediafilesTestRunToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.mediafilesTestRunToolStripButton.Name = "mediafilesTestRunToolStripButton";
+            this.mediafilesTestRunToolStripButton.Size = new System.Drawing.Size(23, 20);
+            this.mediafilesTestRunToolStripButton.Text = "Test run";
             // 
-            // mediafilesPropertiesToolStripButton
+            // toolStripSeparator11
             // 
-            this.mediafilesPropertiesToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.mediafilesPropertiesToolStripButton.Image = global::convendro.Properties.Resources.application_view_detail;
-            this.mediafilesPropertiesToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.mediafilesPropertiesToolStripButton.Name = "mediafilesPropertiesToolStripButton";
-            this.mediafilesPropertiesToolStripButton.Size = new System.Drawing.Size(23, 20);
-            this.mediafilesPropertiesToolStripButton.Text = "toolStripButton1";
-            // 
-            // exploreFolderToolStripMenuItem
-            // 
-            this.exploreFolderToolStripMenuItem.Name = "exploreFolderToolStripMenuItem";
-            this.exploreFolderToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.exploreFolderToolStripMenuItem.Text = "Explore Folder";
-            this.exploreFolderToolStripMenuItem.Click += new System.EventHandler(this.exploreFolderToolStripMenuItem_Click);
+            this.toolStripSeparator11.Name = "toolStripSeparator11";
+            this.toolStripSeparator11.Size = new System.Drawing.Size(6, 23);
             // 
             // frmMain
             // 
@@ -934,6 +958,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
         private System.Windows.Forms.ToolStripButton mediafilesPropertiesToolStripButton;
         private System.Windows.Forms.ToolStripMenuItem exploreFolderToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton mediafilesTestRunToolStripButton;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
     }
 }
 
