@@ -95,6 +95,13 @@ namespace convendro.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap application_view_detail {
+            get {
+                object obj = ResourceManager.GetObject("application_view_detail", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap arrow_down {
             get {
                 object obj = ResourceManager.GetObject("arrow_down", resourceCulture);
@@ -112,6 +119,13 @@ namespace convendro.Properties {
         internal static System.Drawing.Bitmap cancel {
             get {
                 object obj = ResourceManager.GetObject("cancel", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap cog_go {
+            get {
+                object obj = ResourceManager.GetObject("cog_go", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

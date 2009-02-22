@@ -97,6 +97,7 @@ namespace convendro.Classes.Threading {
             foreach (MediaFile m in this.mediafilelist.Items) {
                 if (stopThread.WaitOne(0, true)) {
                     threadHasStopped.Set();
+                    this.synchUpdateControls();
                     return;
                 }
 
@@ -136,6 +137,7 @@ namespace convendro.Classes.Threading {
                         if (stopThread.WaitOne(0, true)) {
                             nprocess.Kill();
                             threadHasStopped.Set();
+                            this.synchUpdateControls();
                             return;
                         }
 
