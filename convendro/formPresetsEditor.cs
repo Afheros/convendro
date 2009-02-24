@@ -78,6 +78,23 @@ namespace convendro {
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="dontclearkey"></param>
+        public void ClearScreen(bool dontclearkey) {
+            if (!dontclearkey) {
+                cboPresetname.Text = "";
+            }
+            cboPresetCategory.Text = "";
+            txtDescription.Text = "";
+            txtDirectory.Text = "";
+            cboFileExtension.Text = "";
+            datagridArguments.Rows.Clear();
+            this.modified = false;
+
+        }
+
+        /// <summary>
         /// Need to be refactored (see the secondary
         /// overload...)
         /// </summary>
@@ -195,10 +212,12 @@ namespace convendro {
         
         private void cboPresetname_TextUpdate(object sender, EventArgs e) {
             this.modified = true;
+
         }
 
         private void cboPresetCategory_TextUpdate(object sender, EventArgs e) {
             this.modified = true;
+
         }
 
         /// <summary>
@@ -476,6 +495,11 @@ namespace convendro {
 
         private void cboPresetname_SelectedIndexChanged(object sender, EventArgs e) {
             this.currentpreset = presetfile.FindPreset(this.cboPresetname.Text);
+            if (this.currentpreset != null) {
+                this.ClearScreen(true);
+                this.showPreset(this.cboPresetname.Text);
+            }
+
         }
 
 
