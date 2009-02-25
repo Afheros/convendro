@@ -71,16 +71,28 @@ namespace convendro
             set { this.presetdata = value; }
         }
 
-        private void button1_Click(object sender, EventArgs e) {
-            FFMPEGConverter nmpeg = new FFMPEGConverter();
-            nmpeg.Form = this;
-            nmpeg.Execute();
-            
+        /// <summary>
+        /// Verify if thread is running or not...
+        /// </summary>
+        /// <returns></returns>
+        public bool IsThreadRunning() {
+            bool ret = false;
+
+            // Check if thread is active..
+            if (this.ffmpegconverter != null) {
+                if (this.ffmpegconverter.CurrentThread.IsAlive) {
+                    ret = true;
+                }
+            }
+
+            return ret;
         }
 
         private void listViewFiles_DragEnter(object sender, DragEventArgs e) {
+            e.Effect = DragDropEffects.None;
             if (e.Data.GetDataPresent("FileDrop")) {
-                e.Effect = DragDropEffects.Copy;
+                // check if thread is still running...
+                e.Effect = (!IsThreadRunning() ? DragDropEffects.Copy : DragDropEffects.None);
             }
         }
 
@@ -91,6 +103,7 @@ namespace convendro
                     AddFile(files[x]);
                 }
             }
+            SetControlsThreading(true);
             updateStatusBar1();
         }
 
@@ -339,8 +352,8 @@ namespace convendro
         }
 
         private void mediafilesClearListToolStripMenuItem_Click(object sender, EventArgs e) {
-            // ToDo check threading...
             listViewFiles.Items.Clear();
+            this.SetControlsThreading(true);
         }
 
         /// <summary>
@@ -377,6 +390,7 @@ namespace convendro
 
                 }
             } finally {
+                this.SetControlsThreading(true);
                 updateStatusBar1();
                 Config.Settings.LastUsedMediaIndex = openerdlg.FilterIndex;
                 Config.Settings.LastUsedInputFolder = filedir;                   
@@ -393,6 +407,7 @@ namespace convendro
             foreach (ListViewItem n in listViewFiles.SelectedItems) {
                 n.Remove();
             }
+            this.SetControlsThreading(true);
         }
 
         /// <summary>
@@ -499,12 +514,24 @@ namespace convendro
         /// 
         /// </summary>
         /// <param name="threadfinished"></param>
-        public void SetControlsThreading(bool threadfinished) {            
-            mediafilesPlaytoolStripButton.Enabled = threadfinished && !String.IsNullOrEmpty(Config.Settings.FFMPEGFilePath);
-            conversionStartToolStripMenuItem.Enabled = threadfinished && !String.IsNullOrEmpty(Config.Settings.FFMPEGFilePath);
+        public void SetControlsThreading(bool threadfinished) {       
+     
+            // Play...
+            mediafilesPlaytoolStripButton.Enabled = threadfinished 
+                && !String.IsNullOrEmpty(Config.Settings.FFMPEGFilePath) 
+                && listViewFiles.Items.Count > 0;
+            conversionStartToolStripMenuItem.Enabled = 
+                mediafilesPlaytoolStripButton.Enabled;
 
+            // Stop
             mediafilesStopToolStripButton.Enabled = !threadfinished;
             conversionStopToolStripMenuItem.Enabled = !threadfinished;
+
+            // TestRun
+            mediafilesTestRunToolStripMenuItem.Enabled =
+                (listViewFiles.Items.Count > 0);
+            mediafilesTestRunToolStripButton.Enabled = 
+                mediafilesTestRunToolStripMenuItem.Enabled;
 
             mediafilesClearListToolStripMenuItem.Enabled = threadfinished;
             mediafilesClearListToolStripButton.Enabled = threadfinished;
