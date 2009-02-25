@@ -13,10 +13,8 @@ using convendro.Classes.Persistence;
 using convendro.Classes.Comparers;
 using convendro.Classes.Import;
 
-namespace convendro
-{
-    public partial class frmMain : Form
-    {
+namespace convendro {
+    public partial class frmMain : Form {
         private PresetsFile presetdata = null;
         private MediaFileList mediafilelist = new MediaFileList();
         private FFMPEGConverter ffmpegconverter = null;
@@ -31,9 +29,8 @@ namespace convendro
         public const int SUBCOL_STARTED = 5;
         public const int SUBCOL_FINISHED = 6;
 
-        public frmMain()
-        {
-            InitializeComponent();            
+        public frmMain() {
+            InitializeComponent();
         }
 
         public TextBox LogBox {
@@ -130,7 +127,7 @@ namespace convendro
         /// 
         /// </summary>
         private void updateStatusBar1() {
-            lblFilesBarMain.Text = String.Format("Files: {0}", 
+            lblFilesBarMain.Text = String.Format("Files: {0}",
                 listViewFiles.Items.Count);
         }
 
@@ -182,9 +179,9 @@ namespace convendro
 
                         menuitem.Text = npreset.Name;
                         menuitem.ToolTipText = npreset.Description;
-                        menuitem.Click += new EventHandler(dynamicPresetMenuItem_Click);                        
-                        menuitem.ShortcutKeys = (Keys.Control | Keys.Alt | 
-                            ((Keys) Enum.Parse(typeof(Keys), "D" + x.ToString())));
+                        menuitem.Click += new EventHandler(dynamicPresetMenuItem_Click);
+                        menuitem.ShortcutKeys = (Keys.Control | Keys.Alt |
+                            ((Keys)Enum.Parse(typeof(Keys), "D" + x.ToString())));
                         mediafilesPresetsToolStripMenuItem.DropDownItems.Insert(0, menuitem);
 
                         // contextmenu
@@ -274,7 +271,7 @@ namespace convendro
             frmPresetsEditor nform = new frmPresetsEditor(this.presetdata);
 
             nform.StartPosition = FormStartPosition.CenterParent;
-            
+
             DialogResult res = nform.ShowDialog();
             try {
                 if (res == DialogResult.OK) {
@@ -330,7 +327,7 @@ namespace convendro
             threadHasStoppedEvent.Reset();
             stopThreadEvent.Reset();
             SetControlsThreading(false);
-            ffmpegconverter = new FFMPEGConverter(stopThreadEvent, 
+            ffmpegconverter = new FFMPEGConverter(stopThreadEvent,
                 threadHasStoppedEvent);
             try {
                 ffmpegconverter.Form = this;
@@ -363,12 +360,12 @@ namespace convendro
         /// <param name="e"></param>
         private void mediafilesAddListToolStripMenuItem_Click(object sender, EventArgs e) {
             // ToDo check threading...
-            
+
             string filedir = (String.IsNullOrEmpty(
                         Config.Settings.LastUsedInputFolder) ?
                         Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) :
                         Config.Settings.LastUsedInputFolder);
-            
+
 
             OpenFileDialog openerdlg = new OpenFileDialog();
             try {
@@ -376,7 +373,7 @@ namespace convendro
                 openerdlg.Filter = Functions.MEDIAFILES_FILTER;
                 openerdlg.FilterIndex = Config.Settings.LastUsedMediaIndex;
                 openerdlg.InitialDirectory = filedir;
-                openerdlg.Multiselect = true;    
+                openerdlg.Multiselect = true;
 
                 DialogResult res = openerdlg.ShowDialog();
 
@@ -393,7 +390,7 @@ namespace convendro
                 this.SetControlsThreading(true);
                 updateStatusBar1();
                 Config.Settings.LastUsedMediaIndex = openerdlg.FilterIndex;
-                Config.Settings.LastUsedInputFolder = filedir;                   
+                Config.Settings.LastUsedInputFolder = filedir;
                 openerdlg.Dispose();
             }
         }
@@ -465,11 +462,11 @@ namespace convendro
         /// <param name="e"></param>
         private void mediafilesMoveUpToolStripMenuItem_Click(object sender, EventArgs e) {
             if (listViewFiles.SelectedItems.Count == 1) {
-                if (listViewFiles.SelectedItems[0].Index > 0) {                   
+                if (listViewFiles.SelectedItems[0].Index > 0) {
                     ListViewItem i1 = listViewFiles.SelectedItems[0];
                     int ind = i1.Index;
                     listViewFiles.Items.RemoveAt(ind);
-                    listViewFiles.Items.Insert(ind -1, i1);
+                    listViewFiles.Items.Insert(ind - 1, i1);
                 }
             }
         }
@@ -495,7 +492,7 @@ namespace convendro
         /// </summary>
         private void stopThread() {
             if (ffmpegconverter != null) {
-                if (ffmpegconverter.CurrentThread != null && ffmpegconverter.CurrentThread.IsAlive) {                    
+                if (ffmpegconverter.CurrentThread != null && ffmpegconverter.CurrentThread.IsAlive) {
                     stopThreadEvent.Set();
 
                     while (ffmpegconverter.CurrentThread.IsAlive) {
@@ -514,13 +511,16 @@ namespace convendro
         /// 
         /// </summary>
         /// <param name="threadfinished"></param>
-        public void SetControlsThreading(bool threadfinished) {       
-     
+        public void SetControlsThreading(bool threadfinished) {
+
+            // ProgressBar
+            progressBarMain.Visible = !threadfinished;
+
             // Play...
-            mediafilesPlaytoolStripButton.Enabled = threadfinished 
-                && !String.IsNullOrEmpty(Config.Settings.FFMPEGFilePath) 
+            mediafilesPlaytoolStripButton.Enabled = threadfinished
+                && !String.IsNullOrEmpty(Config.Settings.FFMPEGFilePath)
                 && listViewFiles.Items.Count > 0;
-            conversionStartToolStripMenuItem.Enabled = 
+            conversionStartToolStripMenuItem.Enabled =
                 mediafilesPlaytoolStripButton.Enabled;
 
             // Stop
@@ -530,7 +530,7 @@ namespace convendro
             // TestRun
             mediafilesTestRunToolStripMenuItem.Enabled =
                 (listViewFiles.Items.Count > 0);
-            mediafilesTestRunToolStripButton.Enabled = 
+            mediafilesTestRunToolStripButton.Enabled =
                 mediafilesTestRunToolStripMenuItem.Enabled;
 
             mediafilesClearListToolStripMenuItem.Enabled = threadfinished;
@@ -599,8 +599,8 @@ namespace convendro
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void frmMain_FormClosing(object sender, FormClosingEventArgs e) {            
-            stopThread();            
+        private void frmMain_FormClosing(object sender, FormClosingEventArgs e) {
+            stopThread();
             Config.SaveSettings(this);
 
             Config.Settings.Save();
@@ -680,7 +680,7 @@ namespace convendro
         /// <param name="e"></param>
         private void exploreFolderToolStripMenuItem_Click(object sender, EventArgs e) {
             if (listViewFiles.SelectedItems.Count > 0) {
-                foreach(ListViewItem i in listViewFiles.SelectedItems) {
+                foreach (ListViewItem i in listViewFiles.SelectedItems) {
                     Functions.ShowFolderExplorer(i.SubItems[SUBCOL_PATH].Text);
                 }
             }

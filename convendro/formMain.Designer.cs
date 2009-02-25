@@ -140,7 +140,7 @@
             this.button1.TabIndex = 1;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
-
+            // 
             // labelTotal
             // 
             this.labelTotal.AutoSize = true;
@@ -828,11 +828,12 @@
             this.progressBarMain.Size = new System.Drawing.Size(120, 16);
             this.progressBarMain.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.progressBarMain.ToolTipText = "Progress of current file";
+            this.progressBarMain.Visible = false;
             // 
             // lblStatusBarMain
             // 
             this.lblStatusBarMain.Name = "lblStatusBarMain";
-            this.lblStatusBarMain.Size = new System.Drawing.Size(444, 17);
+            this.lblStatusBarMain.Size = new System.Drawing.Size(413, 17);
             this.lblStatusBarMain.Spring = true;
             // 
             // frmMain
