@@ -242,11 +242,19 @@ namespace convendro {
         /// <param name="e"></param>
         private void frmMain_Load(object sender, EventArgs e) {
             Config.LoadSettings(this);
-            this.presetdata = Functions.DeserializePresetsData(Application.StartupPath + "\\" +
-                Functions.FILENAME_PRESETSDATA);
 
+            // Prepare PresetFile
+            if (String.IsNullOrEmpty(Config.Settings.LastUsedPresetFile)) {
+                this.presetdata = null;
+                Config.Settings.LastUsedPresetFile = Path.Combine(Application.StartupPath,
+                    Functions.FILENAME_PRESETSDATA);
+            } else {
+                this.presetdata = Functions.DeserializePresetsData(
+                    Config.Settings.LastUsedPresetFile);
+            }
+
+            // Create the file automatically...
             if (this.presetdata == null) {
-                // create the object regardless...
                 this.presetdata = new PresetsFile();
             }
 
@@ -276,7 +284,7 @@ namespace convendro {
                 if (res == DialogResult.OK) {
                     // Save Presetfile.
                     Functions.SerializePresetsData(
-                        Functions.CombineCurrentFilePath(Functions.FILENAME_PRESETSDATA),
+                        Config.Settings.LastUsedPresetFile,
                         this.presetdata);
                 }
             } finally {
@@ -427,9 +435,7 @@ namespace convendro {
                         }
 
                         // Save Presetfile.
-                        Functions.SerializePresetsData(
-                            Functions.CombineCurrentFilePath(Functions.FILENAME_PRESETSDATA),
-                            this.presetdata);
+                        Functions.SerializePresetsData(Config.Settings.LastUsedPresetFile, this.presetdata);
                     }
                 } finally {
                     // Save commandline descriptions...
