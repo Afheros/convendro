@@ -21,6 +21,7 @@ namespace convendro {
         private ManualResetEvent stopThreadEvent = new ManualResetEvent(false);
         private ManualResetEvent threadHasStoppedEvent = new ManualResetEvent(false);
 
+
         public const int SUBCOL_FILENAME = 0;
         public const int SUBCOL_PATH = 1;
         public const int SUBCOL_SIZE = 2;
@@ -240,9 +241,7 @@ namespace convendro {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void frmMain_Load(object sender, EventArgs e) {
-
             Config.LoadSettings(this);
-
             this.presetdata = Functions.DeserializePresetsData(Application.StartupPath + "\\" +
                 Functions.FILENAME_PRESETSDATA);
 

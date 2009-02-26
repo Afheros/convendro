@@ -118,5 +118,29 @@ namespace convendro.Properties {
                 this["fileListViewColumns"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LastUsedPresetFile {
+            get {
+                return ((string)(this["LastUsedPresetFile"]));
+            }
+            set {
+                this["LastUsedPresetFile"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LastUsedCommandDescriptionFile {
+            get {
+                return ((string)(this["LastUsedCommandDescriptionFile"]));
+            }
+            set {
+                this["LastUsedCommandDescriptionFile"] = value;
+            }
+        }
     }
 }
