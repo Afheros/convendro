@@ -21,7 +21,20 @@ namespace convendro.Classes {
         /// <param name="aform"></param>
         public static void LoadSettings(frmMain aform) {
             // Generate FFMPEG filepath
-            GenerateFFMpegFilename();
+            // GenerateFFMpegFilename();
+            // GeneratePresetFilename();
+            Settings.FFMPEGFilePath = generateSettingsFileName(
+                Functions.FILENAME_EXECUTABLE_FFMPEG, 
+                Settings.FFMPEGFilePath);
+
+            Settings.LastUsedPresetFile = generateSettingsFileName(
+                Functions.FILENAME_PRESETSDATA,
+                Settings.LastUsedPresetFile);
+
+            Settings.LastUsedCommandDescriptionFile = generateSettingsFileName(
+                Functions.FILENAME_COMMANDLINEDESCRIPTION,
+                Settings.LastUsedCommandDescriptionFile);
+
             GenerateDefaultOutputFolder();
 
             aform.Location = Settings.mainFormLocation;
@@ -62,10 +75,10 @@ namespace convendro.Classes {
         /// 
         /// </summary>
         /// <returns></returns>
-        public static string TryFindFFMpegLocally() {
+        public static string tryFindConstantFileLocally(string filename) {
             string res = null;
 
-            res = Path.Combine(Application.StartupPath, Functions.EXECUTABLE_FFMPEG);
+            res = Path.Combine(Application.StartupPath, filename);
 
             if (!File.Exists(res)) {
                 res = null;
@@ -77,25 +90,30 @@ namespace convendro.Classes {
         /// <summary>
         /// 
         /// </summary>
-        /// <returns></returns>
-        public static void GenerateFFMpegFilename() {
-            string localfile = TryFindFFMpegLocally();
+        /// <param name="filename"></param>
+        /// <param name="settingfilepath"></param>
+        private static string generateSettingsFileName(string filename, string settingfilepath) {
+            string res = settingfilepath;
 
-            if (String.IsNullOrEmpty(Settings.FFMPEGFilePath)) {
-                if (!File.Exists(Settings.FFMPEGFilePath)) {
+            string localfile = tryFindConstantFileLocally(filename);
+
+            if (String.IsNullOrEmpty(res)) {
+                if (!File.Exists(res)) {
                     if (!String.IsNullOrEmpty(localfile)) {
-                        Settings.FFMPEGFilePath = localfile;
+                        res = localfile;                        
                     }
                 }
             } else {
-                // We should probably check if the file stored in the settings 
-                // is actually valid
-                if (!File.Exists(Settings.FFMPEGFilePath)) {
-                    Settings.FFMPEGFilePath = "";
+                if (!File.Exists(res)) {
+                    res = "";
                 }
             }
+            return res;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public static void GenerateDefaultOutputFolder() {
             if (String.IsNullOrEmpty(Settings.LastUsedOutputFolder)) {
                 Settings.LastUsedOutputFolder = 
