@@ -253,6 +253,12 @@ namespace convendro {
                     Config.Settings.LastUsedPresetFile);
             }
 
+            //
+            if (String.IsNullOrEmpty(Config.Settings.LastUsedCommandDescriptionFile)) {
+                Config.Settings.LastUsedCommandDescriptionFile =
+                    Path.Combine(Application.StartupPath, Functions.FILENAME_COMMANDLINEDESCRIPTION);
+            }
+
             // Create the file automatically...
             if (this.presetdata == null) {
                 this.presetdata = new PresetsFile();
@@ -289,7 +295,7 @@ namespace convendro {
                 }
             } finally {
                 // Save commandline descriptions...
-                nform.SaveDescriptionSettings(
+                nform.SaveDescriptionSettings(                    
                     Functions.CombineCurrentFilePath(
                     Functions.FILENAME_COMMANDLINEDESCRIPTION));
                 nform.Dispose();
@@ -689,6 +695,21 @@ namespace convendro {
                     Functions.ShowFolderExplorer(i.SubItems[SUBCOL_PATH].Text);
                 }
             }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void fileImportVideoraToolStripMenuItem_Click(object sender, EventArgs e) {
+#if DEBUG
+            ProfileList np = VideoraImport.DeserializeVideoraFile("c:\\Development\\iPhone_2G.xml");
+
+            if (np != null) {
+                int i = np.Count;
+            }
+#endif
         }
     }
 }
