@@ -356,32 +356,33 @@
             this.fileImportWinFFToolStripMenuItem,
             this.fileImportVideoraToolStripMenuItem});
             this.fileImportToolStripMenuItem.Name = "fileImportToolStripMenuItem";
-            this.fileImportToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.fileImportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.fileImportToolStripMenuItem.Text = "Import";
             // 
             // fileImportWinFFToolStripMenuItem
             // 
             this.fileImportWinFFToolStripMenuItem.Name = "fileImportWinFFToolStripMenuItem";
-            this.fileImportWinFFToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.fileImportWinFFToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.fileImportWinFFToolStripMenuItem.Text = "WinFF...";
             this.fileImportWinFFToolStripMenuItem.Click += new System.EventHandler(this.fileImportWinFFToolStripMenuItem_Click);
             // 
             // fileImportVideoraToolStripMenuItem
             // 
             this.fileImportVideoraToolStripMenuItem.Name = "fileImportVideoraToolStripMenuItem";
-            this.fileImportVideoraToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.fileImportVideoraToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.fileImportVideoraToolStripMenuItem.Text = "Videora...";
+            this.fileImportVideoraToolStripMenuItem.Click += new System.EventHandler(this.fileImportVideoraToolStripMenuItem_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(107, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(149, 6);
             // 
             // fileExitToolStripMenuItem
             // 
             this.fileExitToolStripMenuItem.Image = global::convendro.Properties.Resources.cancel;
             this.fileExitToolStripMenuItem.Name = "fileExitToolStripMenuItem";
-            this.fileExitToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.fileExitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.fileExitToolStripMenuItem.Text = "Exit";
             this.fileExitToolStripMenuItem.Click += new System.EventHandler(this.fileExitToolStripMenuItem_Click);
             // 
@@ -833,7 +834,7 @@
             // lblStatusBarMain
             // 
             this.lblStatusBarMain.Name = "lblStatusBarMain";
-            this.lblStatusBarMain.Size = new System.Drawing.Size(413, 17);
+            this.lblStatusBarMain.Size = new System.Drawing.Size(566, 17);
             this.lblStatusBarMain.Spring = true;
             // 
             // frmMain
