@@ -294,9 +294,14 @@ namespace convendro {
             try {
                 if (res == DialogResult.OK) {
                     // Save Presetfile.
+                    if (Config.Settings.MakeBackupsXMLFiles) {
+                        Functions.CreateBackupFile(Config.Settings.LastUsedPresetFile);
+                    }
+
                     Functions.SerializePresetsData(
                         Config.Settings.LastUsedPresetFile,
                         this.presetdata);
+
                 }
             } finally {
                 // Save commandline descriptions...
@@ -466,7 +471,12 @@ namespace convendro {
                         }
 
                         // Save Presetfile.
-                        Functions.SerializePresetsData(Config.Settings.LastUsedPresetFile, this.presetdata);
+                        if (Config.Settings.MakeBackupsXMLFiles) {
+                            Functions.CreateBackupFile(Config.Settings.LastUsedPresetFile);
+                        }
+
+                        Functions.SerializePresetsData(Config.Settings.LastUsedPresetFile, 
+                            this.presetdata);
                     }
                 } finally {
                     // Save commandline descriptions...
@@ -600,6 +610,7 @@ namespace convendro {
         public void LoadMediaFileList(string afilename) {
             if (File.Exists(afilename)) {
                 try {
+
                     this.mediafilelist = Functions.DeserializeMediaFileList(afilename);
 
                     // Add new presets, where necessary...
