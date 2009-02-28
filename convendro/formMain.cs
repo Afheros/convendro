@@ -681,6 +681,9 @@ namespace convendro {
                 Functions.MEDIAFILES_FILTER_XML, Functions.MEDIAFILES_FILTER_ALL);
             try {
                 if (nfile.ShowDialog() == DialogResult.OK) {
+                    // Make a backup of the file...
+                    Functions.CreateBackupFile(Config.Settings.LastUsedPresetFile);
+
                     // rudimentary, but yeah, it works...
                     WinFFFile newff = new WinFFFile();
                     newff.LoadFile(nfile.FileName);
@@ -711,6 +714,7 @@ namespace convendro {
 
             try {
                 if (nfileopener.ShowDialog() == DialogResult.OK) {
+                    Functions.CreateBackupFile(Config.Settings.LastUsedPresetFile);
                     VideoraFile nfile = new VideoraFile();
                     nfile.LoadFile(nfileopener.FileName);
                 }

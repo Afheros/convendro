@@ -118,7 +118,7 @@ namespace convendro.Classes
             bool res = false;
             try {
                 string file = Path.GetFileNameWithoutExtension(afilename);
-                string path = Path.GetFullPath(afilename);
+                string path = Path.GetDirectoryName(afilename);
 
                 int i = 1;
 
