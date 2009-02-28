@@ -59,7 +59,7 @@ namespace convendro.Classes.Persistence {
         }
 
         /// <summary>
-        /// 
+        /// Adds a CommandOption.
         /// </summary>
         /// <param name="anoption"></param>
         /// <returns></returns>
@@ -78,12 +78,22 @@ namespace convendro.Classes.Persistence {
             return res;
         }
 
+        /// <summary>
+        /// Adds a single commandline switch.
+        /// </summary>
+        /// <param name="aname">Name of parameter</param>
+        /// <param name="avalue">Value of parameter</param>
+        /// <returns></returns>
         public int Add(string aname, string avalue) {
             int res = -1;
 
             try {
-
+                res = FindIndex(aname);
+                if (res == -1) {
+                    list.Add(new CommandOption(aname, avalue));
+                }
             } catch {
+                res = -1;
             }
 
             return res;
