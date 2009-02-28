@@ -682,7 +682,9 @@ namespace convendro {
             try {
                 if (nfile.ShowDialog() == DialogResult.OK) {
                     // Make a backup of the file...
-                    Functions.CreateBackupFile(Config.Settings.LastUsedPresetFile);
+                    if (Config.Settings.MakeBackupsXMLFiles) {
+                        Functions.CreateBackupFile(Config.Settings.LastUsedPresetFile);
+                    }
 
                     // rudimentary, but yeah, it works...
                     WinFFFile newff = new WinFFFile();
@@ -714,7 +716,9 @@ namespace convendro {
 
             try {
                 if (nfileopener.ShowDialog() == DialogResult.OK) {
-                    Functions.CreateBackupFile(Config.Settings.LastUsedPresetFile);
+                    if (Config.Settings.MakeBackupsXMLFiles) {
+                        Functions.CreateBackupFile(Config.Settings.LastUsedPresetFile);
+                    }
                     VideoraFile nfile = new VideoraFile();
                     nfile.LoadFile(nfileopener.FileName);
                 }
