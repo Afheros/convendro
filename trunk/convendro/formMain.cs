@@ -105,6 +105,11 @@ namespace convendro {
             updateStatusBar1();
         }
 
+        /// <summary>
+        /// Adds a file to the filelistview...
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
         private long AddFile(string p) {
             FileInfo n = new FileInfo(p);
             long ftotal = 0;
@@ -721,6 +726,15 @@ namespace convendro {
                     }
                     VideoraFile nfile = new VideoraFile();
                     nfile.LoadFile(nfileopener.FileName);
+
+                    if (nfile.Presets.Count > 0) {
+                        int oldcount = this.presetdata.Presets.Count;
+                        this.presetdata.AddPresets(nfile.Presets);
+                        if (this.presetdata.Presets.Count > oldcount) {
+                            MessageBox.Show(String.Format("{0} files were imported...",
+                                (this.presetdata.Presets.Count - oldcount)));                           
+                        }
+                    }
                 }
             } finally {
                 nfileopener.Dispose();
