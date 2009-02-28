@@ -673,17 +673,16 @@ namespace convendro {
                 }
             }
         }
-       
 
         /// <summary>
-        /// 
+        /// Generic import method.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void fileImportWinFFToolStripMenuItem_Click(object sender, EventArgs e) {
+        /// <param name="animporter"></param>
+        private void importPresets(string caption, IImporter animporter) {
             OpenFileDialog nfile = new OpenFileDialog();
             nfile.Filter = String.Format("{0}|{1}",
                 Functions.MEDIAFILES_FILTER_XML, Functions.MEDIAFILES_FILTER_ALL);
+            nfile.Title = caption;
             try {
                 if (nfile.ShowDialog() == DialogResult.OK) {
                     // Make a backup of the file...
@@ -691,13 +690,11 @@ namespace convendro {
                         Functions.CreateBackupFile(Config.Settings.LastUsedPresetFile);
                     }
 
-                    // rudimentary, but yeah, it works...
-                    WinFFFile newff = new WinFFFile();
-                    newff.LoadFile(nfile.FileName);
+                    animporter.LoadFile(nfile.FileName);
 
-                    if (newff.Presets.Count > 0) {
+                    if (animporter.Presets.Count > 0) {
                         int oldcount = this.presetdata.Presets.Count;
-                        this.presetdata.AddPresets(newff.Presets);
+                        this.presetdata.AddPresets(animporter.Presets);
                         if (this.presetdata.Presets.Count > oldcount) {
                             MessageBox.Show(String.Format("{0} files were imported...",
                                 (this.presetdata.Presets.Count - oldcount)));
@@ -707,6 +704,16 @@ namespace convendro {
             } finally {
                 nfile.Dispose();
             }
+
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void fileImportWinFFToolStripMenuItem_Click(object sender, EventArgs e) {
+            this.importPresets("Import WinFF file", new WinFFFile());
         }
 
         /// <summary>
@@ -715,30 +722,7 @@ namespace convendro {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void fileImportVideoraToolStripMenuItem_Click(object sender, EventArgs e) {
-            OpenFileDialog nfileopener = new OpenFileDialog();
-            nfileopener.Filter = String.Format("{0}|{1}",
-                Functions.MEDIAFILES_FILTER_XML, Functions.MEDIAFILES_FILTER_ALL);
-
-            try {
-                if (nfileopener.ShowDialog() == DialogResult.OK) {
-                    if (Config.Settings.MakeBackupsXMLFiles) {
-                        Functions.CreateBackupFile(Config.Settings.LastUsedPresetFile);
-                    }
-                    VideoraFile nfile = new VideoraFile();
-                    nfile.LoadFile(nfileopener.FileName);
-
-                    if (nfile.Presets.Count > 0) {
-                        int oldcount = this.presetdata.Presets.Count;
-                        this.presetdata.AddPresets(nfile.Presets);
-                        if (this.presetdata.Presets.Count > oldcount) {
-                            MessageBox.Show(String.Format("{0} files were imported...",
-                                (this.presetdata.Presets.Count - oldcount)));                           
-                        }
-                    }
-                }
-            } finally {
-                nfileopener.Dispose();
-            }
+            this.importPresets("Import Videora file", new VideoraFile());
         }
     }
 }
