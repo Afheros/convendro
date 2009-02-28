@@ -347,7 +347,7 @@ namespace convendro {
                 ffmpegconverter.MediaFileItems = this.mediafilelist;
                 ffmpegconverter.Executable = Path.Combine(Application.StartupPath, "ffmpeg.exe");
                 ffmpegconverter.Execute();
-            } catch (Exception ex) {
+            } catch {
 
             }
         }
@@ -711,6 +711,8 @@ namespace convendro {
 
             try {
                 if (nfileopener.ShowDialog() == DialogResult.OK) {
+                    VideoraFile nfile = new VideoraFile();
+                    nfile.LoadFile(nfileopener.FileName);
                 }
             } finally {
                 nfileopener.Dispose();

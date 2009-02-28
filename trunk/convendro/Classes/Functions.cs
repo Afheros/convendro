@@ -245,7 +245,7 @@ namespace convendro.Classes
                 TextReader ntext = new StreamReader(filename);
                 try {
                     pres = (PresetsFile)nser.Deserialize(ntext);
-                } catch (Exception ex) {
+                } catch {
                     pres = null;
                 } finally {
                     ntext.Close();
