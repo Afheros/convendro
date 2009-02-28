@@ -458,9 +458,11 @@ namespace convendro {
                 try {
                     if (res == DialogResult.OK) {
                         if (nform.CurrentPreset != null) {
-                            this.listViewFiles.SelectedItems[0].SubItems[SUBCOL_PRESETNAME].Text = nform.CurrentPreset.Name;
-                            nform.CurrentPreset.LastUsed = DateTime.Now;
-                            nform.CurrentPreset.UsedCount += 1;
+                            foreach (ListViewItem i in this.listViewFiles.SelectedItems) {
+                                i.SubItems[SUBCOL_PRESETNAME].Text = nform.CurrentPreset.Name;
+                                nform.CurrentPreset.LastUsed = DateTime.Now;
+                                nform.CurrentPreset.UsedCount += 1;
+                            }
                         }
 
                         // Save Presetfile.
