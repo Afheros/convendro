@@ -90,8 +90,16 @@ namespace convendro.Classes
         private const int SW_SHOW = 5;
         private const uint SEE_MASK_INVOKEIDLIST = 12;
 
+        // Key constants
+        public const int KEY_PRESSED = -32767;
+
+
+
         [DllImport("shell32.dll", CharSet = CharSet.Auto)]
         internal static extern bool ShellExecuteEx(ref SHELLEXECUTEINFO lpExecInfo);
+
+        [DllImport("User32.dll")]
+        public static extern short GetAsyncKeyState(System.Windows.Forms.Keys vKey);
 
         /// <summary>
         /// Shows the property Shell window

@@ -299,13 +299,10 @@ namespace convendro {
             }
         }
 
-
         /// <summary>
-        /// 
+        /// Saves the current (edited) preset
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnAdd_Click(object sender, EventArgs e) {
+        private void saveCurrentPreset() {
             this.currentpreset = this.buildPreset();
 
             if (this.currentpreset != null) {
@@ -325,6 +322,24 @@ namespace convendro {
             } else {
                 this.ClearScreen();
                 this.showPreset(0);
+            }
+
+        }
+
+
+        /// <summary>
+        /// Adds a new preset or clones the current one (SHIFT key).
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnAdd_Click(object sender, EventArgs e) {
+            int state = Convert.ToInt32(Functions.GetAsyncKeyState(
+                Keys.ShiftKey).ToString());
+
+            if (state == Functions.KEY_PRESSED) {
+                this.cloneCurrentPreset();
+            } else {
+                this.saveCurrentPreset();
             }
         }
 
