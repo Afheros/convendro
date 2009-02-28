@@ -61,6 +61,7 @@ namespace convendro.Classes.Import {
     /// 
     /// </summary>
     public class VideoraFile : BaseImporter {
+
         private CommandLineOptions createCommandLineOptions(profile i) {
             CommandLineOptions res = null;
 
@@ -74,7 +75,204 @@ namespace convendro.Classes.Import {
                     res.Add("ac", i.achannels.ToString());
                 }
 
-            } catch (Exception ex) {
+                if (!String.IsNullOrEmpty(i.acli)) {
+                    // not supported yet
+                }
+
+                if (!String.IsNullOrEmpty(i.acodec)) {
+                    res.Add("acodec", i.acodec);
+                }
+
+                if (!String.IsNullOrEmpty(i.amode)) {
+                    // not supported yet.
+                }
+
+                if (i.asamplerate != 0) {
+                    res.Add("ar", i.asamplerate.ToString());
+                }
+
+                if (i.avol != 0) {
+                    res.Add("vol", i.avol.ToString());
+                }
+
+                if (i.duration != 0) {
+                    // not supported;
+                }
+
+                if (!String.IsNullOrEmpty(i.encoder)) {
+                    // not supported;
+                }
+
+                if (i.position != 0) {
+                    // not supported;
+                }
+
+                if (i.vafenabled == true) {
+                    // not supported;
+                }
+
+                if (i.varenabled == true) {
+                    // not supported
+                }
+
+                if (!String.IsNullOrEmpty(i.varmaxres)) {
+                    res.Add("s", i.varmaxres);
+                }
+
+                if (i.varmod16) {
+                    // not supported
+                }
+
+                if (i.vartotal) {
+                    // not supported
+                }
+
+                if (!String.IsNullOrEmpty(i.vaspect)) {
+                    res.Add("aspect", i.vaspect);
+                }
+
+                if (i.vavsaudiodelay != 0) {
+                    res.Add("muxdelay", i.vavsaudiodelay.ToString());
+                }
+
+                if (i.vavsautofps == true) {
+                    /// not supported
+                }
+
+                if (i.vavsconvertfps == true) {
+                    // not supported
+                }
+
+                if (i.vavsenabled == true) {
+                    // not supported
+                }
+
+                if (i.vavsmanualfps != 0) {
+                    // not supported
+                }
+
+                if (i.vavssubtitles == true) {
+                    // not supported
+                }
+
+                if (i.vbitrate != 0) {
+                    res.Add("vb", i.vbitrate.ToString());
+                }
+
+                if (i.vbufsize != 0) {
+                    // not supported
+                }
+
+                if (i.vcabac == true) {
+                    // not supported
+                }
+
+                if (!String.IsNullOrEmpty(i.vcli)) {
+                    // not supported
+                }
+
+                if (!String.IsNullOrEmpty(i.vcli2)) {
+                    // not supported
+                }
+
+                if (!String.IsNullOrEmpty(i.vcli1)) {
+                    // not supported
+                }
+
+                if (!String.IsNullOrEmpty(i.vcodec)) {
+                    res.Add("vcodec", i.vcodec);
+                }
+
+                if (i.vcqp != 0) {
+                    // not supported
+                }
+
+                if (i.vcrf != 0) {
+                    // not supported
+                }
+
+                if (i.vcropbottom != 0) {
+                    res.Add("cropbottom", i.vcropbottom.ToString());
+                }
+
+                if (i.vcroptop != 0) {
+                    res.Add("croptop", i.vcroptop.ToString());
+                }
+
+                if (i.vcropleft != 0) {
+                    res.Add("cropleft", i.vcropleft.ToString());
+                }
+
+                if (i.vcropright != 0) {
+                    res.Add("cropright", i.vcropright.ToString());
+                }
+
+                if (i.vdeinterlace == true) {
+                    res.Add("deinterlace", "");
+                }
+
+                if (i.vframerate != 0) {
+                    res.Add("r", i.vframerate.ToString());
+                }
+
+                if (i.vheight != 0) {
+                    // not supported
+                }
+
+                if (i.vkeyint != 0) {
+                    // not supported
+                }
+
+                if (!String.IsNullOrEmpty(i.vlevel)) {
+                    res.Add("v", i.vlevel);
+                }
+
+                if (i.vmaxrate != 0) {
+                    // not supported
+                }
+
+                if (i.vminrate != 0) {
+                    // not supported
+                }
+
+                if (!String.IsNullOrEmpty(i.vmode)) {
+                    // not supported
+                }
+
+                if (i.vpadbottom != 0) {
+                    res.Add("padbottom", i.vpadbottom.ToString());
+                }
+
+                if (i.vpadtop != 0) {
+                    res.Add("padtop", i.vpadtop.ToString());
+                }
+
+                if (i.vpadleft != 0) {
+                    res.Add("padleft", i.vpadleft.ToString());
+                }
+
+                if (i.vpadright != 0) {
+                    res.Add("padright", i.vpadright.ToString());
+                }
+
+                if (!String.IsNullOrEmpty(i.vprofile)) {
+                    res.Add("vpre", i.vprofile);
+                }
+
+                if (i.vthreads != 0) {
+                    res.Add("threads", i.vthreads.ToString());
+                }
+
+                if (i.vvgauuid == true) {
+                    // not supported
+                }
+
+                if (i.vwidth != 0) {
+                    // not supported...
+                }
+
+
+            } catch {
                 // do something...
             }
 
@@ -87,7 +285,11 @@ namespace convendro.Classes.Import {
                 pr.Name = i.name;
                 pr.Category = Path.GetFileNameWithoutExtension(this.file);
                 pr.Description = i.encoder;
-                pr.Extension = "mp4";                
+                pr.Extension = "mp4";     
+                CommandLineOptions np = this.createCommandLineOptions(i);
+                if (np != null) {
+                    pr.CommandLineOptions = np;
+                }
                 
             }
         }
@@ -98,6 +300,7 @@ namespace convendro.Classes.Import {
                 ProfileList newprofile = VideoraImport.DeserializeVideoraFile(filename);
 
                 if (newprofile != null) {
+                    processVideoraItems(newprofile);
                 }
             }
         }
