@@ -142,5 +142,17 @@ namespace convendro.Properties {
                 this["LastUsedCommandDescriptionFile"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool MakeBackupsXMLFiles {
+            get {
+                return ((bool)(this["MakeBackupsXMLFiles"]));
+            }
+            set {
+                this["MakeBackupsXMLFiles"] = value;
+            }
+        }
     }
 }

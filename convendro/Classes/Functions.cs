@@ -93,6 +93,11 @@ namespace convendro.Classes
         [DllImport("shell32.dll", CharSet = CharSet.Auto)]
         internal static extern bool ShellExecuteEx(ref SHELLEXECUTEINFO lpExecInfo);
 
+        /// <summary>
+        /// Shows the property Shell window
+        /// </summary>
+        /// <param name="filename"></param>
+        /// <returns></returns>
         public static bool ShowPropertiesWindow(string filename) {
 
             SHELLEXECUTEINFO info = new SHELLEXECUTEINFO();
@@ -104,6 +109,40 @@ namespace convendro.Classes
             return ShellExecuteEx(ref info);
         }
 
+        /// <summary>
+        /// Creates a (numbered) backup file.
+        /// </summary>
+        /// <param name="afilename"></param>
+        /// <returns></returns>
+        public static bool CreateBackupFile(string afilename) {
+            bool res = false;
+            try {
+                string file = Path.GetFileNameWithoutExtension(afilename);
+                string path = Path.GetFullPath(afilename);
+
+                int i = 1;
+
+                string newfilename = Path.Combine(path, file + i.ToString() + ".bak");
+                while (File.Exists(newfilename)) {
+                    i++;
+                    newfilename = Path.Combine(path, file + i.ToString() + ".bak");
+                }
+
+                File.Copy(afilename, newfilename);
+                res = true;
+            } catch {
+                res = false;
+            }
+
+            return res;
+        }
+
+
+        /// <summary>
+        /// Opens up a folder in File Explorer
+        /// </summary>
+        /// <param name="foldername"></param>
+        /// <returns></returns>
         public static bool ShowFolderExplorer(string foldername) {
             SHELLEXECUTEINFO info = new SHELLEXECUTEINFO();
             info.cbSize = System.Runtime.InteropServices.Marshal.SizeOf(info);
@@ -114,6 +153,11 @@ namespace convendro.Classes
             return ShellExecuteEx(ref info);
         }
 
+        /// <summary>
+        /// Converts a filesize to its proper string representation
+        /// </summary>
+        /// <param name="size"></param>
+        /// <returns></returns>
         public static string ConvertFileSizeToString(long size) {
             string res = "";
             string formatstr = "{0:0.00} {1}";
