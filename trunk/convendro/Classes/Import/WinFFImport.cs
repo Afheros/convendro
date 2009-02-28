@@ -52,16 +52,12 @@ namespace convendro.Classes.Import {
         }
     }
 
-    public class WinFFFile {
-        List<Preset> items = new List<Preset>();
-      
-
-        public List<Preset> Presets {
-            get { return items; }
-            set { items = value; }
-        }
-
-        public void LoadFile(string afilename) {
+    /// <summary>
+    /// 
+    /// </summary>
+    public class WinFFFile : BaseImporter {
+        public override void LoadFile(string afilename) {
+            base.LoadFile(afilename);
             if (File.Exists(afilename)) {
                 XmlDocument newdoc = new XmlDocument();
                 newdoc.Load(afilename);
@@ -116,7 +112,7 @@ namespace convendro.Classes.Import {
                     } // end if
 
                     if (!String.IsNullOrEmpty(newpreset.Name)) {
-                        this.items.Add(newpreset);
+                        this.list.Add(newpreset);
                     }
                 }
             }

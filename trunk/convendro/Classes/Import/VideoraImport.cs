@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Xml.Serialization;
 using System.IO;
+using convendro.Classes.Persistence;
 
 namespace convendro.Classes.Import {
 
@@ -56,6 +57,51 @@ namespace convendro.Classes.Import {
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    public class VideoraFile : BaseImporter {
+        private CommandLineOptions createCommandLineOptions(profile i) {
+            CommandLineOptions res = null;
+
+            try {
+                res = new CommandLineOptions();
+                if (i.abitrate != 0) {
+                    res.Add("ab", i.abitrate.ToString());
+                }
+
+                if (i.achannels != 0) {
+                    res.Add("ac", i.achannels.ToString());
+                }
+
+            } catch (Exception ex) {
+                // do something...
+            }
+
+            return res;
+        }
+
+        private void processVideoraItems(ProfileList afilelist) {
+            foreach (profile i in afilelist) {
+                Preset pr = new Preset();
+                pr.Name = i.name;
+                pr.Category = Path.GetFileNameWithoutExtension(this.file);
+                pr.Description = i.encoder;
+                pr.Extension = "mp4";                
+                
+            }
+        }
+
+        public override void LoadFile(string filename) {
+            base.LoadFile(filename);
+            if (File.Exists(filename)) {
+                ProfileList newprofile = VideoraImport.DeserializeVideoraFile(filename);
+
+                if (newprofile != null) {
+                }
+            }
+        }
+    }
     /// <summary>
     /// Quick and Dirty....
     /// </summary>
