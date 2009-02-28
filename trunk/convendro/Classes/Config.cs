@@ -75,7 +75,7 @@ namespace convendro.Classes {
         /// 
         /// </summary>
         /// <returns></returns>
-        public static string tryFindConstantFileLocally(string filename) {
+        private static string tryFindConstantFileLocally(string filename) {
             string res = null;
 
             res = Path.Combine(Application.StartupPath, filename);
