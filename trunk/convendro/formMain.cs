@@ -321,11 +321,19 @@ namespace convendro {
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void fileExitToolStripMenuItem_Click(object sender, EventArgs e) {
             this.Close();
         }
 
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void buildMediaFileList() {
             this.mediafilelist.Clear();
             foreach (ListViewItem n in listViewFiles.Items) {
@@ -340,6 +348,11 @@ namespace convendro {
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void mediafilesStartConversionToolStripMenuItem_Click(object sender, EventArgs e) {
             buildMediaFileList();
             threadHasStoppedEvent.Reset();
@@ -366,6 +379,11 @@ namespace convendro {
             stopThread();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void mediafilesClearListToolStripMenuItem_Click(object sender, EventArgs e) {
             listViewFiles.Items.Clear();
             this.SetControlsThreading(true);

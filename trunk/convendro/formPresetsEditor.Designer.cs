@@ -26,7 +26,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPresetsEditor));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnClone = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
@@ -62,7 +61,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btnClone);
             this.groupBox1.Controls.Add(this.btnRemove);
             this.groupBox1.Controls.Add(this.btnAdd);
             this.groupBox1.Controls.Add(this.btnNew);
@@ -77,20 +75,10 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "&Preset:";
             // 
-            // btnClone
-            // 
-            this.btnClone.Image = ((System.Drawing.Image)(resources.GetObject("btnClone.Image")));
-            this.btnClone.Location = new System.Drawing.Point(255, 17);
-            this.btnClone.Name = "btnClone";
-            this.btnClone.Size = new System.Drawing.Size(25, 25);
-            this.btnClone.TabIndex = 2;
-            this.btnClone.UseVisualStyleBackColor = true;
-            this.btnClone.Click += new System.EventHandler(this.btnClone_Click);
-            // 
             // btnRemove
             // 
             this.btnRemove.Image = ((System.Drawing.Image)(resources.GetObject("btnRemove.Image")));
-            this.btnRemove.Location = new System.Drawing.Point(311, 17);
+            this.btnRemove.Location = new System.Drawing.Point(310, 17);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(25, 25);
             this.btnRemove.TabIndex = 4;
@@ -100,7 +88,7 @@
             // btnAdd
             // 
             this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.Location = new System.Drawing.Point(283, 17);
+            this.btnAdd.Location = new System.Drawing.Point(281, 17);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(25, 25);
             this.btnAdd.TabIndex = 3;
@@ -110,7 +98,7 @@
             // btnNew
             // 
             this.btnNew.Image = ((System.Drawing.Image)(resources.GetObject("btnNew.Image")));
-            this.btnNew.Location = new System.Drawing.Point(227, 17);
+            this.btnNew.Location = new System.Drawing.Point(252, 17);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(25, 25);
             this.btnNew.TabIndex = 1;
@@ -152,7 +140,7 @@
             this.cboPresetname.FormattingEnabled = true;
             this.cboPresetname.Location = new System.Drawing.Point(66, 19);
             this.cboPresetname.Name = "cboPresetname";
-            this.cboPresetname.Size = new System.Drawing.Size(155, 21);
+            this.cboPresetname.Size = new System.Drawing.Size(180, 21);
             this.cboPresetname.Sorted = true;
             this.cboPresetname.TabIndex = 0;
             this.cboPresetname.SelectionChangeCommitted += new System.EventHandler(this.cboPresetname_SelectionChangeCommitted);
@@ -376,7 +364,6 @@
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnNew;
-        private System.Windows.Forms.Button btnClone;
         private System.Windows.Forms.DataGridViewComboBoxColumn colName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colValue;
         private System.Windows.Forms.GroupBox groupBox3;

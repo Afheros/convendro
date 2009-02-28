@@ -10,6 +10,10 @@ using convendro.Classes.Persistence;
 using convendro.Classes;
 
 namespace convendro {
+    internal enum ScreenState {
+        New,
+        Editing
+    }
     public partial class frmPresetsEditor : Form {
         private PresetsFile presetfile = null;
         private DescriptionFile descriptionfile = new DescriptionFile();
@@ -24,7 +28,6 @@ namespace convendro {
             InitializeComponent();
             tooltip = new ToolTip();
             tooltip.SetToolTip(btnNew, "New Preset");
-            tooltip.SetToolTip(btnClone, "Clone current Preset");
             tooltip.SetToolTip(btnAdd, "Save Preset");
             tooltip.SetToolTip(btnRemove, "Remove Preset");
             tooltip.SetToolTip(btnFolderExplore, "Select Foldername");
@@ -281,9 +284,7 @@ namespace convendro {
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnClone_Click(object sender, EventArgs e) {
+        private void cloneCurrentPreset(){
             this.currentpreset = this.buildPreset();
 
             if (this.currentpreset != null) {
@@ -493,6 +494,11 @@ namespace convendro {
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cboPresetname_SelectedIndexChanged(object sender, EventArgs e) {
             this.currentpreset = presetfile.FindPreset(this.cboPresetname.Text);
             if (this.currentpreset != null) {
@@ -502,6 +508,12 @@ namespace convendro {
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        private void setModifiedControls() {
+            btnAdd.Enabled = this.modified;
+        }
 
     }
 }
