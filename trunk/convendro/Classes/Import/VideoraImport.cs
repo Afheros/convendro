@@ -290,7 +290,7 @@ namespace convendro.Classes.Import {
                 if (np != null) {
                     pr.CommandLineOptions = np;
                 }
-                
+                this.Presets.Add(pr);
             }
         }
 
