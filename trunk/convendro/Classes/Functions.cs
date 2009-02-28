@@ -145,6 +145,25 @@ namespace convendro.Classes
             return res;
         }
 
+        /// <summary>
+        /// Cleanup backup files.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="mask"></param>
+        /// <returns></returns>
+        public static int CleanupBackupFiles(string path, string mask) {
+            int res = 0;
+            if (Directory.Exists(path)) {
+                string[] files = Directory.GetFiles(path, mask);
+                foreach (string file in files) {
+                    // We may need to do something with dates..
+                    FileInfo fileinfo = new FileInfo(file);                   
+                    fileinfo.Delete();
+                }
+            }
+            return res;
+        }
+
 
         /// <summary>
         /// Opens up a folder in File Explorer
