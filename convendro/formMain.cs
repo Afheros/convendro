@@ -651,22 +651,14 @@ namespace convendro {
 
             if (ffmpegconverter != null) {
                 if (ffmpegconverter.CurrentThread.IsAlive) {
-                    if (MessageBox.Show("Do you really quit application",
-                        Application.ProductName,
-                        MessageBoxButtons.YesNo,
-                        MessageBoxIcon.Question) == DialogResult.Yes) {
-                        // Stop the thread...
+                    if (stopProcessYesNoDialog()) {
                         stopThread();
-                        Config.SaveSettings(this);
-
-                        Config.Settings.Save();
                     } else {
+                        // The user wants to continue processing...
                         e.Cancel = true;
                     }
                 }
             }
-
-
         }
 
         /// <summary>
@@ -730,8 +722,33 @@ namespace convendro {
             }
         }
 
+
         /// <summary>
-        /// Generic import method.
+        /// Cancel current process dialog. If true, the process is cancelled:
+        /// otherwise the user wants to continue stuff...
+        /// </summary>
+        /// <returns></returns>
+        private bool stopProcessYesNoDialog() {            
+            bool res = false;
+            if (ffmpegconverter != null) {
+                if (ffmpegconverter.CurrentThread.IsAlive) {
+                    if (MessageBox.Show("A conversion process is still running: Do you really want to quit the application?",
+                        Application.ProductName,
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question) == DialogResult.Yes) {
+                        res = true;
+                    } else {
+                        res = false;
+                    }
+                }
+            }
+
+            return res;
+        }
+
+
+        /// <summary>
+        /// Generic import method that shows the OpenFileDialog.
         /// </summary>
         /// <param name="animporter"></param>
         private void importPresets(string caption, IImporter animporter) {
@@ -779,6 +796,12 @@ namespace convendro {
         /// <param name="e"></param>
         private void fileImportVideoraToolStripMenuItem_Click(object sender, EventArgs e) {
             this.importPresets("Import Videora file", new VideoraFile());
+        }
+
+        private void frmMain_FormClosed(object sender, FormClosedEventArgs e) {
+            // Do some post processing like saving data...
+            Config.SaveSettings(this);
+            Config.Settings.Save();
         }
     }
 }
