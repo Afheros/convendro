@@ -28,3 +28,4 @@ No official release has been planned at this stage. If you really need to get th
 ===Supported===
   # FFmpeg version SVN-r16596-Sherpya
   # Basic WinFF presets import.
+  # Basic Videora presets import
