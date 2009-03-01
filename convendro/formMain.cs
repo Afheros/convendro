@@ -647,11 +647,26 @@ namespace convendro {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e) {
-            stopThread();
-            Config.SaveSettings(this);
-
-            Config.Settings.Save();
             e.Cancel = false;
+
+            if (ffmpegconverter != null) {
+                if (ffmpegconverter.CurrentThread.IsAlive) {
+                    if (MessageBox.Show("Do you really quit application",
+                        Application.ProductName,
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question) == DialogResult.Yes) {
+                        // Stop the thread...
+                        stopThread();
+                        Config.SaveSettings(this);
+
+                        Config.Settings.Save();
+                    } else {
+                        e.Cancel = true;
+                    }
+                }
+            }
+
+
         }
 
         /// <summary>
@@ -667,6 +682,11 @@ namespace convendro {
         }
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ctxListView_Opening(object sender, CancelEventArgs e) {
             testRunToolStripMenuItem.Enabled =
                 (listViewFiles.Items.Count > 0) &&
@@ -674,6 +694,11 @@ namespace convendro {
                 (listViewFiles.SelectedItems[0].SubItems[SUBCOL_PRESETNAME].Text != "");
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void mediafilesTestRunToolStripMenuItem_Click(object sender, EventArgs e) {
             MediaFileList newlist = new MediaFileList();
 
