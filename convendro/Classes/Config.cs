@@ -59,7 +59,7 @@ namespace convendro.Classes {
         public static void SaveSettings(frmMain aform) {
             Settings.mainFormLocation = aform.Location;
             Settings.mainFormSize = aform.Size;
-            Settings.mainFormState = aform.WindowState;
+            Settings.mainFormState = aform.WindowState ;
 
             string s = "";
             foreach (ColumnHeader h in aform.FileListView.Columns) {
