@@ -12,6 +12,7 @@ using convendro.Classes.Threading;
 using convendro.Classes.Persistence;
 using convendro.Classes.Comparers;
 using convendro.Classes.Import;
+using convendro.Classes.Dialogs.Confirm;
 
 namespace convendro {
     public partial class frmMain : Form {
@@ -168,7 +169,7 @@ namespace convendro {
                 }
             }
 
-            //
+            
             if (presetdata.Presets.Count > 0) {
                 mediafilesPresetsToolStripMenuItem.DropDownItems.Insert(0, new ToolStripSeparator());
                 presetToolStripMenuItem.DropDownItems.Insert(0, new ToolStripSeparator());
@@ -651,12 +652,19 @@ namespace convendro {
 
             if (ffmpegconverter != null) {
                 if (ffmpegconverter.CurrentThread.IsAlive) {
-                    if (stopProcessYesNoDialog()) {
+
+                    bool b = Config.Settings.AlwaysConfirmStopConversion;
+
+                    DialogResult cfrm = ConfirmOKCancelDialogBox.ShowDialog(Application.ProductName, "A conversion process is still active. Do you really want to quit?", MessageBoxIcon.Question,
+                        ref b);
+                                        
+                    if (cfrm == DialogResult.OK) {
                         stopThread();
                     } else {
-                        // The user wants to continue processing...
                         e.Cancel = true;
                     }
+
+                    Config.Settings.AlwaysConfirmStopConversion = b;
                 }
             }
         }

@@ -80,9 +80,10 @@
             // 
             this.chkDontAskAgain.AutoSize = true;
             this.tableLayoutPanel1.SetColumnSpan(this.chkDontAskAgain, 3);
+            this.chkDontAskAgain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chkDontAskAgain.Location = new System.Drawing.Point(91, 47);
             this.chkDontAskAgain.Name = "chkDontAskAgain";
-            this.chkDontAskAgain.Size = new System.Drawing.Size(102, 17);
+            this.chkDontAskAgain.Size = new System.Drawing.Size(207, 23);
             this.chkDontAskAgain.TabIndex = 3;
             this.chkDontAskAgain.Text = "Don\'t Ask Again";
             this.chkDontAskAgain.UseVisualStyleBackColor = true;
@@ -121,7 +122,7 @@
             this.lblMessage.Padding = new System.Windows.Forms.Padding(5);
             this.lblMessage.Size = new System.Drawing.Size(283, 89);
             this.lblMessage.TabIndex = 1;
-            this.lblMessage.Text = "label1";
+            this.lblMessage.Text = "Whatever text can be going here...";
             this.lblMessage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // uctrlConfirmDlg

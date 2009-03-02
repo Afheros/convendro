@@ -45,15 +45,14 @@ namespace convendro.Classes.Dialogs.Confirm {
         /// <param name="aform"></param>
         private static void prepareForm(Form aform, uctrlConfirmDlg confirmPanel, 
             string caption, string labeltext, 
-            MessageBoxIcon anicon, bool showcheckbox) {                      
+            MessageBoxIcon anicon, bool showcheckbox) {
             confirmPanel.Labeltext.Text = labeltext;
-            confirmPanel.ConfirmCheckBox.Visible = showcheckbox;
             aform.Text = caption;
             aform.Controls.Add(confirmPanel);
             aform.ClientSize = confirmPanel.ClientSize;
             aform.AcceptButton = confirmPanel.OKButton;
             aform.CancelButton = confirmPanel.CancelButton;
-            aform.FormBorderStyle = FormBorderStyle.FixedDialog;            
+            aform.FormBorderStyle = FormBorderStyle.FixedDialog;
             aform.MaximizeBox = false;
             aform.MinimizeBox = false;
             aform.ShowIcon = false;
@@ -61,6 +60,12 @@ namespace convendro.Classes.Dialogs.Confirm {
             aform.ShowInTaskbar = false;
             aform.WindowState = FormWindowState.Normal;
             aform.StartPosition = FormStartPosition.CenterParent;
+
+            if (!showcheckbox) {
+                confirmPanel.ConfirmCheckBox.Visible = false;
+                aform.Height -= (confirmPanel.ConfirmCheckBox.Height - 
+                    (aform.Height - aform.ClientSize.Height));
+            }
 
             confirmPanel.Picture.Image = iconEnumerationToBitmap(anicon);
         }
@@ -77,7 +82,7 @@ namespace convendro.Classes.Dialogs.Confirm {
             uctrlConfirmDlg confirmPanel = new uctrlConfirmDlg();
             try {
                 prepareForm(embeddedform, confirmPanel, acaption, text, 
-                    MessageBoxIcon.Information, true);
+                    MessageBoxIcon.Information, false);
                 res = embeddedform.ShowDialog();
 
             } finally {
@@ -99,7 +104,7 @@ namespace convendro.Classes.Dialogs.Confirm {
             Form embeddedform = new Form();
             uctrlConfirmDlg confirmPanel = new uctrlConfirmDlg();
             try {
-                prepareForm(embeddedform, confirmPanel, acaption, text, icon, true);
+                prepareForm(embeddedform, confirmPanel, acaption, text, icon, false);
                 res = embeddedform.ShowDialog();
 
             } finally {
@@ -118,11 +123,13 @@ namespace convendro.Classes.Dialogs.Confirm {
         /// <param name="checkboxset"></param>
         /// <returns></returns>
         public static DialogResult ShowDialog(string acaption, string text, MessageBoxIcon icon,
-            ref bool checkboxset) {
-            DialogResult res = DialogResult.Cancel;
+            ref bool checkboxset            
+            ) {
 
-            // Don't bother showing it if it's set...
-            if (!checkboxset) {             
+            DialogResult res = DialogResult.OK;
+
+            // Don't bother showing it if it's NOT set...
+            if (checkboxset) {             
                 Form embeddedform = new Form();
                 uctrlConfirmDlg confirmPanel = new uctrlConfirmDlg();
                 try {
@@ -130,7 +137,7 @@ namespace convendro.Classes.Dialogs.Confirm {
                     res = embeddedform.ShowDialog();
 
                 } finally {
-                    checkboxset = confirmPanel.ConfirmCheckBox.Checked;
+                    checkboxset = !confirmPanel.ConfirmCheckBox.Checked;
                     embeddedform.Dispose();
                 }
             }
