@@ -113,6 +113,7 @@
             this.lblFilesBarMain = new System.Windows.Forms.ToolStripStatusLabel();
             this.progressBarMain = new System.Windows.Forms.ToolStripProgressBar();
             this.lblStatusBarMain = new System.Windows.Forms.ToolStripStatusLabel();
+            this.imlSmallImages = new System.Windows.Forms.ImageList(this.components);
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -200,6 +201,7 @@
             this.listViewFiles.Location = new System.Drawing.Point(0, 0);
             this.listViewFiles.Name = "listViewFiles";
             this.listViewFiles.Size = new System.Drawing.Size(690, 323);
+            this.listViewFiles.SmallImageList = this.imlSmallImages;
             this.listViewFiles.TabIndex = 0;
             this.listViewFiles.UseCompatibleStateImageBehavior = false;
             this.listViewFiles.View = System.Windows.Forms.View.Details;
@@ -837,6 +839,18 @@
             this.lblStatusBarMain.Size = new System.Drawing.Size(566, 17);
             this.lblStatusBarMain.Spring = true;
             // 
+            // imlSmallImages
+            // 
+            this.imlSmallImages.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imlSmallImages.ImageStream")));
+            this.imlSmallImages.TransparentColor = System.Drawing.Color.Transparent;
+            this.imlSmallImages.Images.SetKeyName(0, "bullet_white.png");
+            this.imlSmallImages.Images.SetKeyName(1, "bullet_yellow.png");
+            this.imlSmallImages.Images.SetKeyName(2, "bullet_red.png");
+            this.imlSmallImages.Images.SetKeyName(3, "bullet_green.png");
+            this.imlSmallImages.Images.SetKeyName(4, "bullet_black.png");
+            this.imlSmallImages.Images.SetKeyName(5, "bullet_blue.png");
+            this.imlSmallImages.Images.SetKeyName(6, "bullet_orange.png");
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -962,6 +976,7 @@
         private System.Windows.Forms.ToolStripMenuItem exploreFolderToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton mediafilesTestRunToolStripButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
+        private System.Windows.Forms.ImageList imlSmallImages;
     }
 }
 

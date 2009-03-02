@@ -116,6 +116,7 @@ namespace convendro {
             long ftotal = 0;
             if (n != null) {
                 ListViewItem nitem = new ListViewItem();
+                nitem.ImageIndex = 0;
                 nitem.Text = n.Name;
                 nitem.SubItems.Add(Path.GetDirectoryName(n.FullName));
                 ftotal = n.Length;
@@ -743,7 +744,7 @@ namespace convendro {
                     if (MessageBox.Show("A conversion process is still running: Do you really want to quit the application?",
                         Application.ProductName,
                         MessageBoxButtons.YesNo,
-                        MessageBoxIcon.Question) == DialogResult.Yes) {
+                        MessageBoxIcon.Exclamation) == DialogResult.Yes) {
                         res = true;
                     } else {
                         res = false;

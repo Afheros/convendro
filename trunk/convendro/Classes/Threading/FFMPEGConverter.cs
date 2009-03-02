@@ -95,6 +95,7 @@ namespace convendro.Classes.Threading {
         /// </summary>
         private void execthread() {
             foreach (MediaFile m in this.mediafilelist.Items) {
+                this.synchPrepareListViewItem(m);
                 if (stopThread.WaitOne(0, true)) {
                     threadHasStopped.Set();
                     this.synchUpdateControls();
@@ -171,6 +172,22 @@ namespace convendro.Classes.Threading {
         /// 
         /// </summary>
         /// <param name="amediafile"></param>
+        private void synchPrepareListViewItem(MediaFile amediafile) {
+            if (nform.FileListView.InvokeRequired) {
+                nform.FileListView.Invoke(new MediaFileInvoker(synchPrepareListViewItem), 
+                    new object[] { amediafile });
+            } else {
+                if (amediafile != null) {
+                    // for now assume working process state
+                    nform.FileListView.Items[amediafile.Order].ImageIndex = (int)ProcessState.Working;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="amediafile"></param>
         /// <param name="atimespan"></param>
         private void synchListViewItem(MediaFile amediafile) {
             if (nform.FileListView.InvokeRequired) {
@@ -187,7 +204,8 @@ namespace convendro.Classes.Threading {
                     nform.FileListView.Items[amediafile.Order].SubItems[frmMain.SUBCOL_FINISHED].Text =
                         String.Format(Functions.TIMEFORMAT_HHMMSS,
                         amediafile.DateFinished.Hour, amediafile.DateFinished.Minute, amediafile.DateFinished.Second);
-                        
+
+                    nform.FileListView.Items[amediafile.Order].ImageIndex = (int)ProcessState.Success;  
                 }
             }
         }
