@@ -18,6 +18,9 @@ namespace convendro.Classes
     public delegate void FloatInvoker(float floating);
     public delegate void MediaFileInvoker(MediaFile amediafile);
 
+    /// <summary>
+    /// 
+    /// </summary>
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
     public struct SHELLEXECUTEINFO {
         public int cbSize;
@@ -48,6 +51,9 @@ namespace convendro.Classes
         public IntPtr hProcess;
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     public enum SizeStrings {
         Unknown = 0,
         B = 1,
@@ -56,6 +62,17 @@ namespace convendro.Classes
         Gb = 4,
         Tb = 5,
         Uh = 6
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public enum ProcessState {
+        Unknown = 0,
+        Working = 1,
+        Error = 2,
+        Success = 3,
+        Warning = 4
     }
   
     public static class Functions {
