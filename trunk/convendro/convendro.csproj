@@ -62,13 +62,13 @@
     <Compile Include="Classes\Config.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Classes\Dialogs\ConfirmOKCancelDlg\ConfirmOKCancelDlg.cs" />
     <Compile Include="Classes\Dialogs\ConfirmOKCancelDlg\uctrlConfirmDlg.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Classes\Dialogs\ConfirmOKCancelDlg\uctrlConfirmDlg.designer.cs">
       <DependentUpon>uctrlConfirmDlg.cs</DependentUpon>
     </Compile>
+    <Compile Include="Classes\Dialogs\Dialogs.cs" />
     <Compile Include="Classes\Import\AbstractImport.cs" />
     <Compile Include="Classes\Import\VideoraImport.cs" />
     <Compile Include="Classes\Import\WinFFImport.cs" />
