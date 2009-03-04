@@ -12,7 +12,7 @@ using convendro.Classes.Threading;
 using convendro.Classes.Persistence;
 using convendro.Classes.Comparers;
 using convendro.Classes.Import;
-using convendro.Classes.Dialogs.Confirm;
+using convendro.Classes.Dialogs;
 
 namespace convendro {
     public partial class frmMain : Form {

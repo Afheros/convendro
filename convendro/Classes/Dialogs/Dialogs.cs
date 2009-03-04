@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.ComponentModel;
 using System.Drawing;
+using System.Data;
+using System.Text;
 using System.Windows.Forms;
-using System.Reflection;
+using convendro.Classes.Dialogs.Confirm;
 
-namespace convendro.Classes.Dialogs.Confirm {
+
+namespace convendro.Classes.Dialogs {
     /// <summary>
-    /// Creates a shitty looking ConfirmOKCancelDialogBox, but hey,
-    /// whateverszzz.LOLSZUMFGSD.
+    /// 
     /// </summary>
     public static class ConfirmOKCancelDialogBox {
-
         /// <summary>
         /// 
         /// </summary>
@@ -20,18 +21,18 @@ namespace convendro.Classes.Dialogs.Confirm {
         private static Bitmap iconEnumerationToBitmap(MessageBoxIcon anicon) {
             Bitmap res = convendro.Properties.Resources.convendro;
             switch (anicon) {
-                case MessageBoxIcon.Asterisk :
+                case MessageBoxIcon.Asterisk:
                     res = SystemIcons.Asterisk.ToBitmap();
                     break;
-                case MessageBoxIcon.Error :
+                case MessageBoxIcon.Error:
                     res = SystemIcons.Error.ToBitmap();
                     break;
-                case MessageBoxIcon.Exclamation :
+                case MessageBoxIcon.Exclamation:
                     res = SystemIcons.Exclamation.ToBitmap();
                     break;
-                case MessageBoxIcon.None :                    
+                case MessageBoxIcon.None:
                     break;
-                case MessageBoxIcon.Question :
+                case MessageBoxIcon.Question:
                     res = SystemIcons.Question.ToBitmap();
                     break;
             }
@@ -43,8 +44,8 @@ namespace convendro.Classes.Dialogs.Confirm {
         /// 
         /// </summary>
         /// <param name="aform"></param>
-        private static void prepareForm(Form aform, uctrlConfirmDlg confirmPanel, 
-            string caption, string labeltext, 
+        private static void prepareForm(Form aform, uctrlConfirmDlg confirmPanel,
+            string caption, string labeltext,
             MessageBoxIcon anicon, bool showcheckbox) {
             confirmPanel.Labeltext.Text = labeltext;
             aform.Text = caption;
@@ -63,7 +64,7 @@ namespace convendro.Classes.Dialogs.Confirm {
 
             if (!showcheckbox) {
                 confirmPanel.ConfirmCheckBox.Visible = false;
-                aform.Height -= (confirmPanel.ConfirmCheckBox.Height - 
+                aform.Height -= (confirmPanel.ConfirmCheckBox.Height -
                     (aform.Height - aform.ClientSize.Height));
             }
 
@@ -81,7 +82,7 @@ namespace convendro.Classes.Dialogs.Confirm {
             Form embeddedform = new Form();
             uctrlConfirmDlg confirmPanel = new uctrlConfirmDlg();
             try {
-                prepareForm(embeddedform, confirmPanel, acaption, text, 
+                prepareForm(embeddedform, confirmPanel, acaption, text,
                     MessageBoxIcon.Information, false);
                 res = embeddedform.ShowDialog();
 
@@ -123,13 +124,13 @@ namespace convendro.Classes.Dialogs.Confirm {
         /// <param name="checkboxset"></param>
         /// <returns></returns>
         public static DialogResult ShowDialog(string acaption, string text, MessageBoxIcon icon,
-            ref bool checkboxset            
+            ref bool checkboxset
             ) {
 
             DialogResult res = DialogResult.OK;
 
             // Don't bother showing it if it's NOT set...
-            if (checkboxset) {             
+            if (checkboxset) {
                 Form embeddedform = new Form();
                 uctrlConfirmDlg confirmPanel = new uctrlConfirmDlg();
                 try {
