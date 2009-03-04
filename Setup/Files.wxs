@@ -1,0 +1,23 @@
+﻿<?xml version="1.0"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Fragment>
+		<DirectoryRef Id="TARGETDIR">
+			<Directory Id="ProgramFilesFolder" Name="PFiles">
+				<Directory Id="INSTALLDIR" Name="Your Application">
+					<Component Id="MyConvendro" Guid="E2E1B1C4-21FC-45B5-8C8A-DB6D5D98467D" DiskId="1">
+						<File Id="LicenseFile" Name="license.rtf" Source="license.rtf"/>
+						<File Id="Convendro" Name="convendro.exe" Source="..\convendro\bin\Debug\convendro.exe"/>				
+						<File Id="CommandsFile" Name="cmddesc.xml" Source="..\convendro\bin\Debug\cmddesc.xml"/>
+						<File Id="PresetsFile" Name="presetsdata.xml" Source="..\convendro\bin\Debug\presetsdata.xml"/>	
+						<File Id="ReadmeFile" Name="ReadMe.txt" Source="..\convendro\bin\Debug\ReadMe.txt"/>
+						<File Id="FormatsFile" Name="Formats.txt" Source="..\convendro\bin\Debug\formats.txt"/>
+						<File Id="FFCommandsFile" Name="commands.txt" Source="..\convendro\bin\Debug\commands.txt"/>	
+					</Component>
+					<Component Id="MyFFMPEG" Guid="*">
+						<File Id="FFMPEG" Name="ffmpeg.exe" Source="..\convendro\bin\Debug\ffmpeg.exe"/>	
+					</Component>
+				</Directory>
+			</Directory>
+		</DirectoryRef>
+	</Fragment>
+</Wix>
