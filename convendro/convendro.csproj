@@ -59,6 +59,9 @@
     <Compile Include="Classes\Comparers\PresetsLastUsedSorter.cs" />
     <Compile Include="Classes\Comparers\PresetsNameSorter.cs" />
     <Compile Include="Classes\Comparers\PresetsUsedCountSorter.cs" />
+    <Compile Include="Classes\Components\AHBevel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Classes\Config.cs">
       <SubType>Code</SubType>
     </Compile>
