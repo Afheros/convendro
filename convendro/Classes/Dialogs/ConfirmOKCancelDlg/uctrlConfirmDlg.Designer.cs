@@ -28,8 +28,8 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.chkDontAskAgain = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.imgIcon = new System.Windows.Forms.PictureBox();
             this.lblMessage = new System.Windows.Forms.Label();
+            this.imgIcon = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgIcon)).BeginInit();
@@ -53,6 +53,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(369, 73);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -100,19 +101,9 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 89F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(369, 89);
             this.tableLayoutPanel2.TabIndex = 1;
-            // 
-            // imgIcon
-            // 
-            this.imgIcon.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.imgIcon.Location = new System.Drawing.Point(3, 3);
-            this.imgIcon.Name = "imgIcon";
-            this.imgIcon.Size = new System.Drawing.Size(74, 83);
-            this.imgIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.imgIcon.TabIndex = 0;
-            this.imgIcon.TabStop = false;
             // 
             // lblMessage
             // 
@@ -124,6 +115,16 @@
             this.lblMessage.TabIndex = 1;
             this.lblMessage.Text = "Whatever text can be going here...";
             this.lblMessage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // imgIcon
+            // 
+            this.imgIcon.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.imgIcon.Location = new System.Drawing.Point(3, 3);
+            this.imgIcon.Name = "imgIcon";
+            this.imgIcon.Size = new System.Drawing.Size(74, 83);
+            this.imgIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.imgIcon.TabIndex = 0;
+            this.imgIcon.TabStop = false;
             // 
             // uctrlConfirmDlg
             // 

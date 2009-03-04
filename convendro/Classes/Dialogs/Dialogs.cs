@@ -9,6 +9,11 @@ using convendro.Classes.Dialogs.Confirm;
 
 
 namespace convendro.Classes.Dialogs {
+
+    public enum DialogType {
+        OKCancel = 0,
+        YesNo = 1
+    }
     /// <summary>
     /// 
     /// </summary>
@@ -146,5 +151,36 @@ namespace convendro.Classes.Dialogs {
             return res;
         }
 
+        public static DialogResult ShowDialog(string acaption, string text, MessageBoxIcon icon,
+            ref bool checkboxset, DialogType dlgtype
+            ) {
+
+            DialogResult res = DialogResult.OK;
+
+            // Don't bother showing it if it's NOT set...
+            if (checkboxset) {
+                Form embeddedform = new Form();
+                uctrlConfirmDlg confirmPanel = new uctrlConfirmDlg();
+                try {
+                    prepareForm(embeddedform, confirmPanel, acaption, text, icon, true);
+
+                    if (dlgtype == DialogType.YesNo) {
+                        confirmPanel.OKButton.Text = "Yes";
+                        confirmPanel.OKButton.DialogResult = DialogResult.Yes;
+                        confirmPanel.CancelButton.Text = "No";
+                        confirmPanel.CancelButton.DialogResult = DialogResult.No;                        
+                    }
+                    res = embeddedform.ShowDialog();
+
+                } finally {
+                    checkboxset = !confirmPanel.ConfirmCheckBox.Checked;
+                    embeddedform.Dispose();
+                }
+            }
+
+            return res;
+        }
+
     }
+
 }
