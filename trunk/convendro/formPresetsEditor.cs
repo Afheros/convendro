@@ -460,7 +460,7 @@ namespace convendro {
                                 }
 
                                 datagridArguments.Rows[irow].Cells[0].Value = t[0];
-                                datagridArguments.Rows[irow].Cells[1].Value = t[1];
+                                datagridArguments.Rows[irow].Cells[1].Value = t[1];                                
                             }
                         }
                     }

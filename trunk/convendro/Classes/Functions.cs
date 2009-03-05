@@ -183,6 +183,41 @@ namespace convendro.Classes
 
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="commandstring"></param>
+        /// <param name="paramsplit"></param>
+        /// <param name="paramvaluesplit"></param>
+        /// <returns></returns>
+        public static ArrayList BreakUpCommandline(string commandstring, string[] paramsplit, 
+            string paramvaluesplit) {
+            
+            ArrayList res = null;
+
+            if (!String.IsNullOrEmpty(commandstring)) {
+                string[] arguments = commandstring.Split(paramsplit, StringSplitOptions.RemoveEmptyEntries);
+
+                if (arguments.Length > 0) {
+
+                    foreach (string s in arguments) {
+                        string cld = s.Trim();
+
+                        if (cld.Contains(paramvaluesplit)) {
+                            string[] param = cld.Split(new string[] {paramvaluesplit}, StringSplitOptions.RemoveEmptyEntries);
+
+                            if (param.Length > 0) {
+                                string[] sarr = new string[]{param[0], (param.Length > 1 ? param[1] : "" )};
+                                res.Add(sarr);
+                            }
+                        }
+                    }
+                }
+            }
+
+            return res;
+        }
+
+        /// <summary>
         /// Opens up a folder in File Explorer
         /// </summary>
         /// <param name="foldername"></param>
