@@ -28,10 +28,10 @@
 		
 		<Feature Id="Complete"
 		         Title="Convendro"
-		         Description="An FFMPEG frontend"
+		         Description="An FFMPEG frontend"		       
 		         Level="1"
 		         ConfigurableDirectory="INSTALLDIR">
-		        <ComponentRef Id="MyConvendro"/>
+		        <ComponentRef Id="MyConvendro" />
 				<ComponentRef Id="MyLicenseFile" />
 				<ComponentRef Id="MyCommandsFile" />		
 				<ComponentRef Id="MyPresetsFile" />		
@@ -66,6 +66,6 @@
 			are not installed by default and there is a meaningful 
 			difference between typical and complete installs
 		-->
-		<UIRef Id="WixUI_Mondo"/>
+		<UIRef Id="WixUI_Mondo"/>	
 	</Product>
 </Wix>
