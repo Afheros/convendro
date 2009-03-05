@@ -7,7 +7,7 @@
 		UpgradeCode="2CDAE322-C150-448F-BCEB-9054543FCD66"
 		Manufacturer="Arthur Hoogervorst">
 		<Package Description="#Description"
-			Comments="Comments"
+			Comments="Convendro: An ffmpeg front-end for .Net"
 			InstallerVersion="200"
 			Compressed="yes"/>
 		<!--
@@ -15,6 +15,13 @@
  			Specifies a single cab file to be embedded in the installer's .msi. 
 		-->
 		<Media Id="1" Cabinet="contents.cab" EmbedCab="yes" CompressionLevel="high"/>
+	   	  <Property Id="ARPCOMMENTS" Value="A WinFF Front-End" />
+		  <Property Id="ARPCONTACT" Value="Arthur Hoogervorst" />
+		  <Property Id="ARPPRODUCTICON" Value="MainIcon.ico" />
+		  <Property Id="ARPHELPLINK" Value="http://convendro.googlecode.com" />
+		  <Property Id="ARPSIZE" Value="13000" />
+		
+		  <Icon Id="MainIcon.ico" SourceFile="..\convendro\bin\Debug\convendro.exe" />		
 		
 		<!-- Installation directory and files are defined in Files.wxs -->
 		<Directory Id="TARGETDIR" Name="SourceDir"/>
@@ -24,7 +31,11 @@
 		         Description="An FFMPEG frontend"
 		         Level="1"
 		         ConfigurableDirectory="INSTALLDIR">
-		         <ComponentRef Id="MyConvendro"/>
+		        <ComponentRef Id="MyConvendro"/>
+				<ComponentRef Id="MyLicenseFile" />
+				<ComponentRef Id="MyCommandsFile" />		
+				<ComponentRef Id="MyPresetsFile" />		
+				<ComponentRef Id="MyReadmeFile" />
 		</Feature>
 
 		<Feature Id="FFMPEG"
@@ -33,6 +44,8 @@
 		         Level="1"
 		         ConfigurableDirectory="INSTALLDIR">
 		         <ComponentRef Id="MyFFMPEG"/>
+			 	 <ComponentRef Id="MyFormatsFile"/>		
+				 <ComponentRef Id="MyFFCommandsFile"/>		
 		</Feature>		
 		
 		<!-- 
