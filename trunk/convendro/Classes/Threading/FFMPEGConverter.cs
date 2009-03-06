@@ -144,6 +144,11 @@ namespace convendro.Classes.Threading {
 
                     } while (!d.EndOfStream);
                     nprocess.WaitForExit();
+                } catch {
+                    // Signal the process to kill itself:
+                    // Should probably start setting the state of the process,
+                    // so user knows something went wrong.
+                    nprocess.Kill();
                 } finally {
                     nprocess.Close();
                 }
