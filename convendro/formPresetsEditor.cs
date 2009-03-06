@@ -530,5 +530,19 @@ namespace convendro {
             btnAdd.Enabled = this.modified;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void copyCommandLineToolStripMenuItem_Click(object sender, EventArgs e) {
+            if (this.currentpreset != null) {
+                string s = this.currentpreset.CommandLineOptions.BuildCommandLine();
+                if (!String.IsNullOrEmpty(s)) {
+                    Clipboard.SetText(s);
+                }
+            }
+        }
+
     }
 }

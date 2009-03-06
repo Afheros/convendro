@@ -51,6 +51,7 @@
             this.txtDirectory = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.copyCommandLineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datagridArguments)).BeginInit();
@@ -190,9 +191,10 @@
             // 
             this.ctxArguments.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.deleteRowToolStripMenuItem,
+            this.copyCommandLineToolStripMenuItem,
             this.pasteCommandlineToolStripMenuItem});
             this.ctxArguments.Name = "ctxArguments";
-            this.ctxArguments.Size = new System.Drawing.Size(182, 48);
+            this.ctxArguments.Size = new System.Drawing.Size(182, 92);
             // 
             // deleteRowToolStripMenuItem
             // 
@@ -317,6 +319,13 @@
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.Width = 150;
             // 
+            // copyCommandLineToolStripMenuItem
+            // 
+            this.copyCommandLineToolStripMenuItem.Name = "copyCommandLineToolStripMenuItem";
+            this.copyCommandLineToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.copyCommandLineToolStripMenuItem.Text = "Copy Commandline";
+            this.copyCommandLineToolStripMenuItem.Click += new System.EventHandler(this.copyCommandLineToolStripMenuItem_Click);
+            // 
             // frmPresetsEditor
             // 
             this.AcceptButton = this.btnOK;
@@ -378,5 +387,6 @@
         private System.Windows.Forms.ComboBox cboFileExtension;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ToolStripMenuItem deleteRowToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem copyCommandLineToolStripMenuItem;
     }
 }
