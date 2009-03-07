@@ -9,14 +9,14 @@ using convendro.Properties;
 namespace convendro.Classes {
     public static class Config {
         /// <summary>
-        /// 
+        /// Static accessor to the xx.xxx.xxx.xxx.xxx crap.
         /// </summary>
         public static Settings Settings {
             get { return convendro.Properties.Settings.Default; }
         }
 
         /// <summary>
-        /// 
+        /// Initializes and loads settings from the AppConfig file.
         /// </summary>
         /// <param name="aform"></param>
         public static void LoadSettings(frmMain aform) {
@@ -53,7 +53,7 @@ namespace convendro.Classes {
         }
 
         /// <summary>
-        /// 
+        /// Saves the Form settings to the INI file
         /// </summary>
         /// <param name="aform"></param>
         public static void SaveSettings(frmMain aform) {
@@ -72,7 +72,7 @@ namespace convendro.Classes {
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         private static string tryFindConstantFileLocally(string filename) {

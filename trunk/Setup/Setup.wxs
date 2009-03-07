@@ -15,7 +15,7 @@
  			Specifies a single cab file to be embedded in the installer's .msi. 
 		-->
 		<Media Id="1" Cabinet="contents.cab" EmbedCab="yes" CompressionLevel="high"/>
-	   	  <Property Id="ARPCOMMENTS" Value="A WinFF Front-End" />
+	   	  <Property Id="ARPCOMMENTS" Value="An FFMPEG front-End" />
 		  <Property Id="ARPCONTACT" Value="Arthur Hoogervorst" />
 		  <Property Id="ARPPRODUCTICON" Value="MainIcon.ico" />
 		  <Property Id="ARPHELPLINK" Value="http://convendro.googlecode.com" />
