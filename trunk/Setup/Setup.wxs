@@ -3,7 +3,7 @@
 	<Product Id="*"
 		Name="Convendro"
 		Language="1033"
-		Version="1.0.0.0"
+		Version="0.5.0.0"
 		UpgradeCode="2CDAE322-C150-448F-BCEB-9054543FCD66"
 		Manufacturer="Arthur Hoogervorst">
 		<Package Description="#Description"
