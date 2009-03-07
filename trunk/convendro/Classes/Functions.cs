@@ -97,6 +97,7 @@ namespace convendro.Classes
             MEDIAFILES_FILTER_MPG2 + "|" + MEDIAFILES_FILTER_MEDIA + "|"
             + MEDIAFILES_FILTER_ALL;
         public const string MEDIAFILES_FILTER_XML = "xml files (*.xml)|*.xml";
+        public const string MEDIAFILES_FILTER_XSET = "mediaset files (*.xset)|*.xset";
         public const string TIMEFORMAT_HHMMSS = "{0:D2}:{1:D2}:{2:D2}";
         public const string WINFF_NODE_LABEL = "label";
         public const string WINFF_NODE_PARAMS = "params";

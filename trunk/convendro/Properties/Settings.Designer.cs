@@ -166,5 +166,17 @@ namespace convendro.Properties {
                 this["AlwaysConfirmStopConversion"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LastUsedMediaSetFolder {
+            get {
+                return ((string)(this["LastUsedMediaSetFolder"]));
+            }
+            set {
+                this["LastUsedMediaSetFolder"] = value;
+            }
+        }
     }
 }

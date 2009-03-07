@@ -632,6 +632,37 @@ namespace convendro {
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public void RefreshFileListView() {
+            this.listViewFiles.Items.Clear();
+            // sort items?
+            foreach (MediaFile f in this.mediafilelist.Items) {
+                ListViewItem fitem = new ListViewItem();
+                FileInfo finfo = new FileInfo(f.Filename);
+                
+                fitem.Text = Path.GetFileName(f.Filename);
+                fitem.SubItems.Add(f.Preset.OutputFolder);
+                fitem.SubItems.Add(Functions.ConvertFileSizeToString(finfo.Length));
+                fitem.SubItems.Add(f.Preset.Name);
+
+                fitem.SubItems.Add(String.Format(Functions.TIMEFORMAT_HHMMSS,
+                    f.Duration.TotalHours, f.Duration.TotalMinutes,
+                    f.Duration.TotalSeconds));
+
+                fitem.SubItems.Add((f.DateStarted != DateTime.MinValue ?
+                    String.Format(Functions.TIMEFORMAT_HHMMSS, f.DateStarted.Hour,
+                    f.DateStarted.Minute, f.DateStarted.Second) : ""));
+
+                fitem.SubItems.Add((f.DateFinished != DateTime.MinValue ?
+                    String.Format(Functions.TIMEFORMAT_HHMMSS, f.DateFinished.Hour,
+                    f.DateFinished.Minute, f.DateFinished.Second) : ""));
+
+                listViewFiles.Items.Add(fitem);
+            }
+        }
+
+        /// <summary>
         /// Saves the current mediafile to file.
         /// </summary>
         /// <param name="afilename"></param>
@@ -807,10 +838,59 @@ namespace convendro {
             this.importPresets("Import Videora file", new VideoraFile());
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmMain_FormClosed(object sender, FormClosedEventArgs e) {
             // Do some post processing like saving data...
             Config.SaveSettings(this);
             Config.Settings.Save();
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void fileLoadMediaSetToolStripMenuItem_Click(object sender, EventArgs e) {
+            OpenFileDialog opener = new OpenFileDialog();
+            try {
+                opener.Title = "Open existing media set file";
+                opener.Filter = Functions.MEDIAFILES_FILTER_XSET + "|" +
+                    Functions.MEDIAFILES_FILTER_XML + "|" +
+                    Functions.MEDIAFILES_FILTER_ALL;
+                opener.InitialDirectory = Config.Settings.LastUsedMediaSetFolder;
+
+                if (opener.ShowDialog() == DialogResult.OK) {
+                    LoadMediaFileList(opener.FileName);
+                    RefreshFileListView();
+                    Config.Settings.LastUsedMediaSetFolder = Path.GetDirectoryName(opener.FileName);
+                }
+            } finally {
+                opener.Dispose();
+            }
+        }
+
+        private void fileSaveMediaSetToolStripMenuItem_Click(object sender, EventArgs e) {
+            SaveFileDialog savefile = new SaveFileDialog();
+            try {
+                savefile.Title = "Save media set file";
+                savefile.Filter = Functions.MEDIAFILES_FILTER_XSET + "|" +
+                    Functions.MEDIAFILES_FILTER_XML + "|" +
+                    Functions.MEDIAFILES_FILTER_ALL;
+                savefile.InitialDirectory = Config.Settings.LastUsedMediaSetFolder;
+
+                if (savefile.ShowDialog() == DialogResult.OK) {
+                    SaveMediaFileList(savefile.FileName);
+                    Config.Settings.LastUsedMediaSetFolder = Path.GetDirectoryName(savefile.FileName);
+                }
+            } finally {
+                savefile.Dispose();
+            }
         }
     }
 }
