@@ -95,7 +95,7 @@ namespace convendro.Classes.Threading {
                 }
 
                 // ignore anything that has a date in it...
-                if (m.DateFinished == DateTime.MinValue) {
+                if (m.DateFinished != DateTime.MinValue) {
                     continue;
                 }
 

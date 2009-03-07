@@ -668,6 +668,8 @@ namespace convendro {
 
                 listViewFiles.Items.Add(fitem);
             }
+
+            SetControlsThreading(true);
         }
 
         /// <summary>
