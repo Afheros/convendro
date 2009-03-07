@@ -35,7 +35,7 @@ namespace convendro.Classes {
                 Functions.FILENAME_COMMANDLINEDESCRIPTION,
                 Settings.LastUsedCommandDescriptionFile);
 
-            GenerateDefaultOutputFolder();
+            GenerateDefaultFolders();
 
             aform.Location = Settings.mainFormLocation;
             aform.Size = Settings.mainFormSize;
@@ -114,9 +114,16 @@ namespace convendro.Classes {
         /// <summary>
         /// 
         /// </summary>
-        public static void GenerateDefaultOutputFolder() {
+        public static void GenerateDefaultFolders() {
+            
             if (String.IsNullOrEmpty(Settings.LastUsedOutputFolder)) {
                 Settings.LastUsedOutputFolder = 
+                    Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            }
+
+
+            if (String.IsNullOrEmpty(Settings.LastUsedMediaSetFolder)) {
+                Settings.LastUsedMediaSetFolder =
                     Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             }
         }

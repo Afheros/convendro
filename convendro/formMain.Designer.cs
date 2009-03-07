@@ -54,6 +54,7 @@
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.exploreFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.propertiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.imlSmallImages = new System.Windows.Forms.ImageList(this.components);
             this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fileImportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -113,7 +114,9 @@
             this.lblFilesBarMain = new System.Windows.Forms.ToolStripStatusLabel();
             this.progressBarMain = new System.Windows.Forms.ToolStripProgressBar();
             this.lblStatusBarMain = new System.Windows.Forms.ToolStripStatusLabel();
-            this.imlSmallImages = new System.Windows.Forms.ImageList(this.components);
+            this.fileSaveMediaSetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fileLoadMediaSetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -327,6 +330,18 @@
             this.propertiesToolStripMenuItem.Text = "Properties";
             this.propertiesToolStripMenuItem.Click += new System.EventHandler(this.mediafilesPropertiesToolStripMenuItem_Click);
             // 
+            // imlSmallImages
+            // 
+            this.imlSmallImages.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imlSmallImages.ImageStream")));
+            this.imlSmallImages.TransparentColor = System.Drawing.Color.Transparent;
+            this.imlSmallImages.Images.SetKeyName(0, "bullet_white.png");
+            this.imlSmallImages.Images.SetKeyName(1, "bullet_yellow.png");
+            this.imlSmallImages.Images.SetKeyName(2, "bullet_red.png");
+            this.imlSmallImages.Images.SetKeyName(3, "bullet_green.png");
+            this.imlSmallImages.Images.SetKeyName(4, "bullet_black.png");
+            this.imlSmallImages.Images.SetKeyName(5, "bullet_blue.png");
+            this.imlSmallImages.Images.SetKeyName(6, "bullet_orange.png");
+            // 
             // mainMenuStrip
             // 
             this.mainMenuStrip.Dock = System.Windows.Forms.DockStyle.None;
@@ -345,6 +360,9 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileLoadMediaSetToolStripMenuItem,
+            this.fileSaveMediaSetToolStripMenuItem,
+            this.toolStripMenuItem5,
             this.fileImportToolStripMenuItem,
             this.toolStripSeparator5,
             this.fileExitToolStripMenuItem});
@@ -358,33 +376,33 @@
             this.fileImportWinFFToolStripMenuItem,
             this.fileImportVideoraToolStripMenuItem});
             this.fileImportToolStripMenuItem.Name = "fileImportToolStripMenuItem";
-            this.fileImportToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.fileImportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.fileImportToolStripMenuItem.Text = "Import";
             // 
             // fileImportWinFFToolStripMenuItem
             // 
             this.fileImportWinFFToolStripMenuItem.Name = "fileImportWinFFToolStripMenuItem";
-            this.fileImportWinFFToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.fileImportWinFFToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.fileImportWinFFToolStripMenuItem.Text = "WinFF...";
             this.fileImportWinFFToolStripMenuItem.Click += new System.EventHandler(this.fileImportWinFFToolStripMenuItem_Click);
             // 
             // fileImportVideoraToolStripMenuItem
             // 
             this.fileImportVideoraToolStripMenuItem.Name = "fileImportVideoraToolStripMenuItem";
-            this.fileImportVideoraToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.fileImportVideoraToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.fileImportVideoraToolStripMenuItem.Text = "Videora...";
             this.fileImportVideoraToolStripMenuItem.Click += new System.EventHandler(this.fileImportVideoraToolStripMenuItem_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(107, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(149, 6);
             // 
             // fileExitToolStripMenuItem
             // 
             this.fileExitToolStripMenuItem.Image = global::convendro.Properties.Resources.cancel;
             this.fileExitToolStripMenuItem.Name = "fileExitToolStripMenuItem";
-            this.fileExitToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.fileExitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.fileExitToolStripMenuItem.Text = "Exit";
             this.fileExitToolStripMenuItem.Click += new System.EventHandler(this.fileExitToolStripMenuItem_Click);
             // 
@@ -839,17 +857,24 @@
             this.lblStatusBarMain.Size = new System.Drawing.Size(566, 17);
             this.lblStatusBarMain.Spring = true;
             // 
-            // imlSmallImages
+            // fileSaveMediaSetToolStripMenuItem
             // 
-            this.imlSmallImages.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imlSmallImages.ImageStream")));
-            this.imlSmallImages.TransparentColor = System.Drawing.Color.Transparent;
-            this.imlSmallImages.Images.SetKeyName(0, "bullet_white.png");
-            this.imlSmallImages.Images.SetKeyName(1, "bullet_yellow.png");
-            this.imlSmallImages.Images.SetKeyName(2, "bullet_red.png");
-            this.imlSmallImages.Images.SetKeyName(3, "bullet_green.png");
-            this.imlSmallImages.Images.SetKeyName(4, "bullet_black.png");
-            this.imlSmallImages.Images.SetKeyName(5, "bullet_blue.png");
-            this.imlSmallImages.Images.SetKeyName(6, "bullet_orange.png");
+            this.fileSaveMediaSetToolStripMenuItem.Name = "fileSaveMediaSetToolStripMenuItem";
+            this.fileSaveMediaSetToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.fileSaveMediaSetToolStripMenuItem.Text = "Save...";
+            this.fileSaveMediaSetToolStripMenuItem.Click += new System.EventHandler(this.fileSaveMediaSetToolStripMenuItem_Click);
+            // 
+            // fileLoadMediaSetToolStripMenuItem
+            // 
+            this.fileLoadMediaSetToolStripMenuItem.Name = "fileLoadMediaSetToolStripMenuItem";
+            this.fileLoadMediaSetToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.fileLoadMediaSetToolStripMenuItem.Text = "Open...";
+            this.fileLoadMediaSetToolStripMenuItem.Click += new System.EventHandler(this.fileLoadMediaSetToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(149, 6);
             // 
             // frmMain
             // 
@@ -977,6 +1002,9 @@
         private System.Windows.Forms.ToolStripButton mediafilesTestRunToolStripButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
         private System.Windows.Forms.ImageList imlSmallImages;
+        private System.Windows.Forms.ToolStripMenuItem fileLoadMediaSetToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fileSaveMediaSetToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem5;
     }
 }
 
