@@ -169,7 +169,7 @@
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.listViewFiles);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(690, 323);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(690, 369);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer1.Name = "toolStripContainer1";
@@ -203,7 +203,7 @@
             this.listViewFiles.HideSelection = false;
             this.listViewFiles.Location = new System.Drawing.Point(0, 0);
             this.listViewFiles.Name = "listViewFiles";
-            this.listViewFiles.Size = new System.Drawing.Size(690, 323);
+            this.listViewFiles.Size = new System.Drawing.Size(690, 369);
             this.listViewFiles.SmallImageList = this.imlSmallImages;
             this.listViewFiles.TabIndex = 0;
             this.listViewFiles.UseCompatibleStateImageBehavior = false;
@@ -622,6 +622,7 @@
             // 
             // toolsSettingsToolStripMenuItem
             // 
+            this.toolsSettingsToolStripMenuItem.Enabled = false;
             this.toolsSettingsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("toolsSettingsToolStripMenuItem.Image")));
             this.toolsSettingsToolStripMenuItem.Name = "toolsSettingsToolStripMenuItem";
             this.toolsSettingsToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
@@ -684,9 +685,9 @@
             this.toolStripSeparator10,
             this.mediafilesPropertiesToolStripButton});
             this.conversionToolStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
-            this.conversionToolStrip.Location = new System.Drawing.Point(3, 47);
+            this.conversionToolStrip.Location = new System.Drawing.Point(27, 24);
             this.conversionToolStrip.Name = "conversionToolStrip";
-            this.conversionToolStrip.Size = new System.Drawing.Size(298, 23);
+            this.conversionToolStrip.Size = new System.Drawing.Size(267, 23);
             this.conversionToolStrip.TabIndex = 2;
             // 
             // mediafilesPlaytoolStripButton
@@ -825,7 +826,7 @@
             this.toolsToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolsEditPresetsToolStripButton});
             this.toolsToolStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
-            this.toolsToolStrip.Location = new System.Drawing.Point(126, 70);
+            this.toolsToolStrip.Location = new System.Drawing.Point(540, 24);
             this.toolsToolStrip.Name = "toolsToolStrip";
             this.toolsToolStrip.Size = new System.Drawing.Size(24, 23);
             this.toolsToolStrip.TabIndex = 3;
