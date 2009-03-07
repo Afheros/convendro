@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="Classes\Comparers\BaseMediaFileSorter.cs" />
     <Compile Include="Classes\Comparers\BasePresetSorter.cs" />
+    <Compile Include="Classes\Comparers\MediaFileOrderSorter.cs" />
     <Compile Include="Classes\Comparers\PresetsLastUsedSorter.cs" />
     <Compile Include="Classes\Comparers\PresetsNameSorter.cs" />
     <Compile Include="Classes\Comparers\PresetsUsedCountSorter.cs" />
