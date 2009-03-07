@@ -95,12 +95,19 @@ namespace convendro.Classes.Threading {
         /// </summary>
         private void execthread() {
             foreach (MediaFile m in this.mediafilelist.Items) {
-                this.synchPrepareListViewItem(m);
+
                 if (stopThread.WaitOne(0, true)) {
                     threadHasStopped.Set();
                     this.synchUpdateControls();
                     return;
                 }
+
+                // ignore anything that has a date in it...
+                if (m.DateFinished == DateTime.MinValue) {
+                    continue;
+                }
+
+                this.synchPrepareListViewItem(m);
 
                 Process nprocess = new Process();
                 try {
