@@ -642,13 +642,15 @@ namespace convendro {
                 FileInfo finfo = new FileInfo(f.Filename);
                 
                 fitem.Text = Path.GetFileName(f.Filename);
-                fitem.SubItems.Add(f.Preset.OutputFolder);
+                fitem.SubItems.Add(Path.GetDirectoryName(f.Filename));
                 fitem.SubItems.Add(Functions.ConvertFileSizeToString(finfo.Length));
                 fitem.SubItems.Add(f.Preset.Name);
 
-                fitem.SubItems.Add(String.Format(Functions.TIMEFORMAT_HHMMSS,
-                    f.Duration.TotalHours, f.Duration.TotalMinutes,
-                    f.Duration.TotalSeconds));
+                fitem.SubItems.Add( (f.DateStarted != DateTime.MinValue ?                    
+                    String.Format(Functions.TIMEFORMAT_HHMMSS,
+                    f.Duration.Hours, f.Duration.Minutes,
+                    f.Duration.Seconds) : 
+                    ""));
 
                 fitem.SubItems.Add((f.DateStarted != DateTime.MinValue ?
                     String.Format(Functions.TIMEFORMAT_HHMMSS, f.DateStarted.Hour,
@@ -657,6 +659,12 @@ namespace convendro {
                 fitem.SubItems.Add((f.DateFinished != DateTime.MinValue ?
                     String.Format(Functions.TIMEFORMAT_HHMMSS, f.DateFinished.Hour,
                     f.DateFinished.Minute, f.DateFinished.Second) : ""));
+
+                fitem.ImageIndex = (int)ProcessState.Unknown;
+
+                if (f.Duration.Ticks > 0) {
+                    fitem.ImageIndex = (int)ProcessState.Success;
+                }
 
                 listViewFiles.Items.Add(fitem);
             }
@@ -885,6 +893,12 @@ namespace convendro {
                 savefile.InitialDirectory = Config.Settings.LastUsedMediaSetFolder;
 
                 if (savefile.ShowDialog() == DialogResult.OK) {
+                    if (this.mediafilelist.Count == 0) {
+                        if (this.listViewFiles.Items.Count > 0) {
+                            // build the file list...
+                            buildMediaFileList();
+                        }
+                    }
                     SaveMediaFileList(savefile.FileName);
                     Config.Settings.LastUsedMediaSetFolder = Path.GetDirectoryName(savefile.FileName);
                 }
