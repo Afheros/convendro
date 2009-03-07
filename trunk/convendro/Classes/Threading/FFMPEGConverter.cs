@@ -68,14 +68,6 @@ namespace convendro.Classes.Threading {
         /// <summary>
         /// 
         /// </summary>
-        public bool ShowWindow {
-            get { return this.showdoswindow; }
-            set { this.showdoswindow = value; }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
         public frmMain Form {
             get { return nform; }
             set { nform = value; }
