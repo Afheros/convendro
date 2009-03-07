@@ -57,6 +57,9 @@
             this.imlSmallImages = new System.Windows.Forms.ImageList(this.components);
             this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fileLoadMediaSetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fileSaveMediaSetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
             this.fileImportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fileImportWinFFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fileImportVideoraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -114,9 +117,6 @@
             this.lblFilesBarMain = new System.Windows.Forms.ToolStripStatusLabel();
             this.progressBarMain = new System.Windows.Forms.ToolStripProgressBar();
             this.lblStatusBarMain = new System.Windows.Forms.ToolStripStatusLabel();
-            this.fileSaveMediaSetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fileLoadMediaSetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -370,39 +370,58 @@
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
+            // fileLoadMediaSetToolStripMenuItem
+            // 
+            this.fileLoadMediaSetToolStripMenuItem.Name = "fileLoadMediaSetToolStripMenuItem";
+            this.fileLoadMediaSetToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.fileLoadMediaSetToolStripMenuItem.Text = "Open...";
+            this.fileLoadMediaSetToolStripMenuItem.Click += new System.EventHandler(this.fileLoadMediaSetToolStripMenuItem_Click);
+            // 
+            // fileSaveMediaSetToolStripMenuItem
+            // 
+            this.fileSaveMediaSetToolStripMenuItem.Name = "fileSaveMediaSetToolStripMenuItem";
+            this.fileSaveMediaSetToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.fileSaveMediaSetToolStripMenuItem.Text = "Save...";
+            this.fileSaveMediaSetToolStripMenuItem.Click += new System.EventHandler(this.fileSaveMediaSetToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(109, 6);
+            // 
             // fileImportToolStripMenuItem
             // 
             this.fileImportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileImportWinFFToolStripMenuItem,
             this.fileImportVideoraToolStripMenuItem});
             this.fileImportToolStripMenuItem.Name = "fileImportToolStripMenuItem";
-            this.fileImportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.fileImportToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.fileImportToolStripMenuItem.Text = "Import";
             // 
             // fileImportWinFFToolStripMenuItem
             // 
             this.fileImportWinFFToolStripMenuItem.Name = "fileImportWinFFToolStripMenuItem";
-            this.fileImportWinFFToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.fileImportWinFFToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.fileImportWinFFToolStripMenuItem.Text = "WinFF...";
             this.fileImportWinFFToolStripMenuItem.Click += new System.EventHandler(this.fileImportWinFFToolStripMenuItem_Click);
             // 
             // fileImportVideoraToolStripMenuItem
             // 
             this.fileImportVideoraToolStripMenuItem.Name = "fileImportVideoraToolStripMenuItem";
-            this.fileImportVideoraToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.fileImportVideoraToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.fileImportVideoraToolStripMenuItem.Text = "Videora...";
             this.fileImportVideoraToolStripMenuItem.Click += new System.EventHandler(this.fileImportVideoraToolStripMenuItem_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(109, 6);
             // 
             // fileExitToolStripMenuItem
             // 
             this.fileExitToolStripMenuItem.Image = global::convendro.Properties.Resources.cancel;
             this.fileExitToolStripMenuItem.Name = "fileExitToolStripMenuItem";
-            this.fileExitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.fileExitToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.fileExitToolStripMenuItem.Text = "Exit";
             this.fileExitToolStripMenuItem.Click += new System.EventHandler(this.fileExitToolStripMenuItem_Click);
             // 
@@ -667,7 +686,7 @@
             this.conversionToolStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
             this.conversionToolStrip.Location = new System.Drawing.Point(3, 47);
             this.conversionToolStrip.Name = "conversionToolStrip";
-            this.conversionToolStrip.Size = new System.Drawing.Size(267, 23);
+            this.conversionToolStrip.Size = new System.Drawing.Size(298, 23);
             this.conversionToolStrip.TabIndex = 2;
             // 
             // mediafilesPlaytoolStripButton
@@ -703,6 +722,7 @@
             this.mediafilesTestRunToolStripButton.Name = "mediafilesTestRunToolStripButton";
             this.mediafilesTestRunToolStripButton.Size = new System.Drawing.Size(23, 20);
             this.mediafilesTestRunToolStripButton.Text = "Test run";
+            this.mediafilesTestRunToolStripButton.Click += new System.EventHandler(this.mediafilesTestRunToolStripMenuItem_Click);
             // 
             // toolStripSeparator6
             // 
@@ -856,25 +876,6 @@
             this.lblStatusBarMain.Name = "lblStatusBarMain";
             this.lblStatusBarMain.Size = new System.Drawing.Size(566, 17);
             this.lblStatusBarMain.Spring = true;
-            // 
-            // fileSaveMediaSetToolStripMenuItem
-            // 
-            this.fileSaveMediaSetToolStripMenuItem.Name = "fileSaveMediaSetToolStripMenuItem";
-            this.fileSaveMediaSetToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.fileSaveMediaSetToolStripMenuItem.Text = "Save...";
-            this.fileSaveMediaSetToolStripMenuItem.Click += new System.EventHandler(this.fileSaveMediaSetToolStripMenuItem_Click);
-            // 
-            // fileLoadMediaSetToolStripMenuItem
-            // 
-            this.fileLoadMediaSetToolStripMenuItem.Name = "fileLoadMediaSetToolStripMenuItem";
-            this.fileLoadMediaSetToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.fileLoadMediaSetToolStripMenuItem.Text = "Open...";
-            this.fileLoadMediaSetToolStripMenuItem.Click += new System.EventHandler(this.fileLoadMediaSetToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem5
-            // 
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(149, 6);
             // 
             // frmMain
             // 
