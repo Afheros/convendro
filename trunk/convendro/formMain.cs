@@ -253,7 +253,7 @@ namespace convendro {
             // Prepare PresetFile
             if (String.IsNullOrEmpty(Config.Settings.LastUsedPresetFile)) {
                 this.presetdata = null;
-                Config.Settings.LastUsedPresetFile = Path.Combine(Application.StartupPath,
+                Config.Settings.LastUsedPresetFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
                     Functions.FILENAME_PRESETSDATA);
             } else {
                 this.presetdata = Functions.DeserializePresetsData(
@@ -263,7 +263,7 @@ namespace convendro {
             //
             if (String.IsNullOrEmpty(Config.Settings.LastUsedCommandDescriptionFile)) {
                 Config.Settings.LastUsedCommandDescriptionFile =
-                    Path.Combine(Application.StartupPath, Functions.FILENAME_COMMANDLINEDESCRIPTION);
+                    Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), Functions.FILENAME_COMMANDLINEDESCRIPTION);
             }
 
             // Create the file automatically...

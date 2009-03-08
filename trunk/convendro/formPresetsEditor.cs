@@ -254,7 +254,7 @@ namespace convendro {
                         pre.OutputFolder = this.txtDirectory.Text;
                     }
                 } else {
-                    pre.OutputFolder = Application.StartupPath + "\\";
+                    pre.OutputFolder = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\";
                 }
                 
                 CommandLineOptions preoptions = new CommandLineOptions();

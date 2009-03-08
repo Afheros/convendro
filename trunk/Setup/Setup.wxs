@@ -4,11 +4,13 @@
 		Name="Convendro"
 		Language="1033"
 		Version="0.5.0.0"
-		UpgradeCode="2CDAE322-C150-448F-BCEB-9054543FCD66"
+		UpgradeCode="2CDAE322-C150-448F-BCEB-9054543FCD66"	     
 		Manufacturer="Arthur Hoogervorst">
 		<Package Description="#Description"
-			Comments="Convendro: An ffmpeg front-end for .Net"
+			Comments="This MSI package installs Convendro"
 			InstallerVersion="200"
+		    Manufacturer="Arthur Hoogervorst" 
+		    Keywords="Convendro, ffmpeg, .Net Framework 2.0, GPL"
 			Compressed="yes"/>
 		<!--
 			Source media for the installation. 
@@ -26,16 +28,15 @@
 		<!-- Installation directory and files are defined in Files.wxs -->
 		<Directory Id="TARGETDIR" Name="SourceDir"/>
 		
+		
 		<Feature Id="Complete"
 		         Title="Convendro"
 		         Description="An FFMPEG frontend"		       
 		         Level="1"
 		         ConfigurableDirectory="INSTALLDIR">
 		        <ComponentRef Id="MyConvendro" />
+				<ComponentRef Id="MyDataFiles" />
 				<ComponentRef Id="MyLicenseFile" />
-				<ComponentRef Id="MyCommandsFile" />		
-				<ComponentRef Id="MyPresetsFile" />		
-				<ComponentRef Id="MyReadmeFile" />
 		</Feature>
 
 		<Feature Id="FFMPEG"
