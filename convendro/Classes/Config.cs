@@ -3,16 +3,29 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using System.Windows.Forms;
+using System.Reflection;
 using convendro;
 using convendro.Properties;
 
 namespace convendro.Classes {
     public static class Config {
+        public static string LocalAppPath = "";
+
         /// <summary>
         /// Static accessor to the xx.xxx.xxx.xxx.xxx crap.
         /// </summary>
         public static Settings Settings {
             get { return convendro.Properties.Settings.Default; }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private static string generateLocalAppFolder() {
+            DirectoryInfo ning = Directory.CreateDirectory(Functions.GetCurrentLocalAppPath());
+
+            return ning.FullName;
         }
 
         /// <summary>
@@ -22,7 +35,14 @@ namespace convendro.Classes {
         public static void LoadSettings(frmMain aform) {
             // Generate FFMPEG filepath
             // GenerateFFMpegFilename();
-            // GeneratePresetFilename();
+            // GeneratePresetFilename();            
+
+            if (Directory.Exists(Functions.GetCurrentLocalAppPath())) {
+                LocalAppPath = Functions.GetCurrentLocalAppPath();
+            } else {
+                LocalAppPath = generateLocalAppFolder();
+            }
+
             Settings.FFMPEGFilePath = generateSettingsFileName(
                 Functions.FILENAME_EXECUTABLE_FFMPEG, 
                 Settings.FFMPEGFilePath);
@@ -78,7 +98,7 @@ namespace convendro.Classes {
         private static string tryFindConstantFileLocally(string filename) {
             string res = null;
 
-            res = Path.Combine(Application.StartupPath, filename);
+            res = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), filename);
 
             if (!File.Exists(res)) {
                 res = null;

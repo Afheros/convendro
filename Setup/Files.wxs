@@ -14,7 +14,7 @@
 					    <RemoveFolder Id="DeleteShortCutFolder"
 					         Directory="ProgramMenuDir" On="uninstall" />					
 					</Component>
-					
+
 					<Component Id ="MyLicenseFile" Guid="71BA3E3D-B59B-41C8-A58D-1A4BB6D175D6" DiskId="1">
 						<File Id="LicenseFile" Name="license.rtf" Source="license.rtf">
 	                    	<Shortcut Id='startmenuLicenseFile' Directory='ProgramMenuDir' Name='LicenseFile' 
@@ -23,24 +23,16 @@
 						</File>
 					</Component>
 					
-				    <Component Id="MyCommandsFile" Guid="C0EAC254-0185-458B-98DD-DABFD8ABB2F1" DiskId="1">
-						<File Id="CommandsFile" Name="cmddesc.xml" Source="..\convendro\bin\Debug\cmddesc.xml"/>					
-					</Component>
-					<Component Id="MyPresetsFile" Guid="A21B3B5F-4993-4862-9572-6B15C7414111" DiskId="1">
-						<File Id="PresetsFile" Name="presetsdata.xml" Source="..\convendro\bin\Debug\presetsdata.xml"/>						
-					</Component>
-					<Component Id="MyReadmeFile" Guid="59BB5270-B6A8-4BC5-9F9E-4FCCEDDD1F85" DiskId="1">
-						<File Id="ReadmeFile" Name="ReadMe.txt" Source="..\convendro\bin\Debug\ReadMe.txt"/>					
-					</Component>
+					<!-- FFMPEG files -->
 					<Component Id="MyFormatsFile" Guid="466DC831-73CF-4DFB-93CC-E58BB058119A" DiskId="1">
-						<File Id="FormatsFile" Name="Formats.txt" Source="..\convendro\bin\Debug\formats.txt"/>					
+							<File Id="FormatsFile" Name="Formats.txt" Source="..\convendro\bin\Debug\formats.txt"/>					
 					</Component>
 					<Component Id="MyFFCommandsFile" Guid="EAFCC346-2057-40F3-BC8E-75580A7877F3" DiskId="1">
-						<File Id="FFCommandsFile" Name="commands.txt" Source="..\convendro\bin\Debug\commands.txt"/>	
+							<File Id="FFCommandsFile" Name="commands.txt" Source="..\convendro\bin\Debug\commands.txt"/>	
 					</Component>											
 					<Component Id="MyFFMPEG" Guid="F180E41A-6ABC-4498-8C29-848C68847586">
-						<File Id="FFMPEG" Name="ffmpeg.exe" Source="..\convendro\bin\Debug\ffmpeg.exe"/>	
-					</Component>
+							<File Id="FFMPEG" Name="ffmpeg.exe" Source="..\convendro\bin\Debug\ffmpeg.exe"/>	
+					</Component>					
 				</Directory>
 				
 	            <Directory Id='ProgramMenuFolder' Name='PMenu'>
@@ -48,6 +40,19 @@
 	            </Directory>	            
 	            <Directory Id='DesktopFolder' Name='Desktop' />			
 			</Directory>
+			<Directory Id="LocalAppDataFolder" Name="LocalFiles">
+				<Directory Id="LOCALAPPFOLDER" Name="Convendro">
+				    <Component Id="MyDataFiles" Guid="C0EAC254-0185-458B-98DD-DABFD8ABB2F1" DiskId="1">
+						<File Id="CommandsFile" Name="cmddesc.xml" Source="..\convendro\bin\Debug\cmddesc.xml"/>
+						<File Id="PresetsFile" Name="presetsdata.xml" Source="..\convendro\bin\Debug\presetsdata.xml"/>			
+						<File Id="ReadmeFile" Name="ReadMe.txt" Source="..\convendro\bin\Debug\ReadMe.txt"/>
+				    	<CreateFolder />
+						<RegistryValue Root='HKCU' Key='SOFTWARE\ArthurHoogervorst\Convendro'  
+							    Type='string' Value='INSTALLED' KeyPath='yes' />  														    	
+					   	<RemoveFolder Id="LocalAppDataFolder" On="uninstall" />				
+					</Component>
+				</Directory>				
+			</Directory>		
 		</DirectoryRef>
 	</Fragment>
 </Wix>

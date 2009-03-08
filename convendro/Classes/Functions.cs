@@ -10,6 +10,7 @@ using System.Collections;
 using System.Collections.Specialized;
 using System.Runtime.InteropServices;
 using convendro.Classes.Persistence;
+using System.Reflection;
 
 namespace convendro.Classes
 {
@@ -329,7 +330,17 @@ namespace convendro.Classes
         /// <param name="filename"></param>
         /// <returns></returns>
         public static string CombineCurrentFilePath(string filename) {
-            return string.Format("{0}\\{1}", Application.StartupPath, filename);
+            return string.Format("{0}\\{1}", Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), filename);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public static string GetCurrentLocalAppPath() {
+            return Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                Assembly.GetExecutingAssembly().GetName().Name);
         }
 
         /// <summary>
