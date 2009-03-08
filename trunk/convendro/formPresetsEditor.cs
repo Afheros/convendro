@@ -31,9 +31,7 @@ namespace convendro {
             tooltip.SetToolTip(btnAdd, "Save Preset");
             tooltip.SetToolTip(btnRemove, "Remove Preset");
             tooltip.SetToolTip(btnFolderExplore, "Select Foldername");
-            LoadDescriptionSettings(
-                Functions.CombineCurrentFilePath(
-                    Functions.FILENAME_COMMANDLINEDESCRIPTION));
+            LoadDescriptionSettings(Config.Settings.LastUsedCommandDescriptionFile);
         }
 
         public frmPresetsEditor(PresetsFile afile) : this() {           
