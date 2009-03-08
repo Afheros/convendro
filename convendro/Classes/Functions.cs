@@ -330,7 +330,7 @@ namespace convendro.Classes
         /// <param name="filename"></param>
         /// <returns></returns>
         public static string CombineCurrentFilePath(string filename) {
-            return string.Format("{0}\\{1}", Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), filename);
+            return Path.Combine(Application.StartupPath, filename);
         }
 
         /// <summary>

@@ -253,17 +253,17 @@ namespace convendro {
             // Prepare PresetFile
             if (String.IsNullOrEmpty(Config.Settings.LastUsedPresetFile)) {
                 this.presetdata = null;
-                Config.Settings.LastUsedPresetFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                Config.Settings.LastUsedPresetFile = Path.Combine(Functions.GetCurrentLocalAppPath(),
                     Functions.FILENAME_PRESETSDATA);
             } else {
                 this.presetdata = Functions.DeserializePresetsData(
                     Config.Settings.LastUsedPresetFile);
             }
 
-            //
+            // 
             if (String.IsNullOrEmpty(Config.Settings.LastUsedCommandDescriptionFile)) {
                 Config.Settings.LastUsedCommandDescriptionFile =
-                    Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), Functions.FILENAME_COMMANDLINEDESCRIPTION);
+                    Path.Combine(Functions.GetCurrentLocalAppPath(), Functions.FILENAME_COMMANDLINEDESCRIPTION);
             }
 
             // Create the file automatically...
@@ -277,7 +277,7 @@ namespace convendro {
 
             // If FFMEPG doesn't exist, we should probably show a dialog...
             if (String.IsNullOrEmpty(Config.Settings.FFMPEGFilePath)) {
-                MessageBox.Show("FFMPeg was not found. You may wish to set this in the settings", Application.ProductName,
+                MessageBox.Show("FFMPeg was not found " + Config.Settings.FFMPEGFilePath + ". You may wish to set this in the settings", Application.ProductName,
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
@@ -307,9 +307,7 @@ namespace convendro {
                 }
             } finally {
                 // Save commandline descriptions...
-                nform.SaveDescriptionSettings(                    
-                    Functions.CombineCurrentFilePath(
-                    Functions.FILENAME_COMMANDLINEDESCRIPTION));
+                nform.SaveDescriptionSettings(Config.Settings.LastUsedCommandDescriptionFile);
                 nform.Dispose();
             }
         }
@@ -483,8 +481,7 @@ namespace convendro {
                 } finally {
                     // Save commandline descriptions...
                     nform.SaveDescriptionSettings(
-                        Functions.CombineCurrentFilePath(
-                        Functions.FILENAME_COMMANDLINEDESCRIPTION));
+                        Config.Settings.LastUsedCommandDescriptionFile);
                     nform.Dispose();
                 }
             }
