@@ -98,7 +98,7 @@ namespace convendro.Classes {
         private static string tryFindConstantFileLocally(string filename) {
             string res = null;
 
-            res = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), filename);
+            res = Path.Combine(Functions.GetCurrentLocalAppPath(), filename);
 
             if (!File.Exists(res)) {
                 res = null;

@@ -334,7 +334,7 @@ namespace convendro.Classes
         }
 
         /// <summary>
-        /// 
+        /// Gets the currentLocalAppPath (c:\users\current_user\AppData\Local\Convendro)
         /// </summary>
         /// <returns></returns>
         public static string GetCurrentLocalAppPath() {
