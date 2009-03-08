@@ -40,34 +40,47 @@ namespace convendro.Classes {
             if (Directory.Exists(Functions.GetCurrentLocalAppPath())) {
                 LocalAppPath = Functions.GetCurrentLocalAppPath();
             } else {
-                LocalAppPath = generateLocalAppFolder();
+                // The application runs in the ide or dev environment:
+                // the Installer at all times should create the LocalAppPath
+                // folder.
+                LocalAppPath = Application.StartupPath;
             }
 
-            Settings.FFMPEGFilePath = generateSettingsFileName(
-                Functions.FILENAME_EXECUTABLE_FFMPEG, 
-                Settings.FFMPEGFilePath);
+            // Find and set FFMPEG.
+            if (String.IsNullOrEmpty(Settings.FFMPEGFilePath)) {
+                Settings.FFMPEGFilePath = locateDefaultExecutablePath(
+                    Functions.FILENAME_EXECUTABLE_FFMPEG);
+            }
 
-            Settings.LastUsedPresetFile = generateSettingsFileName(
-                Functions.FILENAME_PRESETSDATA,
-                Settings.LastUsedPresetFile);
+            // Find and set the Presetdata file
+            if (String.IsNullOrEmpty(Settings.LastUsedPresetFile)) {
+                Settings.LastUsedPresetFile = locateDefaultDataFilePath(
+                    Functions.FILENAME_PRESETSDATA);
+            }
 
-            Settings.LastUsedCommandDescriptionFile = generateSettingsFileName(
-                Functions.FILENAME_COMMANDLINEDESCRIPTION,
-                Settings.LastUsedCommandDescriptionFile);
+            // Find and set the Commanddescription file.
+            if (String.IsNullOrEmpty(Settings.LastUsedCommandDescriptionFile)) {
+                Settings.LastUsedCommandDescriptionFile = locateDefaultDataFilePath(
+                    Functions.FILENAME_COMMANDLINEDESCRIPTION);
+            }
 
+
+            // Generate default locations for storing input/output/mediasets
             GenerateDefaultFolders();
 
-            aform.Location = Settings.mainFormLocation;
-            aform.Size = Settings.mainFormSize;
-            aform.WindowState = Settings.mainFormState;
+            if (aform != null) {
+                aform.Location = Settings.mainFormLocation;
+                aform.Size = Settings.mainFormSize;
+                aform.WindowState = Settings.mainFormState;
 
-            string[] s = Settings.fileListViewColumns.Split(new char[] { '|' });
+                string[] s = Settings.fileListViewColumns.Split(new char[] { '|' });
 
-            if (s.Length >= aform.FileListView.Columns.Count) {
-                for (int i = 0; i < aform.FileListView.Columns.Count; i++ ) {
-                    int disp = Convert.ToInt32(s[i]);
-                    // TODO...
-                    aform.FileListView.Columns[i].DisplayIndex = disp;
+                if (s.Length >= aform.FileListView.Columns.Count) {
+                    for (int i = 0; i < aform.FileListView.Columns.Count; i++) {
+                        int disp = Convert.ToInt32(s[i]);
+                        // TODO...
+                        aform.FileListView.Columns[i].DisplayIndex = disp;
+                    }
                 }
             }
         }
@@ -92,16 +105,17 @@ namespace convendro.Classes {
         }
 
         /// <summary>
-        ///
+        /// 
         /// </summary>
+        /// <param name="filename"></param>
         /// <returns></returns>
-        private static string tryFindConstantFileLocally(string filename) {
+        private static string locateDefaultExecutablePath(string filename) {
             string res = null;
+            
+            string defaultfilename = Functions.CombineCurrentFilePath(filename);
 
-            res = Path.Combine(Functions.GetCurrentLocalAppPath(), filename);
-
-            if (!File.Exists(res)) {
-                res = null;
+            if (File.Exists(defaultfilename)) {
+                res = defaultfilename;
             }
 
             return res;
@@ -111,23 +125,16 @@ namespace convendro.Classes {
         /// 
         /// </summary>
         /// <param name="filename"></param>
-        /// <param name="settingfilepath"></param>
-        private static string generateSettingsFileName(string filename, string settingfilepath) {
-            string res = settingfilepath;
+        /// <returns></returns>
+        private static string locateDefaultDataFilePath(string filename) {
+            string res = null;
 
-            string localfile = tryFindConstantFileLocally(filename);
+            string defaultfilename = Path.Combine(LocalAppPath, filename);
 
-            if (String.IsNullOrEmpty(res)) {
-                if (!File.Exists(res)) {
-                    if (!String.IsNullOrEmpty(localfile)) {
-                        res = localfile;                        
-                    }
-                }
-            } else {
-                if (!File.Exists(res)) {
-                    res = "";
-                }
+            if (File.Exists(defaultfilename)) {
+                res = defaultfilename;
             }
+
             return res;
         }
 
