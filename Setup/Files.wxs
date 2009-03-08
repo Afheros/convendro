@@ -32,7 +32,7 @@
 					</Component>											
 					<Component Id="MyFFMPEG" Guid="F180E41A-6ABC-4498-8C29-848C68847586">
 							<File Id="FFMPEG" Name="ffmpeg.exe" Source="..\convendro\bin\Debug\ffmpeg.exe"/>	
-					</Component>					
+					</Component>
 				</Directory>
 				
 	            <Directory Id='ProgramMenuFolder' Name='PMenu'>
@@ -40,14 +40,16 @@
 	            </Directory>	            
 	            <Directory Id='DesktopFolder' Name='Desktop' />			
 			</Directory>
+			
+			<!-- Data directory -->			
 			<Directory Id="LocalAppDataFolder" Name="LocalFiles">
 				<Directory Id="LOCALAPPFOLDER" Name="Convendro">
 				    <Component Id="MyDataFiles" Guid="C0EAC254-0185-458B-98DD-DABFD8ABB2F1" DiskId="1">
+						<File Id="MyReadmeFile" Name="ReadMe.txt" Source="..\convendro\bin\Debug\ReadMe.txt" />						
 						<File Id="CommandsFile" Name="cmddesc.xml" Source="..\convendro\bin\Debug\cmddesc.xml"/>
 						<File Id="PresetsFile" Name="presetsdata.xml" Source="..\convendro\bin\Debug\presetsdata.xml"/>			
-						<File Id="ReadmeFile" Name="ReadMe.txt" Source="..\convendro\bin\Debug\ReadMe.txt"/>
 				    	<CreateFolder />
-						<RegistryValue Root='HKCU' Key='SOFTWARE\ArthurHoogervorst\Convendro'  
+						<RegistryValue Root='HKCU' Key='SOFTWARE\Convendro\Convendro'  
 							    Type='string' Value='INSTALLED' KeyPath='yes' />  														    	
 					   	<RemoveFolder Id="LocalAppDataFolder" On="uninstall" />				
 					</Component>
