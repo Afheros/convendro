@@ -169,7 +169,7 @@
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.listViewFiles);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(690, 369);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(690, 367);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer1.Name = "toolStripContainer1";
@@ -203,7 +203,7 @@
             this.listViewFiles.HideSelection = false;
             this.listViewFiles.Location = new System.Drawing.Point(0, 0);
             this.listViewFiles.Name = "listViewFiles";
-            this.listViewFiles.Size = new System.Drawing.Size(690, 369);
+            this.listViewFiles.Size = new System.Drawing.Size(690, 367);
             this.listViewFiles.SmallImageList = this.imlSmallImages;
             this.listViewFiles.TabIndex = 0;
             this.listViewFiles.UseCompatibleStateImageBehavior = false;
@@ -648,10 +648,9 @@
             this.fileToolStrip.Dock = System.Windows.Forms.DockStyle.None;
             this.fileToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileExitToolStripButton});
-            this.fileToolStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
             this.fileToolStrip.Location = new System.Drawing.Point(3, 24);
             this.fileToolStrip.Name = "fileToolStrip";
-            this.fileToolStrip.Size = new System.Drawing.Size(24, 23);
+            this.fileToolStrip.Size = new System.Drawing.Size(35, 25);
             this.fileToolStrip.TabIndex = 1;
             // 
             // fileExitToolStripButton
@@ -684,10 +683,9 @@
             this.mediafilesSelectPresetListToolStripButton,
             this.toolStripSeparator10,
             this.mediafilesPropertiesToolStripButton});
-            this.conversionToolStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
-            this.conversionToolStrip.Location = new System.Drawing.Point(27, 24);
+            this.conversionToolStrip.Location = new System.Drawing.Point(38, 24);
             this.conversionToolStrip.Name = "conversionToolStrip";
-            this.conversionToolStrip.Size = new System.Drawing.Size(267, 23);
+            this.conversionToolStrip.Size = new System.Drawing.Size(278, 25);
             this.conversionToolStrip.TabIndex = 2;
             // 
             // mediafilesPlaytoolStripButton
@@ -825,10 +823,10 @@
             this.toolsToolStrip.Dock = System.Windows.Forms.DockStyle.None;
             this.toolsToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolsEditPresetsToolStripButton});
-            this.toolsToolStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
-            this.toolsToolStrip.Location = new System.Drawing.Point(540, 24);
+            this.toolsToolStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
+            this.toolsToolStrip.Location = new System.Drawing.Point(319, 24);
             this.toolsToolStrip.Name = "toolsToolStrip";
-            this.toolsToolStrip.Size = new System.Drawing.Size(24, 23);
+            this.toolsToolStrip.Size = new System.Drawing.Size(66, 25);
             this.toolsToolStrip.TabIndex = 3;
             // 
             // toolsEditPresetsToolStripButton
