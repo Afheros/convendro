@@ -107,8 +107,13 @@ namespace convendro.Classes.Persistence {
 
             if (this.Preset.CommandLineOptions.Count > 0) {
 
-                string outputfile =
-                    Path.Combine(this.Preset.OutputFolder,
+                // Use default directory...
+                if (!Directory.Exists(this.Preset.OutputFolder) ){
+                    this.Preset.OutputFolder = 
+                        Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                }
+
+                string outputfile = Path.Combine(this.Preset.OutputFolder,
                         Path.GetFileNameWithoutExtension(this.filename)
                         + "." + this.Preset.Extension);
 
