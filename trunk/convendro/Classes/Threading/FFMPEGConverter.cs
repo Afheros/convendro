@@ -16,10 +16,8 @@ namespace convendro.Classes.Threading {
         private Thread nthread;
         private frmMain nform;
         private volatile MediaFileList mediafilelist;
-        private bool showdoswindow;
         private float fileduration = 0.00F;
         private DateTime currentdate;
-        private volatile bool stoprequested = false;
         private ManualResetEvent stopThread;
         private ManualResetEvent threadHasStopped;
 
@@ -60,11 +58,6 @@ namespace convendro.Classes.Threading {
             set { executable = value; }
         }
 
-        public bool StopRequested {
-            get { return stoprequested; }
-            set { stoprequested = value; }
-        }
-
         /// <summary>
         /// 
         /// </summary>
@@ -73,6 +66,9 @@ namespace convendro.Classes.Threading {
             set { nform = value; }
         }
 
+        /// <summary>
+        /// Accessor to current thread.
+        /// </summary>
         public Thread CurrentThread {
             get { return this.nthread; }
         }
