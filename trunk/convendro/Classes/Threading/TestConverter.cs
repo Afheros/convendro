@@ -8,13 +8,6 @@ using System.IO;
 using convendro.Classes.Persistence;
 
 namespace convendro.Classes.Threading {
-    public enum ProcessStage {
-        Unknown = 0,
-        Starting = 1,
-        Processing = 2,
-        Error = 3
-    }
-
     /// <summary>
     /// Test converter class to test stuff and that. 
     /// Need to move this to a base/abstract class so that
