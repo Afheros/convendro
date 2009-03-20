@@ -10,7 +10,7 @@ namespace convendro.Classes.Import {
     /// <summary>
     /// 
     /// </summary>
-    public static class VideoraImport {
+    public static class VideoraItem {
         /// <summary>
         /// 
         /// </summary>
@@ -297,7 +297,7 @@ namespace convendro.Classes.Import {
         public override void LoadFile(string filename) {
             base.LoadFile(filename);
             if (File.Exists(filename)) {
-                ProfileList newprofile = VideoraImport.DeserializeVideoraFile(filename);
+                ProfileList newprofile = VideoraItem.DeserializeVideoraFile(filename);
 
                 if (newprofile != null) {
                     processVideoraItems(newprofile);

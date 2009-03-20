@@ -90,6 +90,7 @@
     </Compile>
     <Compile Include="Classes\Threading\FFMPEGConverter.cs" />
     <Compile Include="Classes\Functions.cs" />
+    <Compile Include="Classes\Threading\Threading.cs" />
     <Compile Include="formAbout.cs">
       <SubType>Form</SubType>
     </Compile>
