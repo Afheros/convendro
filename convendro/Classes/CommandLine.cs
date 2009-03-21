@@ -6,7 +6,11 @@ namespace convendro.Classes {
     /// <summary>
     /// CommandLine helper class
     /// </summary>
-    public static class CommandLine {
+    public static class CommandLineSession {
+        public const string ARGUMENT_LONGPREFIX = "--";
+        public const string ARGUMENT_SHORTPREFIX = "-";
+        public const string ARGUMENT_SEPARATOR = "=";
+
         public static string[] Arguments;
 
         /// <summary>
@@ -18,8 +22,9 @@ namespace convendro.Classes {
         public static bool GetArgumentValue(string argument, ref string avalue) {
             bool b = false;
 
-            int i = Array.IndexOf(Arguments, argument);
+            int i = Array.IndexOf(Arguments, argument.ToLower());
             if (i > -1) {
+                b = true;
                 string[] s = Arguments[i].Split('=');
 
                 if (s.Length > 1) {
@@ -38,7 +43,7 @@ namespace convendro.Classes {
         /// <param name="argument"></param>
         /// <returns></returns>
         public static int ArgumentIndex(string argument) {
-            return Array.IndexOf(Arguments, argument);
+            return Array.IndexOf(Arguments, argument.ToLower());
         }
     }
 }
