@@ -762,11 +762,7 @@ namespace convendro {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void exploreFolderToolStripMenuItem_Click(object sender, EventArgs e) {
-            if (listViewFiles.SelectedItems.Count > 0) {
-                foreach (ListViewItem i in listViewFiles.SelectedItems) {
-                    Functions.ShowFolderExplorer(i.SubItems[SUBCOL_PATH].Text);
-                }
-            }
+
         }
 
 
@@ -903,6 +899,38 @@ namespace convendro {
                 }
             } finally {
                 savefile.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void mediafilesExploreSourceFolderToolStripMenuItem_Click(object sender, EventArgs e) {
+            if (listViewFiles.SelectedItems.Count > 0) {
+                foreach (ListViewItem i in listViewFiles.SelectedItems) {
+                    Functions.ShowFolderExplorer(i.SubItems[SUBCOL_PATH].Text);
+                }
+            }
+
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void mediafilesExploreTargetFolderToolStripMenuItem_Click(object sender, EventArgs e) {
+            if (listViewFiles.SelectedItems.Count > 0) {
+                foreach (ListViewItem i in listViewFiles.SelectedItems) {
+                    if (!String.IsNullOrEmpty(i.SubItems[SUBCOL_PRESETNAME].Text)) {
+                        Preset n = presetdata.FindPreset(i.SubItems[SUBCOL_PRESETNAME].Text);
+                        if (n != null) {
+                            Functions.ShowFolderExplorer(n.OutputFolder);
+                        }
+                    }
+                }
             }
         }
     }
