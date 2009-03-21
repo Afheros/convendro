@@ -243,12 +243,23 @@ namespace convendro {
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public static void InitializeApplication() {
+
+        }
+
+        /// <summary>
         /// Main Form Load
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void frmMain_Load(object sender, EventArgs e) {
-            Config.LoadSettings(this);
+            // Load File Folder settings.
+            Config.LoadFileFolderSettings();
+
+            // Load Form settings...
+            Config.LoadFormSettings(this);
 
             // Prepare PresetFile
             if (String.IsNullOrEmpty(Config.Settings.LastUsedPresetFile)) {
