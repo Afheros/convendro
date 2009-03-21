@@ -18,6 +18,7 @@ namespace convendro {
     public partial class frmMain : Form {
         private PresetsFile presetdata = null;
         private MediaFileList mediafilelist = new MediaFileList();
+        private bool newPresetFile = false;
         private FFMPEGConverter ffmpegconverter = null;
         private ManualResetEvent stopThreadEvent = new ManualResetEvent(false);
         private ManualResetEvent threadHasStoppedEvent = new ManualResetEvent(false);
@@ -68,6 +69,14 @@ namespace convendro {
         public PresetsFile PresetsFile {
             get { return this.presetdata; }
             set { this.presetdata = value; }
+        }
+
+        /// <summary>
+        /// Indicates if this is the first time a preset
+        /// file has been generated.
+        /// </summary>
+        public bool HasNewPresetFile {
+            get { return this.newPresetFile; }
         }
 
         /// <summary>
@@ -243,13 +252,6 @@ namespace convendro {
         }
 
         /// <summary>
-        /// 
-        /// </summary>
-        public static void InitializeApplication() {
-
-        }
-
-        /// <summary>
         /// Main Form Load
         /// </summary>
         /// <param name="sender"></param>
@@ -278,7 +280,9 @@ namespace convendro {
             }
 
             // Create the file automatically...
+
             if (this.presetdata == null) {
+                this.newPresetFile = true;
                 this.presetdata = new PresetsFile();
             }
 
@@ -766,16 +770,6 @@ namespace convendro {
             nterm.Show();
             nterm.StartProcessing();
         }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void exploreFolderToolStripMenuItem_Click(object sender, EventArgs e) {
-
-        }
-
 
         /// <summary>
         /// Cancel current process dialog. If true, the process is cancelled:
