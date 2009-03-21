@@ -29,14 +29,9 @@ namespace convendro.Classes {
         }
 
         /// <summary>
-        /// Initializes and loads settings from the AppConfig file.
+        /// 
         /// </summary>
-        /// <param name="aform"></param>
-        public static void LoadSettings(frmMain aform) {
-            // Generate FFMPEG filepath
-            // GenerateFFMpegFilename();
-            // GeneratePresetFilename();            
-
+        public static void LoadFileFolderSettings() {
             if (Directory.Exists(Functions.GetCurrentLocalAppPath())) {
                 LocalAppPath = Functions.GetCurrentLocalAppPath();
             } else {
@@ -67,7 +62,13 @@ namespace convendro.Classes {
 
             // Generate default locations for storing input/output/mediasets
             GenerateDefaultFolders();
+        }
 
+        /// <summary>
+        /// Initializes and loads settings from the AppConfig file.
+        /// </summary>
+        /// <param name="aform"></param>
+        public static void LoadFormSettings(frmMain aform) {
             if (aform != null) {
                 aform.Location = Settings.mainFormLocation;
                 aform.Size = Settings.mainFormSize;
