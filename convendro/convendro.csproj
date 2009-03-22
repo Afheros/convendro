@@ -55,7 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\CommandLine.cs" />
+    <Compile Include="Classes\CommandLineSession.cs" />
     <Compile Include="Classes\Comparers\BaseMediaFileSorter.cs" />
     <Compile Include="Classes\Comparers\BasePresetSorter.cs" />
     <Compile Include="Classes\Comparers\MediaFileOrderSorter.cs" />
