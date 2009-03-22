@@ -14,11 +14,6 @@ using System.Reflection;
 
 namespace convendro.Classes
 {
-    public delegate void BooleanInvoker(bool aboolean);
-    public delegate void StringInvoker(string text);    
-    public delegate void FloatInvoker(float floating);
-    public delegate void MediaFileInvoker(MediaFile amediafile);
-
     /// <summary>
     /// 
     /// </summary>
