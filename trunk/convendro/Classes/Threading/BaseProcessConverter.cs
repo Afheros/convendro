@@ -11,6 +11,9 @@ namespace convendro.Classes.Threading {
         private string executable;
         private MediaFileList mediafilelist;
         private Thread nthread;
+        private frmMain nform;
+
+
 
         /// <summary>
         /// 
@@ -30,6 +33,14 @@ namespace convendro.Classes.Threading {
             set {
                 this.mediafilelist = value;
             }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public frmMain Form {
+            get { return this.nform; }
+            set { this.nform = value; }
         }
 
         /// <summary>
