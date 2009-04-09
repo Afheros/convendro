@@ -7,7 +7,7 @@ using convendro.Classes.Persistence;
 namespace convendro.Classes.Threading {
     public abstract class AbstractProcessConverter : IProcessConverter {
 
-        public abstract string Executable { get; }
+        public abstract string Executable { get; set; }
 
         public abstract MediaFileList MediaFileItems {
             get;
