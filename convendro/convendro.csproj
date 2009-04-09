@@ -86,6 +86,8 @@
     <Compile Include="Classes\Persistence\MediaFileList.cs" />
     <Compile Include="Classes\Persistence\Preset.cs" />
     <Compile Include="Classes\Persistence\PresetsFile.cs" />
+    <Compile Include="Classes\Threading\AbstractProcessConverter.cs" />
+    <Compile Include="Classes\Threading\IProcessConverter.cs" />
     <Compile Include="Classes\Threading\TestConverter.cs">
       <SubType>Code</SubType>
     </Compile>
