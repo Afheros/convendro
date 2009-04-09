@@ -1,0 +1,23 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading;
+using convendro.Classes.Persistence;
+
+namespace convendro.Classes.Threading {
+    public abstract class AbstractProcessConverter : IProcessConverter {
+
+        public abstract string Executable { get; }
+
+        public abstract MediaFileList MediaFileItems {
+            get;
+            set;
+        }
+
+        public abstract Thread CurrentThread {
+            get;
+        }
+
+        public abstract bool Execute();
+    }
+}

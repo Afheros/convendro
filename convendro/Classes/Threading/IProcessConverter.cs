@@ -10,9 +10,6 @@ namespace convendro.Classes.Threading {
     /// Generalized ProcessConverter
     /// </summary>
     public interface IProcessConverter {
-        public string Executable { get; set; }
-        public MediaFileList MediaFileItems { get; set; }
-        public Thread CurrentThread { get; set; }
-        public bool Execute();
+        bool Execute();
     }
 }
