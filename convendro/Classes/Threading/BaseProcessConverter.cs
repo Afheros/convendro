@@ -9,11 +9,9 @@ namespace convendro.Classes.Threading {
     // Base class..
     public class BaseProcessConverter : AbstractProcessConverter{
         private string executable;
-        private MediaFileList mediafilelist;
-        private Thread nthread;
-        private frmMain nform;
-
-
+        private MediaFileList mediafilelist = null;
+        private Thread nthread = null;
+        private frmMain nform = null;
 
         /// <summary>
         /// 
@@ -50,8 +48,29 @@ namespace convendro.Classes.Threading {
             get { return this.nthread; }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        protected virtual void execthread(){
+            return;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override bool Execute() {
-            return true;
+            bool res = false;
+            if (executable != "") {
+                nthread = new Thread(execthread);
+                try {
+                    nthread.Start();
+                    res = true;
+                } catch {
+                    res = false;
+                }
+            }
+            return res;            
         }
     }
 }
