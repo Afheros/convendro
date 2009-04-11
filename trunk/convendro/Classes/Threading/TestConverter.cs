@@ -9,16 +9,8 @@ using convendro.Classes.Persistence;
 
 namespace convendro.Classes.Threading {
     /// <summary>
-    /// Test converter class to test stuff and that. 
-    /// Need to move this to a base/abstract class so that
-    /// I can actually reuse/rewrite the other converter threads.
-    /// This will do for now...
     /// </summary>
-    public class TestConverter {
-        private Form nform;
-        private Thread nthread;
-        private string executable;
-        private MediaFileList mediafiles;
+    public class TestConverter : BaseProcessConverter {
         private ManualResetEvent mnstopevent, mnhasstoppedevent;
         private ProcessStage processstage = ProcessStage.Unknown;
 
@@ -28,27 +20,8 @@ namespace convendro.Classes.Threading {
 
         }
 
-        public Form Form {
-            get { return nform; }
-            set { nform = value; }
-        }
-
-        public Thread CurrentThread {
-            get { return this.nthread; }
-        }
-
-        public string Executable {
-            get { return this.executable; }
-            set { this.executable = value; }
-        }
-
-        public MediaFileList MediaFileItems {
-            get { return this.mediafiles; }
-            set { this.mediafiles = value; }
-        }
-
         protected virtual void execthread() {
-            foreach (MediaFile i in mediafiles.Items) {
+            foreach (MediaFile i in this.MediaFileItems.Items) {
                 if (mnstopevent.WaitOne(0, true)) {                    
                     mnhasstoppedevent.Set();
                     return;
@@ -58,7 +31,7 @@ namespace convendro.Classes.Threading {
 
                 Process nprocess = new Process();
                 try {
-                    nprocess.StartInfo.FileName = this.executable;
+                    nprocess.StartInfo.FileName = this.Executable;
                     nprocess.StartInfo.Arguments = i.BuildCommandLine();
                     nprocess.EnableRaisingEvents = false;
                     nprocess.StartInfo.UseShellExecute = false;
@@ -95,37 +68,30 @@ namespace convendro.Classes.Threading {
             SynchControls();
         }
 
-        public void Execute() {
-            if (executable != "") {
-                nthread = new Thread(execthread);
-                nthread.Start();
-            }
-        }
-
         protected virtual void SynchTitle(string s) {
-            if (nform.InvokeRequired) {
-                nform.Invoke(new StringInvoker(SynchTitle), new object[] { s });
+            if (this.Form.InvokeRequired) {
+                this.Form.Invoke(new StringInvoker(SynchTitle), new object[] { s });
             } else {
-                nform.Text = string.Format("{0} - [{1}]", Functions.FORM_TERMINAL_TITLE, s);
+                this.Form.Text = string.Format("{0} - [{1}]", Functions.FORM_TERMINAL_TITLE, s);
             }
         }
 
         protected virtual void SynchControls() {
-            if ((nform as frmTerminal).InvokeRequired) {
-                nform.Invoke(new MethodInvoker(SynchControls));
+            if ((this.Form as frmTerminal).InvokeRequired) {
+                this.Form.Invoke(new MethodInvoker(SynchControls));
             } else {
-                (nform as frmTerminal).SetThreadingControls(false);
+                (this.Form as frmTerminal).SetThreadingControls(false);
             }
         }
 
         protected virtual void SynchOutputwindow(string s) {
-            if ((nform as frmTerminal).Terminal.InvokeRequired) {
-                (nform as frmTerminal).Terminal.Invoke(new StringInvoker(SynchOutputwindow), new object[] { s });
+            if ((this.Form as frmTerminal).Terminal.InvokeRequired) {
+                (this.Form as frmTerminal).Terminal.Invoke(new StringInvoker(SynchOutputwindow), new object[] { s });
             } else {
-                (nform as frmTerminal).Terminal.Text += s + Environment.NewLine;
-                (nform as frmTerminal).Terminal.SelectionStart =
-                    (nform as frmTerminal).Terminal.Text.Length - 1;
-                (nform as frmTerminal).Terminal.ScrollToCaret();
+                (this.Form as frmTerminal).Terminal.Text += s + Environment.NewLine;
+                (this.Form as frmTerminal).Terminal.SelectionStart =
+                    (this.Form as frmTerminal).Terminal.Text.Length - 1;
+                (this.Form as frmTerminal).Terminal.ScrollToCaret();
             }
         }
 
