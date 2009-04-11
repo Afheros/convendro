@@ -20,7 +20,7 @@ namespace convendro.Classes.Threading {
 
         }
 
-        protected virtual void execthread() {
+        protected override void execthread() {
             foreach (MediaFile i in this.MediaFileItems.Items) {
                 if (mnstopevent.WaitOne(0, true)) {                    
                     mnhasstoppedevent.Set();
