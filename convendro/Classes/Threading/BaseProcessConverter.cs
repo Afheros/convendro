@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using convendro.Classes.Persistence;
 using System.Threading;
+using System.Windows.Forms;
 
 namespace convendro.Classes.Threading {
     
@@ -11,7 +12,7 @@ namespace convendro.Classes.Threading {
         private string executable;
         private MediaFileList mediafilelist = null;
         private Thread nthread = null;
-        private frmMain nform = null;
+        private Form nform = null;
 
         /// <summary>
         /// 
@@ -36,7 +37,7 @@ namespace convendro.Classes.Threading {
         /// <summary>
         /// 
         /// </summary>
-        public frmMain Form {
+        public Form Form {
             get { return this.nform; }
             set { this.nform = value; }
         }
