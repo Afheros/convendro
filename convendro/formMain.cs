@@ -655,35 +655,40 @@ namespace convendro {
             this.listViewFiles.Items.Clear();
             // sort items?
             foreach (MediaFile f in this.mediafilelist.Items) {
-                ListViewItem fitem = new ListViewItem();
-                FileInfo finfo = new FileInfo(f.Filename);
-                
-                fitem.Text = Path.GetFileName(f.Filename);
-                fitem.SubItems.Add(Path.GetDirectoryName(f.Filename));
-                fitem.SubItems.Add(Functions.ConvertFileSizeToString(finfo.Length));
-                fitem.SubItems.Add(f.Preset.Name);
 
-                fitem.SubItems.Add( (f.DateStarted != DateTime.MinValue ?                    
-                    String.Format(Functions.TIMEFORMAT_HHMMSS,
-                    f.Duration.Hours, f.Duration.Minutes,
-                    f.Duration.Seconds) : 
-                    ""));
+                if (File.Exists(f.Filename)) {
 
-                fitem.SubItems.Add((f.DateStarted != DateTime.MinValue ?
-                    String.Format(Functions.TIMEFORMAT_HHMMSS, f.DateStarted.Hour,
-                    f.DateStarted.Minute, f.DateStarted.Second) : ""));
+                    FileInfo finfo = new FileInfo(f.Filename);
 
-                fitem.SubItems.Add((f.DateFinished != DateTime.MinValue ?
-                    String.Format(Functions.TIMEFORMAT_HHMMSS, f.DateFinished.Hour,
-                    f.DateFinished.Minute, f.DateFinished.Second) : ""));
+                    ListViewItem fitem = new ListViewItem();
 
-                fitem.ImageIndex = (int)ProcessState.Unknown;
+                    fitem.Text = Path.GetFileName(f.Filename);
+                    fitem.SubItems.Add(Path.GetDirectoryName(f.Filename));
+                    fitem.SubItems.Add(Functions.ConvertFileSizeToString(finfo.Length));
+                    fitem.SubItems.Add(f.Preset.Name);
 
-                if (f.Duration.Ticks > 0) {
-                    fitem.ImageIndex = (int)ProcessState.Success;
+                    fitem.SubItems.Add((f.DateStarted != DateTime.MinValue ?
+                        String.Format(Functions.TIMEFORMAT_HHMMSS,
+                        f.Duration.Hours, f.Duration.Minutes,
+                        f.Duration.Seconds) :
+                        ""));
+
+                    fitem.SubItems.Add((f.DateStarted != DateTime.MinValue ?
+                        String.Format(Functions.TIMEFORMAT_HHMMSS, f.DateStarted.Hour,
+                        f.DateStarted.Minute, f.DateStarted.Second) : ""));
+
+                    fitem.SubItems.Add((f.DateFinished != DateTime.MinValue ?
+                        String.Format(Functions.TIMEFORMAT_HHMMSS, f.DateFinished.Hour,
+                        f.DateFinished.Minute, f.DateFinished.Second) : ""));
+
+                    fitem.ImageIndex = (int)ProcessState.Unknown;
+
+                    if (f.Duration.Ticks > 0) {
+                        fitem.ImageIndex = (int)ProcessState.Success;
+                    }
+
+                    listViewFiles.Items.Add(fitem);
                 }
-
-                listViewFiles.Items.Add(fitem);
             }
 
             SetControlsThreading(true);
