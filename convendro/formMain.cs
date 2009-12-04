@@ -359,6 +359,11 @@ namespace convendro {
             foreach (ListViewItem n in listViewFiles.Items) {
                 string filename = Path.Combine(n.SubItems[SUBCOL_PATH].Text, n.SubItems[SUBCOL_FILENAME].Text);
                 Preset preset = presetdata.FindPreset(n.SubItems[SUBCOL_PRESETNAME].Text);
+                
+                // reset time stats.
+                n.SubItems[SUBCOL_STARTED].Text = "";
+                n.SubItems[SUBCOL_FINISHED].Text = "";
+                n.SubItems[SUBCOL_DURATION].Text = "";
 
                 if (preset != null) {
                     this.mediafilelist.AddMediaFile(filename, preset, n.Index);
