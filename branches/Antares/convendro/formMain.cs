@@ -13,9 +13,10 @@ using convendro.Classes.Persistence;
 using convendro.Classes.Comparers;
 using convendro.Classes.Import;
 using convendro.Classes.Dialogs;
+using convendro.Classes.Plugins;
 
 namespace convendro {
-    public partial class frmMain : Form {
+    public partial class frmMain : Form, IConvendroHost {
         private PresetsFile presetdata = null;
         private MediaFileList mediafilelist = new MediaFileList();
         private bool newPresetFile = false;
@@ -948,5 +949,13 @@ namespace convendro {
                 }
             }
         }
+
+        #region IConvendroHost Members
+
+        public bool Register(IConvendroPlugin plugin) {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 }

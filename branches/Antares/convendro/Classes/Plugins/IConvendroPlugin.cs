@@ -9,16 +9,6 @@ namespace convendro.Classes.Plugins {
         Guid Guid { get; }
 
         /// <summary>
-        /// Activates a plugin in the host;
-        /// </summary>
-        void Activate();
-
-        /// <summary>
-        /// Deactivates a plugin in the host;
-        /// </summary>
-        void Deactivate();
-
-        /// <summary>
         /// Shows the plugin main dialog (if provided)
         /// </summary>
         bool Execute();
@@ -27,15 +17,5 @@ namespace convendro.Classes.Plugins {
         /// 
         /// </summary>
         IConvendroHost Host { get; set; }
-
-        /// <summary>
-        /// Sets up the plugin
-        /// </summary>
-        void Initialize();
-
-        /// <summary>
-        /// Destroy the plugin;
-        /// </summary>
-        void Uninitialize();
     }
 }
