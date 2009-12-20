@@ -86,6 +86,8 @@
     <Compile Include="Classes\Persistence\MediaFileList.cs" />
     <Compile Include="Classes\Persistence\Preset.cs" />
     <Compile Include="Classes\Persistence\PresetsFile.cs" />
+    <Compile Include="Classes\Plugins\IConvendroHost.cs" />
+    <Compile Include="Classes\Plugins\IConvendroPlugin.cs" />
     <Compile Include="Classes\Threading\AbstractProcessConverter.cs" />
     <Compile Include="Classes\Threading\BaseProcessConverter.cs" />
     <Compile Include="Classes\Threading\IProcessConverter.cs" />
