@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using System.Reflection;
 using convendro;
 using convendro.Properties;
+using libconvendro;
 
 namespace convendro.Classes {
     public static class Config {
