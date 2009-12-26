@@ -34,7 +34,7 @@
 							<File Id="FFMPEG" Name="ffmpeg.exe" Source="..\convendro\bin\Debug\ffmpeg.exe"/>	
 					</Component>
 					<Component Id="LibConvendro" Guid="0B2366EA-A9DF-4132-9347-0F6A7B0F758C">
-							<File Id="FFMPEG" Name="libconvendro.dll" Source="..\convendro\bin\Debug\libconvendro.dll"/>	
+							<File Id="libconvendro" Name="libconvendro.dll" Source="..\convendro\bin\Debug\libconvendro.dll"/>	
 					</Component>				
 				</Directory>
 				
