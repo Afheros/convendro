@@ -85,10 +85,12 @@ namespace libconvendro
         public const string MEDIAFILES_FILTER_WMV = "wmv files (*.wmv)|*.wmv";
         public const string MEDIAFILES_FILTER_MPG = "mpeg files (*.mpg)|*.mpg";
         public const string MEDIAFILES_FILTER_MPG2 = "mpeg2 files (*.mpeg)|*.mpeg";
+        public const string MEDIAFILES_FILTER_FLV = "flash video files (*.flv)|*.flv";
 
-        public const string MEDIAFILES_FILTER_MEDIA = "Media files|*.avi;*.mp4;*.m4v;*.wmv;*.mpg;*mpeg";
+        public const string MEDIAFILES_FILTER_MEDIA = "Media files|*.avi;*.mp4;*.m4v;*.wmv;*.mpg;*mpeg;*.flv";
         public const string MEDIAFILES_FILTER_ALL = "All files (*.*)|*.*";
         public const string MEDIAFILES_FILTER = MEDIAFILES_FILTER_AVI + "|" +
+            MEDIAFILES_FILTER_FLV + "|" +
             MEDIAFILES_FILTER_MP4 + "|" + MEDIAFILES_FILTER_M4V + "|" +
             MEDIAFILES_FILTER_WMV + "|" + MEDIAFILES_FILTER_MPG + "|" +
             MEDIAFILES_FILTER_MPG2 + "|" + MEDIAFILES_FILTER_MEDIA + "|"
