@@ -15,6 +15,7 @@ using libconvendro.Comparers;
 using libconvendro.Import;
 using libconvendro.Dialogs;
 using libconvendro.Plugins;
+using libconvendro.Forms;
 
 namespace convendro {
     public partial class frmMain : Form, IConvendroHost {
