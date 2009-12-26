@@ -482,5 +482,14 @@ namespace libconvendro
 
             return desc;
         }
+
+        /// <summary>
+        /// Returns the FileVersionInfo of an executable or DLL.
+        /// </summary>
+        /// <param name="anexecutablename"></param>
+        /// <returns></returns>
+        public static FileVersionInfo GetFileVersionInfo(string anexecutablename) {
+            return FileVersionInfo.GetVersionInfo(anexecutablename);
+        }
     }     
 }
