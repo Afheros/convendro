@@ -6,7 +6,8 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
-using convendro.Classes.Persistence;
+using libconvendro.Persistence;
+using libconvendro;
 using convendro.Classes;
 
 namespace convendro {
