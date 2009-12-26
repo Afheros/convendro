@@ -5,10 +5,10 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using convendro.Classes.Threading;
+using libconvendro.Threading;
 using System.Threading;
-using convendro.Classes.Persistence;
-using convendro.Classes;
+using libconvendro.Persistence;
+using libconvendro;
 
 namespace convendro {
     public partial class frmTerminal : Form {

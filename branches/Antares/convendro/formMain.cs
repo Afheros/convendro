@@ -8,12 +8,13 @@ using System.Text;
 using System.Windows.Forms;
 using System.Threading;
 using convendro.Classes;
-using convendro.Classes.Threading;
-using convendro.Classes.Persistence;
-using convendro.Classes.Comparers;
-using convendro.Classes.Import;
-using convendro.Classes.Dialogs;
-using convendro.Classes.Plugins;
+using libconvendro;
+using libconvendro.Threading;
+using libconvendro.Persistence;
+using libconvendro.Comparers;
+using libconvendro.Import;
+using libconvendro.Dialogs;
+using libconvendro.Plugins;
 
 namespace convendro {
     public partial class frmMain : Form, IConvendroHost {
