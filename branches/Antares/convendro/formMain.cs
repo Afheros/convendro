@@ -323,7 +323,8 @@ namespace convendro {
             ToolStripMenuItem nitem = new ToolStripMenuItem(plugin.Description, 
                 plugin.MenuBitmap);
             try {
-                toolsToolsStripMenuItem.DropDownItems.Add(nitem);
+                toolsPluginsToolStripMenuItem.Enabled = true;
+                toolsPluginsToolStripMenuItem.DropDownItems.Add(nitem);
                 nitem.Tag = plugin.Guid;
                 nitem.Text = plugin.Description;
                 nitem.Click += new EventHandler(pluginMenuItem_Click);
@@ -340,8 +341,11 @@ namespace convendro {
         private void pluginMenuItem_Click(object sender, EventArgs e) {
             if (sender is ToolStripMenuItem) {
                 if ((sender as ToolStripMenuItem).Tag != null) {
-                    this.pluginManager.FindPlugin(
+                    IConvendroPlugin plugin = this.pluginManager.FindPlugin(
                         (Guid)(sender as ToolStripMenuItem).Tag);
+                    if (plugin != null) {
+                        plugin.Execute();
+                    }
                 }
             }
         }
