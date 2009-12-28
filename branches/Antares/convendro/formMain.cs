@@ -25,6 +25,7 @@ namespace convendro {
         private FFMPEGConverter ffmpegconverter = null;
         private ManualResetEvent stopThreadEvent = new ManualResetEvent(false);
         private ManualResetEvent threadHasStoppedEvent = new ManualResetEvent(false);
+        private PluginManager pluginManager = null;
 
 
         public const int SUBCOL_FILENAME = 0;
@@ -263,8 +264,14 @@ namespace convendro {
             // Load File Folder settings.
             Config.LoadFileFolderSettings();
 
+
             // Load Form settings...
             Config.LoadFormSettings(this);
+            
+            pluginManager = new PluginManager(Config.Settings.PluginFolders);
+            pluginManager.OnPluginLoad += new pluginevent(pluginManager_OnPluginLoad);
+            pluginManager.Load();
+
 
             // Prepare PresetFile
             if (String.IsNullOrEmpty(Config.Settings.LastUsedPresetFile)) {
@@ -297,6 +304,38 @@ namespace convendro {
             if (String.IsNullOrEmpty(Config.Settings.FFMPEGFilePath)) {
                 MessageBox.Show("FFMPeg was not found " + Config.Settings.FFMPEGFilePath + ". You may wish to set this in the settings", Application.ProductName,
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="anobject"></param>
+        /// <param name="plugin"></param>
+        private void pluginManager_OnPluginLoad(object anobject, IConvendroPlugin plugin) {
+            ToolStripMenuItem nitem = new ToolStripMenuItem(plugin.Description, 
+                plugin.MenuBitmap);
+            try {
+                toolsToolsStripMenuItem.DropDownItems.Add(nitem);
+                nitem.Tag = plugin.Guid;
+                nitem.Text = plugin.Description;
+                nitem.Click += new EventHandler(pluginMenuItem_Click);
+            } catch (Exception ex) {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void pluginMenuItem_Click(object sender, EventArgs e) {
+            if (sender is ToolStripMenuItem) {
+                if ((sender as ToolStripMenuItem).Tag != null) {
+                    this.pluginManager.FindPlugin(
+                        (Guid)(sender as ToolStripMenuItem).Tag);
+                }
             }
         }
 

@@ -1,21 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Drawing;
 
 namespace libconvendro.Plugins {
 
     public interface IConvendroPlugin {
         string Name { get;}
 
-        string Description { get; }
+        string Description { get; set; }
 
-        string Author { get;}
+        string Author { get; set; }
 
-        string CopyrightInformation { get;}
+        string CopyrightInformation { get; set;}
 
-        Version Version { get; }
+        Bitmap MenuBitmap { get; set; }
 
-        Guid Guid { get; }
+        Version Version { get; set; }
+
+        Guid Guid { get; set; }
 
         /// <summary>
         /// Shows the plugin main dialog (if provided)

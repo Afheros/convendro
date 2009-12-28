@@ -40,7 +40,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
+    <Optimize>false</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -153,6 +153,7 @@
     <None Include="Resources\control_play_blue.png" />
     <None Include="Resources\control_stop_blue.png" />
     <Content Include="convendro.ico" />
+    <None Include="Resources\plugin.png" />
     <None Include="Resources\cog_go.png" />
     <None Include="Resources\application_view_detail.png" />
   </ItemGroup>

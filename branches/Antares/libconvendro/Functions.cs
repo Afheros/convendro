@@ -70,7 +70,7 @@ namespace libconvendro
         Success = 3,
         Warning = 4
     }
-  
+
     public static class Functions {
         public const string FILENAME_EXECUTABLE_FFMPEG = "ffmpeg.exe";
         public const string FILENAME_EXECUTABLE_MENCODER = "mencoder.exe";

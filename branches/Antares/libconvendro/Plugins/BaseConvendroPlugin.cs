@@ -2,22 +2,27 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Reflection;
+using System.Drawing;
 
 namespace libconvendro.Plugins {
     public class BaseConvendroPlugin : IConvendroPlugin{
-
-        #region IConvendroPlugin Members
-
         private string name = null;
-        private readonly Guid guid = Guid.NewGuid();
+        private string author = null;
+        private string description = null;
+        private string copyrights = null;
+        private Version version = null;
+        private Bitmap bitmap = null;
+        private Guid guid = Guid.NewGuid();
         private IConvendroHost host;
 
         public string Name {
             get { return this.name; }
+            set { this.name = value; }
         }
 
         public Guid Guid {
             get { return this.guid; }
+            set { this.guid = value; }
         }
 
         /// <summary>
@@ -61,32 +66,48 @@ namespace libconvendro.Plugins {
 
         }
 
-        #endregion
-
-        #region IConvendroPlugin Members
-
-
+        /// <summary>
+        /// 
+        /// </summary>
         public string Description {
-            get { return this.Description; }
+            get { return this.description; }
+            set { this.description = value; }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string Author {
-            get { throw new NotImplementedException(); }
+            get { return this.author; }
+            set { this.author = value; }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string CopyrightInformation {
-            get { throw new NotImplementedException(); }
+            get { return this.copyrights; }
+            set { this.copyrights = value; }
         }
 
-        #endregion
-
-        #region IConvendroPlugin Members
-
-
+        /// <summary>
+        /// 
+        /// </summary>
         public Version Version {
-            get { throw new NotImplementedException(); }
+            get { return this.version; }
+            set { this.version = value; }
         }
 
-        #endregion
+        /// <summary>
+        /// Gets or sets the Plugin's menu/toolbar image.
+        /// </summary>
+        public Bitmap MenuBitmap {
+            get {
+                return this.bitmap;
+            }
+            set {
+                this.bitmap = value;
+            }
+        }
     }
 }
