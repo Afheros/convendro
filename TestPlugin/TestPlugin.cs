@@ -15,6 +15,8 @@ namespace TestPlugin {
             this.Description = "A test plugin for convendro";
             this.Version = new Version("1.0.0.0");
             this.MenuBitmap = Properties.Resources.address_book_new;
+            // override default Guid in Baseclass.
+            this.Guid = new Guid("01716dc3-2d75-416c-8a37-ff32ad4011f3");
         }
 
         /// <summary>
