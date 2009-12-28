@@ -313,6 +313,13 @@ namespace convendro {
         /// <param name="anobject"></param>
         /// <param name="plugin"></param>
         private void pluginManager_OnPluginLoad(object anobject, IConvendroPlugin plugin) {
+            // use default bitmap where possible.
+            Bitmap defaultimage = plugin.MenuBitmap;
+            
+            if (plugin.MenuBitmap == null) {
+                defaultimage = Properties.Resources.plugin;
+            }
+
             ToolStripMenuItem nitem = new ToolStripMenuItem(plugin.Description, 
                 plugin.MenuBitmap);
             try {
