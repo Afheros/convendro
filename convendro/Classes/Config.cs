@@ -155,6 +155,18 @@ namespace convendro.Classes {
                 Settings.LastUsedMediaSetFolder =
                     Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             }
+
+            if (String.IsNullOrEmpty(Settings.PluginFolders)) {
+                try {
+                    Settings.PluginFolders = Path.Combine(LocalAppPath, "plugins");
+                    Directory.CreateDirectory(Settings.PluginFolders);
+
+                } catch (Exception ex) {
+                    // Force empty...
+                    Settings.PluginFolders = "";
+                    MessageBox.Show(ex.Message);
+                }
+            }
         }
     }
 }
