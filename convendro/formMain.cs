@@ -18,7 +18,7 @@ using libconvendro.Plugins;
 using libconvendro.Forms;
 
 namespace convendro {
-    public partial class frmMain : Form, IConvendroHost {
+    public partial class frmMain : Form, IThreadingHost, IConvendroHost {
         private PresetsFile presetdata = null;
         private MediaFileList mediafilelist = new MediaFileList();
         private bool newPresetFile = false;
@@ -314,6 +314,9 @@ namespace convendro {
         /// <param name="anobject"></param>
         /// <param name="plugin"></param>
         private void pluginManager_OnPluginLoad(object anobject, IConvendroPlugin plugin) {
+            // set the host..
+            plugin.Host = this;
+            // prepare the plugin
             this.setupPluginMainMenu(plugin);
             this.setupPluginToolBar(plugin);
         }
@@ -1058,12 +1061,57 @@ namespace convendro {
             }
         }
 
-        #region IConvendroHost Members
-
-        public bool Register(IConvendroPlugin plugin) {
-            throw new NotImplementedException();
+        /// <summary>
+        /// Gets or sets the mediafilelist
+        /// </summary>
+        public MediaFileList MediaFileList {
+            get {
+                return this.mediafilelist;
+            }
         }
 
-        #endregion
+        /// <summary>
+        /// Gets or sets the selected items in the listview.
+        /// </summary>
+        public int[] SelectedIndices {
+            get {
+                int[] array = null;
+                Array.Resize(ref array, this.listViewFiles.SelectedIndices.Count);
+                
+                int i = 0;
+                foreach (int index in listViewFiles.SelectedIndices) {
+                    array[i] = index;
+                    i++;
+                }
+
+                return array;
+            }
+            set {
+                if ((value != null) && (value.Length > 0)) {
+                    foreach (int i in value) {
+                        this.listViewFiles.Items[i].Selected = true;
+                    }
+                } else {
+                    this.listViewFiles.SelectedItems.Clear();
+                }
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        public ListViewItem GetFileListViewItem(int index) {
+            ListViewItem item = null;
+
+            if ((this.listViewFiles.Items.Count > 0) 
+                & (index < this.listViewFiles.Items.Count)) {
+                item = this.listViewFiles.Items[index];
+            }
+
+            return item;
+        }
+
     }
 }

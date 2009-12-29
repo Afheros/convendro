@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using libconvendro.Plugins;
 using System.Windows.Forms;
+using System.IO;
 
 namespace TestPlugin {
     public class TestPlugin : BaseConvendroPlugin  {
@@ -37,9 +38,26 @@ namespace TestPlugin {
         /// </summary>
         /// <returns></returns>
         public override bool Execute() {
+
+            string filename = "noname unknown haha...";
+
+            if (this.Host != null) {
+                if (this.Host.SelectedIndices.Length > 0) {
+                    int i = this.Host.SelectedIndices[0];
+
+                    ListViewItem item = this.Host.GetFileListViewItem(i);
+
+                    if (item != null) {
+                        filename = Path.Combine(
+                            item.SubItems[libconvendro.Threading.FFMPEGConverter.SUBCOL_PATH].Text,
+                            item.SubItems[libconvendro.Threading.FFMPEGConverter.SUBCOL_FILENAME].Text);
+                    }
+                }
+            }
+
             return (MessageBox.Show("Hello World " + 
                 this.Author + " | " + this.Description + " | " +
-                this.Version.ToString()) == DialogResult.OK);
+                this.Version.ToString() + " | selected file :" + filename) == DialogResult.OK);
         }
     }
 }
