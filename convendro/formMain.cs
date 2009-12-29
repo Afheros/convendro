@@ -488,9 +488,7 @@ namespace convendro {
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void mediafilesStartConversionToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void startThread() {
             buildMediaFileList();
             threadHasStoppedEvent.Reset();
             stopThreadEvent.Reset();
@@ -505,6 +503,15 @@ namespace convendro {
             } catch {
 
             }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void mediafilesStartConversionToolStripMenuItem_Click(object sender, EventArgs e) {
+            startThread();
         }
 
         /// <summary>
@@ -1100,18 +1107,76 @@ namespace convendro {
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="index"></param>
-        /// <returns></returns>
-        public ListViewItem GetFileListViewItem(int index) {
-            ListViewItem item = null;
+        public string[] SelectedItems {
+            get {
+                string[] array = null;
 
-            if ((this.listViewFiles.Items.Count > 0) 
-                & (index < this.listViewFiles.Items.Count)) {
-                item = this.listViewFiles.Items[index];
+                Array.Resize(ref array, this.listViewFiles.SelectedItems.Count);
+
+                for (int i = 0; i < this.listViewFiles.SelectedItems.Count; i++) {
+                    array[i] = Path.Combine(
+                        this.listViewFiles.SelectedItems[i].SubItems[SUBCOL_PATH].Text,
+                        this.listViewFiles.SelectedItems[i].SubItems[SUBCOL_FILENAME].Text);
+                }
+
+                return array;
             }
-
-            return item;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="filename"></param>
+        public void AddMediaFile(string filename) {
+            AddFile(filename);
+
+            // prepare the userinterface
+            SetControlsThreading(true);
+            updateStatusBar1();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        public string GetPresetNameItem(int index) {
+            string preset = null;
+
+            if (listViewFiles.Items.Count > 0) {
+                ListViewItem i = listViewFiles.Items[index];
+                preset = i.SubItems[SUBCOL_PRESETNAME].Text;
+            }
+
+            return preset;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="index"></param>
+        /// <param name="presetname"></param>
+        public void SetPresetNameItem(int index, string presetname) {
+            if (presetdata.FindPresetIndex(presetname) > -1) {
+                if (listViewFiles.Items.Count > 0 && index >= 0
+                    && index < listViewFiles.Items.Count) {
+                    listViewFiles.Items[index].SubItems[SUBCOL_PRESETNAME].Text = presetname;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Start() {
+            startThread();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Stop() {
+            stopThread();
+        }
     }
 }
