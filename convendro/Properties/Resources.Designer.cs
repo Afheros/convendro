@@ -214,6 +214,13 @@ namespace convendro.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap plugin_edit {
+            get {
+                object obj = ResourceManager.GetObject("plugin_edit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap stripe_09dcb4b216f165337cc9db1770876f4c {
             get {
                 object obj = ResourceManager.GetObject("stripe_09dcb4b216f165337cc9db1770876f4c", resourceCulture);

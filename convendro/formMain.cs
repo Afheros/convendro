@@ -249,6 +249,7 @@ namespace convendro {
         /// 
         /// </summary>
         private void setUpToolbars() {
+            toolStripContainer1.TopToolStripPanel.Join(pluginsToolStrip);
             toolStripContainer1.TopToolStripPanel.Join(toolsToolStrip);
             toolStripContainer1.TopToolStripPanel.Join(conversionToolStrip);
             toolStripContainer1.TopToolStripPanel.Join(fileToolStrip);
@@ -308,28 +309,83 @@ namespace convendro {
         }
 
         /// <summary>
-        /// 
+        /// Sets up the plugins UI actions and controls.
         /// </summary>
         /// <param name="anobject"></param>
         /// <param name="plugin"></param>
         private void pluginManager_OnPluginLoad(object anobject, IConvendroPlugin plugin) {
+            this.setupPluginMainMenu(plugin);
+            this.setupPluginToolBar(plugin);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="plugin"></param>
+        private void setupPluginMainMenu(IConvendroPlugin plugin) {
             // use default bitmap where possible.
             Bitmap defaultimage = plugin.MenuBitmap;
-            
+
             if (plugin.MenuBitmap == null) {
                 defaultimage = Properties.Resources.plugin;
             }
 
-            ToolStripMenuItem nitem = new ToolStripMenuItem(plugin.Description, 
+            ToolStripMenuItem nitem = new ToolStripMenuItem(plugin.Description,
                 plugin.MenuBitmap);
             try {
-                toolsPluginsToolStripMenuItem.Enabled = true;
+                if (toolsPluginsToolStripMenuItem.DropDownItems.Count == 1) {
+                    toolsPluginsToolStripMenuItem.DropDownItems.Add(new ToolStripSeparator());
+                }
+
                 toolsPluginsToolStripMenuItem.DropDownItems.Add(nitem);
                 nitem.Tag = plugin.Guid;
                 nitem.Text = plugin.Description;
                 nitem.Click += new EventHandler(pluginMenuItem_Click);
             } catch (Exception ex) {
                 MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="plugin"></param>
+        private void setupPluginToolBar(IConvendroPlugin plugin) {
+            Bitmap defaultimage = plugin.MenuBitmap;
+
+            if (plugin.MenuBitmap == null) {
+                defaultimage = Properties.Resources.plugin;
+            }
+
+            ToolStripButton tsbutton = new ToolStripButton(defaultimage);
+            try {
+                if (pluginsToolStrip.Items.Count == 1) {
+                    pluginsToolStrip.Items.Add(new ToolStripSeparator());
+                }
+                pluginsToolStrip.Items.Add(tsbutton);
+                tsbutton.Tag = plugin.Guid;
+                tsbutton.ToolTipText = plugin.Description;
+                tsbutton.Click += new EventHandler(pluginToolButtonItem_Click);
+
+            } catch (Exception ex) {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void pluginToolButtonItem_Click(object sender, EventArgs e) {
+            if (sender is ToolStripButton) {
+                if ((sender as ToolStripButton).Tag != null) {
+                    IConvendroPlugin plugin = this.pluginManager.FindPlugin(
+                        (Guid)(sender as ToolStripButton).Tag);
+                    if (plugin != null) {
+                        plugin.Execute();
+                    }
+                }
             }
         }
 
