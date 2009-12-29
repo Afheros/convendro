@@ -42,16 +42,12 @@ namespace TestPlugin {
             string filename = "noname unknown haha...";
 
             if (this.Host != null) {
-                if (this.Host.SelectedIndices.Length > 0) {
-                    int i = this.Host.SelectedIndices[0];
 
-                    ListViewItem item = this.Host.GetFileListViewItem(i);
+                string[] array = this.Host.SelectedItems;
 
-                    if (item != null) {
-                        filename = Path.Combine(
-                            item.SubItems[libconvendro.Threading.FFMPEGConverter.SUBCOL_PATH].Text,
-                            item.SubItems[libconvendro.Threading.FFMPEGConverter.SUBCOL_FILENAME].Text);
-                    }
+                if (array != null & array.Length > 0) {
+                    // only get the first item...
+                    filename = array[0];
                 }
             }
 
