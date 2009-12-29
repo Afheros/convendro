@@ -138,7 +138,7 @@ namespace libconvendro.Threading {
                 if (this.Form.InvokeRequired) {
                     this.Form.Invoke(new MethodInvoker(synchUpdateControls));
                 } else {
-                    (this.Form as IConvendroHost).SetControlsThreading(true);
+                    (this.Form as IThreadingHost).SetControlsThreading(true);
                 }
             }
         }
@@ -149,13 +149,13 @@ namespace libconvendro.Threading {
         /// <param name="amediafile"></param>
         private void synchPrepareListViewItem(MediaFile amediafile) {
             if (this.Form != null) {
-                if ((this.Form as IConvendroHost).FileListView.InvokeRequired) {
-                    (this.Form as IConvendroHost).FileListView.Invoke(new MediaFileInvoker(synchPrepareListViewItem),
+                if ((this.Form as IThreadingHost).FileListView.InvokeRequired) {
+                    (this.Form as IThreadingHost).FileListView.Invoke(new MediaFileInvoker(synchPrepareListViewItem),
                         new object[] { amediafile });
                 } else {
                     if (amediafile != null) {
                         // for now assume working process state
-                        (this.Form as IConvendroHost).FileListView.Items[amediafile.Order].ImageIndex = (int)ProcessState.Working;
+                        (this.Form as IThreadingHost).FileListView.Items[amediafile.Order].ImageIndex = (int)ProcessState.Working;
                     }
                 }
             }
@@ -168,22 +168,22 @@ namespace libconvendro.Threading {
         /// <param name="atimespan"></param>
         private void synchListViewItem(MediaFile amediafile) {
             if (this.Form != null) {
-                if ((this.Form as IConvendroHost).FileListView.InvokeRequired) {
-                    (this.Form as IConvendroHost).FileListView.Invoke(new MediaFileInvoker(synchListViewItem), new object[] { amediafile });
+                if ((this.Form as IThreadingHost).FileListView.InvokeRequired) {
+                    (this.Form as IThreadingHost).FileListView.Invoke(new MediaFileInvoker(synchListViewItem), new object[] { amediafile });
                 } else {
                     if (amediafile != null) {
                         TimeSpan atimespan = amediafile.DateFinished.Subtract(amediafile.DateStarted);
-                        (this.Form as IConvendroHost).FileListView.Items[amediafile.Order].SubItems[SUBCOL_DURATION].Text =
+                        (this.Form as IThreadingHost).FileListView.Items[amediafile.Order].SubItems[SUBCOL_DURATION].Text =
                             String.Format(Functions.TIMEFORMAT_HHMMSS,
                             atimespan.Hours, atimespan.Minutes, atimespan.Seconds);
-                        (this.Form as IConvendroHost).FileListView.Items[amediafile.Order].SubItems[SUBCOL_STARTED].Text =
+                        (this.Form as IThreadingHost).FileListView.Items[amediafile.Order].SubItems[SUBCOL_STARTED].Text =
                             String.Format(Functions.TIMEFORMAT_HHMMSS,
                             amediafile.DateStarted.Hour, amediafile.DateStarted.Minute, amediafile.DateStarted.Second);
-                        (this.Form as IConvendroHost).FileListView.Items[amediafile.Order].SubItems[SUBCOL_FINISHED].Text =
+                        (this.Form as IThreadingHost).FileListView.Items[amediafile.Order].SubItems[SUBCOL_FINISHED].Text =
                             String.Format(Functions.TIMEFORMAT_HHMMSS,
                             amediafile.DateFinished.Hour, amediafile.DateFinished.Minute, amediafile.DateFinished.Second);
 
-                        (this.Form as IConvendroHost).FileListView.Items[amediafile.Order].ImageIndex = (int)ProcessState.Success;
+                        (this.Form as IThreadingHost).FileListView.Items[amediafile.Order].ImageIndex = (int)ProcessState.Success;
                     }
                 }
             }
@@ -195,12 +195,12 @@ namespace libconvendro.Threading {
         /// <param name="text"></param>
         private void synchTextStatusBar(string text) {
             if (this.Form != null) {
-                if ((this.Form as IConvendroHost).Statusbar.InvokeRequired) {
-                    (this.Form as IConvendroHost).Statusbar.Invoke(new StringInvoker(synchTextStatusBar), new object[] { text });
+                if ((this.Form as IThreadingHost).Statusbar.InvokeRequired) {
+                    (this.Form as IThreadingHost).Statusbar.Invoke(new StringInvoker(synchTextStatusBar), new object[] { text });
                 } else {
-                    if (!(this.Form as IConvendroHost).Statusbar.IsDisposed) {
-                        if ((this.Form as IConvendroHost).Statusbar.Items[2] != null) {
-                            ((this.Form as IConvendroHost).Statusbar.Items[2] as ToolStripLabel).Text = text;
+                    if (!(this.Form as IThreadingHost).Statusbar.IsDisposed) {
+                        if ((this.Form as IThreadingHost).Statusbar.Items[2] != null) {
+                            ((this.Form as IThreadingHost).Statusbar.Items[2] as ToolStripLabel).Text = text;
                         }
                     }
                 }
@@ -209,10 +209,10 @@ namespace libconvendro.Threading {
 
         private void synchTextOutput(string text) {
             if (this.Form != null) {
-                if ((this.Form as IConvendroHost).LogBox.InvokeRequired) {
-                    (this.Form as IConvendroHost).LogBox.Invoke(new StringInvoker(synchTextOutput), new object[] { text });
+                if ((this.Form as IThreadingHost).LogBox.InvokeRequired) {
+                    (this.Form as IThreadingHost).LogBox.Invoke(new StringInvoker(synchTextOutput), new object[] { text });
                 } else {
-                    (this.Form as IConvendroHost).LogBox.Text = text;
+                    (this.Form as IThreadingHost).LogBox.Text = text;
                 }
             }
         }
@@ -223,12 +223,12 @@ namespace libconvendro.Threading {
         /// <param name="floating"></param>
         private void synchTotalFloat() {
             if (this.Form != null) {
-                if ((this.Form as IConvendroHost).Statusbar.InvokeRequired) {
-                    (this.Form as IConvendroHost).Statusbar.Invoke(new MethodInvoker(synchTotalFloat));
+                if ((this.Form as IThreadingHost).Statusbar.InvokeRequired) {
+                    (this.Form as IThreadingHost).Statusbar.Invoke(new MethodInvoker(synchTotalFloat));
                 } else {
-                    ((this.Form as IConvendroHost).Statusbar.Items[1] as ToolStripProgressBar).Minimum = 0;
-                    ((this.Form as IConvendroHost).Statusbar.Items[1] as ToolStripProgressBar).Maximum = 100;
-                    ((this.Form as IConvendroHost).Statusbar.Items[1] as ToolStripProgressBar).Value = 0;
+                    ((this.Form as IThreadingHost).Statusbar.Items[1] as ToolStripProgressBar).Minimum = 0;
+                    ((this.Form as IThreadingHost).Statusbar.Items[1] as ToolStripProgressBar).Maximum = 100;
+                    ((this.Form as IThreadingHost).Statusbar.Items[1] as ToolStripProgressBar).Value = 0;
                 }
             }
         }
@@ -239,11 +239,11 @@ namespace libconvendro.Threading {
         /// <param name="avalue"></param>
         private void synchCurrentFloat(float avalue) {
             if (this.Form != null) {
-                if ((this.Form as IConvendroHost).Statusbar.InvokeRequired) {
-                    (this.Form as IConvendroHost).Statusbar.Invoke(new FloatInvoker(synchCurrentFloat),
+                if ((this.Form as IThreadingHost).Statusbar.InvokeRequired) {
+                    (this.Form as IThreadingHost).Statusbar.Invoke(new FloatInvoker(synchCurrentFloat),
                         new object[] { avalue });
                 } else {
-                    int v = ((this.Form as IConvendroHost).Statusbar.Items[1] as ToolStripProgressBar).Value;
+                    int v = ((this.Form as IThreadingHost).Statusbar.Items[1] as ToolStripProgressBar).Value;
 
                     float vv = (avalue / this.fileduration);
 
@@ -260,8 +260,8 @@ namespace libconvendro.Threading {
                     TimeSpan pdelta2 = new TimeSpan(0, 0, (int)seconds);
                     DateTime finishtime = currentdate.Add(pdelta2);
 
-                    ((this.Form as IConvendroHost).Statusbar.Items[1] as ToolStripProgressBar).Value = stat;
-                    ((this.Form as IConvendroHost).Statusbar.Items[2] as ToolStripLabel).Text = String.Format(
+                    ((this.Form as IThreadingHost).Statusbar.Items[1] as ToolStripProgressBar).Value = stat;
+                    ((this.Form as IThreadingHost).Statusbar.Items[2] as ToolStripLabel).Text = String.Format(
                         "Started: {0}," + "Est. finish: {1}" + ", Duration: {2}",
                         currentdate.ToShortTimeString(),
                         finishtime.ToShortTimeString(),

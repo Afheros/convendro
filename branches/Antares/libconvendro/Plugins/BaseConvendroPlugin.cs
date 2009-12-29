@@ -4,7 +4,7 @@ using System.Text;
 using System.Reflection;
 using System.Drawing;
 
-namespace libconvendro.Plugins {
+namespace libconvendro.Plugins { 
     public class BaseConvendroPlugin : IConvendroPlugin{
         private string name = null;
         private string author = null;
@@ -36,12 +36,20 @@ namespace libconvendro.Plugins {
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="ahost"></param>
+        protected virtual void setHost(IConvendroHost ahost) {
+            this.host = ahost;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public IConvendroHost Host {
             get {
                 return this.host;
             }
             set {
-                this.host = value;
+                setHost(value);
             }
         }
 
