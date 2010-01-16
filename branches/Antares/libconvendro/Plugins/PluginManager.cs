@@ -112,18 +112,23 @@ namespace libconvendro.Plugins {
 
                     foreach (Type atype in arraytypes) {
                         if (atype != null) {
-                            object iobj = Activator.CreateInstance(atype);
 
-                            if (iobj != null) {
+                            try {
+                                object iobj = Activator.CreateInstance(atype);
+                                if (iobj != null) {
 
-                                if (iobj is IConvendroPlugin) {
-                                    
-                                    plugins.Add((IConvendroPlugin)iobj);
-                                    if (OnPluginLoad != null) {
-                                        OnPluginLoad(this, (IConvendroPlugin) iobj);
+                                    if (iobj is IConvendroPlugin) {
+
+                                        plugins.Add((IConvendroPlugin)iobj);
+                                        if (OnPluginLoad != null) {
+                                            OnPluginLoad(this, (IConvendroPlugin)iobj);
+                                        }
                                     }
                                 }
+                            } catch (Exception ex){
+                                //
                             }
+
                         }
                     }
 
