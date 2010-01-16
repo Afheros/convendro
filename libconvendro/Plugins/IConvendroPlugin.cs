@@ -10,6 +10,8 @@ namespace libconvendro.Plugins {
 
         string Description { get; set; }
 
+        string Caption { get; set; }
+
         string Author { get; set; }
 
         string CopyrightInformation { get; set;}
@@ -24,6 +26,12 @@ namespace libconvendro.Plugins {
         /// Shows the plugin main dialog (if provided)
         /// </summary>
         bool Execute();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        bool Config();
 
         /// <summary>
         /// 
