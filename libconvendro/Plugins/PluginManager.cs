@@ -7,7 +7,7 @@ using System.Reflection;
 
 namespace libconvendro.Plugins {
 
-    public delegate void pluginevent (object anobject, IConvendroPlugin plugin);
+    public delegate void PluginEvent (object anobject, IConvendroPlugin plugin);
 
 
     /// <summary>
@@ -20,7 +20,7 @@ namespace libconvendro.Plugins {
         /// <summary>
         /// This event fires everytime a plugin is added to the ArrayList
         /// </summary>
-        public event pluginevent OnPluginLoad = null;
+        public event PluginEvent OnPluginLoad = null;
 
         /// <summary>
         /// This event fires whenever the PluginList is cleared.
