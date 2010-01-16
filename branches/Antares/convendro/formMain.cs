@@ -342,7 +342,7 @@ namespace convendro {
 
                 toolsPluginsToolStripMenuItem.DropDownItems.Add(nitem);
                 nitem.Tag = plugin.Guid;
-                nitem.Text = plugin.Description;
+                nitem.Text = plugin.Caption;
                 nitem.Click += new EventHandler(pluginMenuItem_Click);
             } catch (Exception ex) {
                 MessageBox.Show("Error: " + ex.Message);
@@ -367,7 +367,7 @@ namespace convendro {
                 }
                 pluginsToolStrip.Items.Add(tsbutton);
                 tsbutton.Tag = plugin.Guid;
-                tsbutton.ToolTipText = plugin.Description;
+                tsbutton.ToolTipText = plugin.Caption;
                 tsbutton.Click += new EventHandler(pluginToolButtonItem_Click);
 
             } catch (Exception ex) {

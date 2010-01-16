@@ -4,11 +4,12 @@ using System.Text;
 using System.Reflection;
 using System.Drawing;
 
-namespace libconvendro.Plugins { 
+namespace libconvendro.Plugins {
     public class BaseConvendroPlugin : IConvendroPlugin{
         private string name = null;
         private string author = null;
         private string description = null;
+        private string caption = null;
         private string copyrights = null;
         private Version version = null;
         private Bitmap bitmap = null;
@@ -71,7 +72,6 @@ namespace libconvendro.Plugins {
         /// 
         /// </summary>
         public virtual void Uninitialize() {
-
         }
 
         /// <summary>
@@ -80,6 +80,14 @@ namespace libconvendro.Plugins {
         public string Description {
             get { return this.description; }
             set { this.description = value; }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Caption {
+            get { return this.caption; }
+            set { this.caption = value; }
         }
 
         /// <summary>
@@ -117,5 +125,14 @@ namespace libconvendro.Plugins {
                 this.bitmap = value;
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public virtual bool Config() {
+            return true;
+        }
+
     }
 }
