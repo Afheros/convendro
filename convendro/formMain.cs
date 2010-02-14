@@ -270,7 +270,7 @@ namespace convendro {
             Config.LoadFormSettings(this);
             
             pluginManager = new PluginManager(Config.Settings.PluginFolders);
-            pluginManager.OnPluginLoad += new PluginEvent(pluginManager_OnPluginLoad);
+            pluginManager.OnPluginLoad += new PluginLoadedEvent(pluginManager_OnPluginLoad);
             pluginManager.Load();
 
 

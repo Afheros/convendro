@@ -159,7 +159,10 @@ namespace convendro.Classes {
             if (String.IsNullOrEmpty(Settings.PluginFolders)) {
                 try {
                     Settings.PluginFolders = Path.Combine(LocalAppPath, "plugins");
-                    Directory.CreateDirectory(Settings.PluginFolders);
+
+                    if (!Directory.Exists(Settings.PluginFolders)) {
+                        Directory.CreateDirectory(Settings.PluginFolders);
+                    }
 
                 } catch (Exception ex) {
                     MessageBox.Show(ex.Message);
