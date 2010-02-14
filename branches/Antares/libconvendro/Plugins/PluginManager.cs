@@ -7,7 +7,8 @@ using System.Reflection;
 
 namespace libconvendro.Plugins {
 
-    public delegate void PluginEvent (object anobject, IConvendroPlugin plugin);
+    public delegate void PluginLoadedEvent (object anobject, IConvendroPlugin plugin);
+    public delegate void PluginManagerErrorEvent(object anobject, Exception exception);
 
 
     /// <summary>
@@ -20,7 +21,10 @@ namespace libconvendro.Plugins {
         /// <summary>
         /// This event fires everytime a plugin is added to the ArrayList
         /// </summary>
-        public event PluginEvent OnPluginLoad = null;
+        public event PluginLoadedEvent OnPluginLoad = null;
+
+        public event PluginManagerErrorEvent OnPluginManagerError = null;
+
 
         /// <summary>
         /// This event fires whenever the PluginList is cleared.
@@ -126,7 +130,9 @@ namespace libconvendro.Plugins {
                                     }
                                 }
                             } catch (Exception ex){
-                                //
+                                if (OnPluginManagerError != null) {
+                                    OnPluginManagerError(this, ex);
+                                } 
                             }
 
                         }
