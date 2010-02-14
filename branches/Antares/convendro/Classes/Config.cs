@@ -162,8 +162,6 @@ namespace convendro.Classes {
                     Directory.CreateDirectory(Settings.PluginFolders);
 
                 } catch (Exception ex) {
-                    // Force empty...
-                    Settings.PluginFolders = "";
                     MessageBox.Show(ex.Message);
                 }
             }
