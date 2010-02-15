@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using convendro.Classes;
+using libconvendro;
 
 namespace convendro
 {

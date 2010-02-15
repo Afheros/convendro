@@ -37,6 +37,7 @@
 		        <ComponentRef Id="MyConvendro" />
 				<ComponentRef Id="MyDataFiles" />
 				<ComponentRef Id="MyLicenseFile" />
+				<ComponentRef Id="LibConvendro" />
 		</Feature>
 
 		<Feature Id="FFMPEG"
