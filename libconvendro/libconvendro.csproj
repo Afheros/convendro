@@ -82,6 +82,7 @@
     <Compile Include="Plugins\IConvendroHost.cs" />
     <Compile Include="Plugins\IConvendroPlugin.cs" />
     <Compile Include="Plugins\PluginManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Threading\AbstractProcessConverter.cs" />
     <Compile Include="Threading\BaseProcessConverter.cs" />
     <Compile Include="Threading\FFMPEGConverter.cs" />
