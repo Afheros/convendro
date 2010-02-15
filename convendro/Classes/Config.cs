@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using System.Reflection;
 using convendro;
 using convendro.Properties;
+using libconvendro;
 
 namespace convendro.Classes {
     public static class Config {
@@ -153,6 +154,19 @@ namespace convendro.Classes {
             if (String.IsNullOrEmpty(Settings.LastUsedMediaSetFolder)) {
                 Settings.LastUsedMediaSetFolder =
                     Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            }
+
+            if (String.IsNullOrEmpty(Settings.PluginFolders)) {
+                try {
+                    Settings.PluginFolders = Path.Combine(LocalAppPath, "plugins");
+
+                    if (!Directory.Exists(Settings.PluginFolders)) {
+                        Directory.CreateDirectory(Settings.PluginFolders);
+                    }
+
+                } catch (Exception ex) {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
     }

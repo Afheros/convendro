@@ -8,20 +8,24 @@ using System.Text;
 using System.Windows.Forms;
 using System.Threading;
 using convendro.Classes;
-using convendro.Classes.Threading;
-using convendro.Classes.Persistence;
-using convendro.Classes.Comparers;
-using convendro.Classes.Import;
-using convendro.Classes.Dialogs;
+using libconvendro;
+using libconvendro.Threading;
+using libconvendro.Persistence;
+using libconvendro.Comparers;
+using libconvendro.Import;
+using libconvendro.Dialogs;
+using libconvendro.Plugins;
+using libconvendro.Forms;
 
 namespace convendro {
-    public partial class frmMain : Form {
+    public partial class frmMain : Form, IThreadingHost, IConvendroHost {
         private PresetsFile presetdata = null;
         private MediaFileList mediafilelist = new MediaFileList();
         private bool newPresetFile = false;
         private FFMPEGConverter ffmpegconverter = null;
         private ManualResetEvent stopThreadEvent = new ManualResetEvent(false);
         private ManualResetEvent threadHasStoppedEvent = new ManualResetEvent(false);
+        private PluginManager pluginManager = null;
 
 
         public const int SUBCOL_FILENAME = 0;
@@ -245,6 +249,7 @@ namespace convendro {
         /// 
         /// </summary>
         private void setUpToolbars() {
+            toolStripContainer1.TopToolStripPanel.Join(pluginsToolStrip);
             toolStripContainer1.TopToolStripPanel.Join(toolsToolStrip);
             toolStripContainer1.TopToolStripPanel.Join(conversionToolStrip);
             toolStripContainer1.TopToolStripPanel.Join(fileToolStrip);
@@ -260,8 +265,14 @@ namespace convendro {
             // Load File Folder settings.
             Config.LoadFileFolderSettings();
 
+
             // Load Form settings...
             Config.LoadFormSettings(this);
+            
+            pluginManager = new PluginManager(Config.Settings.PluginFolders);
+            pluginManager.OnPluginLoad += new PluginLoadedEvent(pluginManager_OnPluginLoad);
+            pluginManager.Load();
+
 
             // Prepare PresetFile
             if (String.IsNullOrEmpty(Config.Settings.LastUsedPresetFile)) {
@@ -294,6 +305,107 @@ namespace convendro {
             if (String.IsNullOrEmpty(Config.Settings.FFMPEGFilePath)) {
                 MessageBox.Show("FFMPeg was not found " + Config.Settings.FFMPEGFilePath + ". You may wish to set this in the settings", Application.ProductName,
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        /// <summary>
+        /// Sets up the plugins UI actions and controls.
+        /// </summary>
+        /// <param name="anobject"></param>
+        /// <param name="plugin"></param>
+        private void pluginManager_OnPluginLoad(object anobject, IConvendroPlugin plugin) {
+            // set the host..
+            plugin.Host = this;
+            // prepare the plugin
+            this.setupPluginMainMenu(plugin);
+            this.setupPluginToolBar(plugin);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="plugin"></param>
+        private void setupPluginMainMenu(IConvendroPlugin plugin) {
+            // use default bitmap where possible.
+            Bitmap defaultimage = plugin.MenuBitmap;
+
+            if (plugin.MenuBitmap == null) {
+                defaultimage = Properties.Resources.plugin;
+            }
+
+            ToolStripMenuItem nitem = new ToolStripMenuItem(plugin.Description,
+                plugin.MenuBitmap);
+            try {
+                if (toolsPluginsToolStripMenuItem.DropDownItems.Count == 1) {
+                    toolsPluginsToolStripMenuItem.DropDownItems.Add(new ToolStripSeparator());
+                }
+
+                toolsPluginsToolStripMenuItem.DropDownItems.Add(nitem);
+                nitem.Tag = plugin.Guid;
+                nitem.Text = plugin.Caption;
+                nitem.Click += new EventHandler(pluginMenuItem_Click);
+            } catch (Exception ex) {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="plugin"></param>
+        private void setupPluginToolBar(IConvendroPlugin plugin) {
+            Bitmap defaultimage = plugin.MenuBitmap;
+
+            if (plugin.MenuBitmap == null) {
+                defaultimage = Properties.Resources.plugin;
+            }
+
+            ToolStripButton tsbutton = new ToolStripButton(defaultimage);
+            try {
+                if (pluginsToolStrip.Items.Count == 1) {
+                    pluginsToolStrip.Items.Add(new ToolStripSeparator());
+                }
+                pluginsToolStrip.Items.Add(tsbutton);
+                tsbutton.Tag = plugin.Guid;
+                tsbutton.ToolTipText = plugin.Caption;
+                tsbutton.Click += new EventHandler(pluginToolButtonItem_Click);
+
+            } catch (Exception ex) {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void pluginToolButtonItem_Click(object sender, EventArgs e) {
+            if (sender is ToolStripButton) {
+                if ((sender as ToolStripButton).Tag != null) {
+                    IConvendroPlugin plugin = this.pluginManager.FindPlugin(
+                        (Guid)(sender as ToolStripButton).Tag);
+                    if (plugin != null) {
+                        plugin.Execute();
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void pluginMenuItem_Click(object sender, EventArgs e) {
+            if (sender is ToolStripMenuItem) {
+                if ((sender as ToolStripMenuItem).Tag != null) {
+                    IConvendroPlugin plugin = this.pluginManager.FindPlugin(
+                        (Guid)(sender as ToolStripMenuItem).Tag);
+                    if (plugin != null) {
+                        plugin.Execute();
+                    }
+                }
             }
         }
 
@@ -376,9 +488,7 @@ namespace convendro {
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void mediafilesStartConversionToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void startThread() {
             buildMediaFileList();
             threadHasStoppedEvent.Reset();
             stopThreadEvent.Reset();
@@ -393,6 +503,15 @@ namespace convendro {
             } catch {
 
             }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void mediafilesStartConversionToolStripMenuItem_Click(object sender, EventArgs e) {
+            startThread();
         }
 
         /// <summary>
@@ -947,6 +1066,117 @@ namespace convendro {
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// Gets or sets the mediafilelist
+        /// </summary>
+        public MediaFileList MediaFileList {
+            get {
+                return this.mediafilelist;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the selected items in the listview.
+        /// </summary>
+        public int[] SelectedIndices {
+            get {
+                int[] array = null;
+                Array.Resize(ref array, this.listViewFiles.SelectedIndices.Count);
+                
+                int i = 0;
+                foreach (int index in listViewFiles.SelectedIndices) {
+                    array[i] = index;
+                    i++;
+                }
+
+                return array;
+            }
+            set {
+                if ((value != null) && (value.Length > 0)) {
+                    foreach (int i in value) {
+                        this.listViewFiles.Items[i].Selected = true;
+                    }
+                } else {
+                    this.listViewFiles.SelectedItems.Clear();
+                }
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string[] SelectedItems {
+            get {
+                string[] array = null;
+
+                Array.Resize(ref array, this.listViewFiles.SelectedItems.Count);
+
+                for (int i = 0; i < this.listViewFiles.SelectedItems.Count; i++) {
+                    array[i] = Path.Combine(
+                        this.listViewFiles.SelectedItems[i].SubItems[SUBCOL_PATH].Text,
+                        this.listViewFiles.SelectedItems[i].SubItems[SUBCOL_FILENAME].Text);
+                }
+
+                return array;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="filename"></param>
+        public void AddMediaFile(string filename) {
+            AddFile(filename);
+
+            // prepare the userinterface
+            SetControlsThreading(true);
+            updateStatusBar1();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        public string GetPresetNameItem(int index) {
+            string preset = null;
+
+            if (listViewFiles.Items.Count > 0) {
+                ListViewItem i = listViewFiles.Items[index];
+                preset = i.SubItems[SUBCOL_PRESETNAME].Text;
+            }
+
+            return preset;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="index"></param>
+        /// <param name="presetname"></param>
+        public void SetPresetNameItem(int index, string presetname) {
+            if (presetdata.FindPresetIndex(presetname) > -1) {
+                if (listViewFiles.Items.Count > 0 && index >= 0
+                    && index < listViewFiles.Items.Count) {
+                    listViewFiles.Items[index].SubItems[SUBCOL_PRESETNAME].Text = presetname;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Start() {
+            startThread();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Stop() {
+            stopThread();
         }
     }
 }

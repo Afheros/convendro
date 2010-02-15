@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{472FB879-DA4A-499E-9C91-A5ECE69C2CBE}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -40,7 +40,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
+    <Optimize>false</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -55,46 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\CommandLineSession.cs" />
-    <Compile Include="Classes\Comparers\BaseMediaFileSorter.cs" />
-    <Compile Include="Classes\Comparers\BasePresetSorter.cs" />
-    <Compile Include="Classes\Comparers\MediaFileOrderSorter.cs" />
-    <Compile Include="Classes\Comparers\PresetsLastUsedSorter.cs" />
-    <Compile Include="Classes\Comparers\PresetsNameSorter.cs" />
-    <Compile Include="Classes\Comparers\PresetsUsedCountSorter.cs" />
-    <Compile Include="Classes\Components\AHBevel.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Classes\Config.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Classes\Dialogs\ConfirmOKCancelDlg\uctrlConfirmDlg.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Classes\Dialogs\ConfirmOKCancelDlg\uctrlConfirmDlg.designer.cs">
-      <DependentUpon>uctrlConfirmDlg.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Classes\Dialogs\Dialogs.cs" />
-    <Compile Include="Classes\Import\AbstractImport.cs" />
-    <Compile Include="Classes\Import\VideoraImport.cs" />
-    <Compile Include="Classes\Import\WinFFImport.cs" />
-    <Compile Include="Classes\Persistence\CommandLineOptions.cs" />
-    <Compile Include="Classes\Persistence\CommandOption.cs" />
-    <Compile Include="Classes\Persistence\DescriptionFile.cs" />
-    <Compile Include="Classes\Persistence\DescriptionItem.cs" />
-    <Compile Include="Classes\Persistence\MediaFile.cs" />
-    <Compile Include="Classes\Persistence\MediaFileList.cs" />
-    <Compile Include="Classes\Persistence\Preset.cs" />
-    <Compile Include="Classes\Persistence\PresetsFile.cs" />
-    <Compile Include="Classes\Threading\AbstractProcessConverter.cs" />
-    <Compile Include="Classes\Threading\BaseProcessConverter.cs" />
-    <Compile Include="Classes\Threading\IProcessConverter.cs" />
-    <Compile Include="Classes\Threading\TestConverter.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Classes\Threading\FFMPEGConverter.cs" />
-    <Compile Include="Classes\Functions.cs" />
-    <Compile Include="Classes\Threading\Threading.cs" />
+    <Compile Include="Classes\Config.cs" />
     <Compile Include="formAbout.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,28 +74,19 @@
     <Compile Include="formPresetsEditor.Designer.cs">
       <DependentUpon>formPresetsEditor.cs</DependentUpon>
     </Compile>
-    <Compile Include="formTerminal.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="formTerminal.Designer.cs">
-      <DependentUpon>formTerminal.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Classes\Dialogs\ConfirmOKCancelDlg\uctrlConfirmDlg.resx">
-      <DependentUpon>uctrlConfirmDlg.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="formAbout.resx">
       <DependentUpon>formAbout.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="formMain.resx">
       <DependentUpon>formMain.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="formPresetsEditor.resx">
       <DependentUpon>formPresetsEditor.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="formTerminal.resx">
-      <DependentUpon>formTerminal.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -204,6 +156,8 @@
     <None Include="Resources\control_play_blue.png" />
     <None Include="Resources\control_stop_blue.png" />
     <Content Include="convendro.ico" />
+    <None Include="Resources\plugin_edit.png" />
+    <None Include="Resources\plugin.png" />
     <None Include="Resources\cog_go.png" />
     <None Include="Resources\application_view_detail.png" />
   </ItemGroup>
@@ -233,6 +187,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\libconvendro\libconvendro.csproj">
+      <Project>{E12BADBA-2B43-4F6C-AED7-CB7B6D250023}</Project>
+      <Name>libconvendro</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
