@@ -6,6 +6,7 @@
 		Version="0.5.0.0"
 		UpgradeCode="2CDAE322-C150-448F-BCEB-9054543FCD66"	     
 		Manufacturer="Arthur Hoogervorst">
+		
 		<Package Description="#Description"
 			Comments="This MSI package installs Convendro"
 			InstallerVersion="200"
@@ -68,6 +69,17 @@
 			are not installed by default and there is a meaningful 
 			difference between typical and complete installs
 		-->
-		<UIRef Id="WixUI_Mondo"/>	
+		<UI>
+			<UIRef Id="WixUI_Mondo"/>	
+				<Publish Dialog="ExitDialog"
+		    		Control="Finish" 
+		    		Event="DoAction" 
+		    		Value="LaunchApplication">WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 and NOT Installed
+				</Publish>
+		</UI>		
+		<!-- set launch options... -->
+		<Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch Convendro" />
+		<Property Id="WixShellExecTarget" Value="[#Convendro]" />
+		<CustomAction Id="LaunchApplication" BinaryKey="WixCA" DllEntry="WixShellExec" Impersonate="yes" />					
 	</Product>
 </Wix>
