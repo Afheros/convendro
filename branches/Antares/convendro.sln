@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual C# Express 2008
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual C# Express 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "convendro", "convendro\convendro.csproj", "{472FB879-DA4A-499E-9C91-A5ECE69C2CBE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "libconvendro", "libconvendro\libconvendro.csproj", "{E12BADBA-2B43-4F6C-AED7-CB7B6D250023}"
