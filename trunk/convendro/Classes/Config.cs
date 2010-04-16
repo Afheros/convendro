@@ -156,14 +156,10 @@ namespace convendro.Classes {
                     Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             }
 
-            if (String.IsNullOrEmpty(Settings.PluginFolders)) {
+            if (String.IsNullOrEmpty(Settings.PluginFolders) || !Directory.Exists(Settings.PluginFolders)) {
                 try {
                     Settings.PluginFolders = Path.Combine(LocalAppPath, "plugins");
-
-                    if (!Directory.Exists(Settings.PluginFolders)) {
-                        Directory.CreateDirectory(Settings.PluginFolders);
-                    }
-
+                    Directory.CreateDirectory(Settings.PluginFolders);
                 } catch (Exception ex) {
                     MessageBox.Show(ex.Message);
                 }
