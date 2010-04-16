@@ -498,7 +498,7 @@ namespace convendro {
             try {
                 ffmpegconverter.Form = this;
                 ffmpegconverter.MediaFileItems = this.mediafilelist;
-                ffmpegconverter.Executable = Path.Combine(Application.StartupPath, "ffmpeg.exe");
+                ffmpegconverter.Executable = Config.Settings.FFMPEGFilePath;
                 ffmpegconverter.Execute();
             } catch {
 
