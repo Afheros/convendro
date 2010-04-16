@@ -108,7 +108,7 @@ namespace libconvendro.Plugins {
         /// </summary>
         private void loadPlugins() {
             try {
-                string[] dirinfo = Directory.GetFiles(this.pluginfolder, "*.dll");            
+                string[] dirinfo = Directory.GetFiles(this.pluginfolder + "\\", "*.dll");            
                 foreach (string sfile in dirinfo) {
                     if (!String.IsNullOrEmpty(sfile)) {
                         Assembly asm = Assembly.LoadFrom(sfile);
